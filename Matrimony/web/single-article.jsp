@@ -17,47 +17,9 @@
     <!--<![endif]-->
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Sweet Date - Landing Page Theme</title>
-        <!--Meta-->
-        <meta name="description"  content="Premium landing page for Lovers">
-        <meta name="author"  content="Seventh Queen">
-        <!--Set the viewport width to device width for mobile-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--Foundation Framework-->
-        <link rel="stylesheet" href="assets/styles/foundation.min.css">
-        <!--Plugins-->
-        <link rel="stylesheet" href="assets/styles/font-awesome.min.css">
-        <link rel="stylesheet" href="assets/styles/prettyPhoto.css">
+        <title>Sweet Date - Single-Article Page </title>
 
-
-        <!--Main Stylesheet (change this to modify template)-->
-        <link rel="stylesheet" href="assets/styles/app.css">
-        <link rel="stylesheet" href="assets/styles/updates.css">
-        <link rel="stylesheet" href="assets/styles/custom.css">
-
-
-        <!--Google Fonts-->
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Yesteryear' rel='stylesheet' type='text/css'>
-
-        <!--[if IE 7]>
-        <link rel="stylesheet" href="assets/styles/font-awesome-ie7.min.css">
-        <script src="assets/scripts/ie6/warning.js"></script>
-        <script>window.onload=function(){e("assets/scripts/ie6/")}</script>
-        <![endif]-->
-
-
-        <!--Favicons-->
-        <link rel="shortcut icon" href="assets/images/icons/favicon.ico">
-        <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
-        <link rel="apple-touch-icon" sizes="57x57" href="assets/images/apple-touch-icon-57x57.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="assets/images/apple-touch-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="assets/images/apple-touch-icon-114x114.png">
-        <link rel="apple-touch-icon" sizes="144x144" href="assets/images/apple-touch-icon-144x144.png"> 
-
-
-        <!-- jQuery & Foundation Framework -->
-        <script type="text/javascript" src="assets/scripts/modernizr.foundation.js"></script> 
+        <%@include file="importCSS.jsp" %> 
     </head>
     <body>
         <div class="inner page boxed-style">
@@ -71,8 +33,8 @@
                     <div class="row">
                         <div class="nine columns">
                             <ul class="breadcrumbs hide-for-small">
-                                <li><a href="index.html">Home</a></li>
-                                <li class="current"><a href="single-article.html">Single article example</a></li>
+                                <li><a href="index.jsp">Home</a></li>
+                                <li class="current"><a href="single-article.jsp">Single article example</a></li>
                             </ul>
                         </div>
 
@@ -305,12 +267,16 @@
                 </div><!--end main-->
             </section>
             <!--END MAIN SECTION-->
-            
+
             <%@include file="testimonial - newsletter.jsp" %>
 
             <%@include file="footer.jsp" %>
 
             <%@include file="login.jsp" %>
+
+            <p id="btnGoUp">Go up</p>
         </div>
+
+        <%@include file="importScript.jsp" %>
     </body>
 </html>

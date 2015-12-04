@@ -1,0 +1,34 @@
+SMAP
+search_002dlisting_jsp.java
+JSP
+*S JSP
+*F
++ 0 search-listing.jsp
+search-listing.jsp
++ 1 importCSS.jsp
+importCSS.jsp
++ 2 header.jsp
+header.jsp
++ 3 testimonial - newsletter.jsp
+testimonial - newsletter.jsp
++ 4 footer.jsp
+footer.jsp
++ 5 login.jsp
+login.jsp
++ 6 importScript.jsp
+importScript.jsp
+*L
+5,14:54
+1#1,37:68
+18#0,5:105
+1#2,96:110
+22#0,214:205
+1#3,100:419
+235#0,3:519
+1#4,70:522
+237#0,3:592
+1#5,169:595
+239#0,6:763
+1#6,40:769
+244#0,4:809
+*E

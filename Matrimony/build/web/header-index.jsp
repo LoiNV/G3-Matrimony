@@ -37,12 +37,12 @@
 
                                     <section><!-- Nav Section -->
                                         <ul class="left">
-                                            <li><a href="index.html"><i class="icon-home"></i> HOME</a></li> 
+                                            <li><a href="index.jsp"><i class="icon-home"></i> HOME</a></li> 
                                             <li class="has-dropdown">
                                                 <a href="#">PAGES</a>
                                                 <ul class="dropdown">
-                                                    <li><a href="search-listing.html">Search Listing</a></li>
-                                                    <li><a href="profile.html">Profile Page</a></li>
+                                                    <li><a href="search-listing.jsp">Search Listing</a></li>
+                                                    <li><a href="profile.jsp">Profile Page</a></li>
                                                     <li class="has-dropdown"><a href="#" class="sub-menu-link">Third level menu</a>
                                                         <ul class="dropdown">
                                                             <li><a href="#" class="sub-menu-link">Sample</a></li>
@@ -54,8 +54,8 @@
                                             <li class="has-dropdown">
                                                 <a href="#">BLOG</a>
                                                 <ul class="dropdown">
-                                                    <li><a href="blog.html">Blog Page</a></li>
-                                                    <li><a href="single-article.html">Single Article</a></li>
+                                                    <li><a href="blog.jsp">Blog Page</a></li>
+                                                    <li><a href="single-article.jsp">Single Article</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -67,7 +67,7 @@
                             <!-- Logo -->
                             <div class="four columns pull-five">
                                 <h1 id="logo">A premium landing page made for Lovers
-                                    <a href="index.html"><img src="assets/images/logo.png" width="294" height="108" alt="Landing Page HTML Template"></a>
+                                    <a href="index.jsp"><img src="assets/images/logo.png" width="294" height="108" alt="Landing Page HTML Template"></a>
                                 </h1>
                             </div>
                             <!--end logo-->
