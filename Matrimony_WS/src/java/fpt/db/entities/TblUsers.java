@@ -43,6 +43,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "TblUsers.findByMaritalStatus", query = "SELECT t FROM TblUsers t WHERE t.maritalStatus = :maritalStatus"),
     @NamedQuery(name = "TblUsers.findByHeight", query = "SELECT t FROM TblUsers t WHERE t.height = :height"),
     @NamedQuery(name = "TblUsers.findByAge", query = "SELECT t FROM TblUsers t WHERE t.age = :age"),
+    @NamedQuery(name = "TblUsers.findByAgeToAge", query = "SELECT t FROM TblUsers t WHERE t.age >= :age1 AND t.age <= :age2"),
+    @NamedQuery(name = "TblUsers.findByGenderAndAgeToAge", query = "SELECT t FROM TblUsers t WHERE t.gender = :gender AND t.age >= :age1 AND t.age <= :age2"),
     @NamedQuery(name = "TblUsers.findByCountry", query = "SELECT t FROM TblUsers t WHERE t.country = :country"),
     @NamedQuery(name = "TblUsers.findByCity", query = "SELECT t FROM TblUsers t WHERE t.city = :city"),
     @NamedQuery(name = "TblUsers.findByPhone", query = "SELECT t FROM TblUsers t WHERE t.phone = :phone"),

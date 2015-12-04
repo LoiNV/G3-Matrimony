@@ -111,12 +111,39 @@ public class TblUsersFacadeREST extends AbstractFacade<TblUsers> {
     }
     
     @GET
+    @Path("findAgeToAge/{age1}/{age2}")
+    @Produces({"application/xml", "application/json"})
+    public List<TblUsers> findByAgeToAgeUsers(@PathParam("age1") Integer age1, @PathParam("age2") Integer age2) {
+        List<TblUsers> ls = new LinkedList<>();
+        Query query = em.createNamedQuery("TblUsers.findByAgeToAge");
+        query.setParameter("age1", age1);
+        query.setParameter("age2", age2);
+        ls = (List<TblUsers>) query.getResultList();
+        return ls;
+    }
+    
+    @GET
     @Path("findGender/{gender}")
     @Produces({"application/xml", "application/json"})
     public List<TblUsers> findByGenderUsers(@PathParam("gender") Boolean gender) {
         List<TblUsers> ls = new LinkedList<>();
+        List<TblUsers> ls1 = new LinkedList<>();
         Query query = em.createNamedQuery("TblUsers.findByGender");
         query.setParameter("gender", gender);
+        ls = (List<TblUsers>) query.getResultList();
+        ls1 = ls;
+        return ls1;
+    }
+    
+    @GET
+    @Path("findGenderAndAgeToAge/{gender}/{age1}/{age2}")
+    @Produces({"application/xml", "application/json"})
+    public List<TblUsers> findByGenderAndAgeToAgeUsers(@PathParam("gender") Boolean gender, @PathParam("age1") Integer age1, @PathParam("age2") Integer age2) {
+        List<TblUsers> ls = new LinkedList<>();
+        Query query = em.createNamedQuery("TblUsers.findByGenderAndAgeToAge");
+        query.setParameter("gender", gender);
+        query.setParameter("age1", age1);
+        query.setParameter("age2", age2);
         ls = (List<TblUsers>) query.getResultList();
         return ls;
     }
