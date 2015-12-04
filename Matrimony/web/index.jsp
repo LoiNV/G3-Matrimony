@@ -51,16 +51,16 @@
     </head>
     <body>
         <div class="page boxed-style">
-            <%@include file="header.jsp" %>
-            
+            <%@include file="header-index.jsp" %>
+
             <%@include file="calltoaction.jsp" %>
-            
+
             <%@include file="featured-text.jsp" %>
-            
+
             <%@include file="testimonial - newsletter.jsp" %>
-            
+
             <%@include file="footer.jsp" %>
-            
+
             <%@include file="login.jsp" %>
 
             
