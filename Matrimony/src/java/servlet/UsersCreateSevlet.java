@@ -6,33 +6,58 @@
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import fpt.ws.UsersWS;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import model.Users;
+
 
 /**
  *
- * @author Admin
+ * @author nghiawin
  */
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "UsersCreateSevlet", urlPatterns = {"/UsersCreateSevlet"})
+public class UsersCreateSevlet extends HttpServlet {
 
-    
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("application/json;charsset=UTF-8");
+      
         String username = request.getParameter("username");
-        String pass = request.getParameter("password");
+        String password = request.getParameter("password");
+        String email = request.getParameter("email");
+        boolean gender = Boolean.parseBoolean(request.getParameter("gender"));
+        String day = request.getParameter("day");
+        String month = request.getParameter("month");
+        String year = request.getParameter("year");
+        String birthday = day+"/"+month+"/"+year;
+        Date d = new Date();
+        SimpleDateFormat fo = new SimpleDateFormat("dd/MM/yyyy");
+        int datenow = Integer.parseInt(fo.format(d).substring(6, 10));
+        int age = datenow - Integer.parseInt(year);
+        Users u = new Users(username, password, email, gender, birthday, age);
+        GsonBuilder builder = new GsonBuilder();
+        Gson gson = builder.create();
+        UsersWS uws = new UsersWS();
+        System.out.println(gson.toJson(u));
+        uws.create_JSON(gson.toJson(u));
         
-        HttpSession session = request.getSession();
-        
-        if (username.equals(pass) && username.equals("admin")) {
-            session.setAttribute("login", "true");
-        }else{
-            session.setAttribute("login", "false");
-        }
-        response.sendRedirect(request.getParameter("uri"));
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

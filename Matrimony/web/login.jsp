@@ -4,7 +4,7 @@
                     <div class="twelve columns">
                         <h5 class="pink-text"><i class="icon-user icon-large"></i> SIGN IN YOUR ACCOUNT <span class="subheader right small-link"><a href="#" data-reveal-id="register_panel" class="radius secondary small button">CREATE NEW ACCOUNT</a></span></h5>
                     </div>
-                    <form id="login_form" action="Login" name="login_form" method="post" >
+                    <form id="login_form" action="Login?uri=${pageContext.request.requestURI}" name="login_form" method="post" >
                         <div class="six columns">
                             <input type="text" id="username" name="username" class="inputbox" placeholder="Username" required>
                         </div>
@@ -34,24 +34,35 @@
                     <div class="twelve columns">
                         <h5 class="pink-text"><i class="icon-magic icon-large"></i> CREATE ACCOUNT <span class="subheader right small-link"><a href="#" data-reveal-id="login_panel" class="radius secondary small button">ALREADY HAVE AN ACCOUNT?</a></span></h5>	
                     </div>
-                    <form id="register_form" name="register_form" method="post">
+                    <form id="register_form" action="UsersCreateSevlet" name="register_form" method="post">
+                        
                         <div class="twelve columns">
-                            <input type="text" id="reg-username" name="username" class="inputbox" placeholder="Username">
-                        </div>      
+                            <input type="text" id="reg-username" name="username" class="inputbox" placeholder="Usear Name">
+                        </div>
                         <div class="twelve columns">
                             <input type="text" id="reg-email" name="email" class="inputbox" placeholder="Your email">
                         </div>
-                        <div class="six columns">
-                            <input type="password" id="reg-password" name="password" class="inputbox" placeholder="Desired password">
+                        <div class="twelve columns">
+                            <input type="password" id="reg-password" name="password" class="inputbox" placeholder="Password">
                         </div>
-                        <div class="six columns">
-                            <input type="password" id="confirm_password" name="confirm_password" class="inputbox" placeholder="Confirm password">
+                        <div class="four columns">
+                            <input type="text" id="day" name="day" class="inputbox" placeholder="Day">
                         </div>
-
-                        <div class="twelve columns"><p></p></div>
-
-                        <div class="twelve columns">                            
-                            <span class="subheader right small-link"><a href="#" data-reveal-id="register_panel_2" class="radius secondary small button">NEXT</a></span>
+                        <div class="four columns">
+                            <input type="text" id="month" name="month" class="inputbox" placeholder="Month">
+                        </div>
+                        <div class="four columns">
+                            <input type="text" id="year" name="year" class="inputbox" placeholder="Year">
+                        </div>
+                        <div class="four columns">
+                             <select name="gender" style="height: 30px;color:#999999;border-color: #cccccc;font-size:10pt">
+                                <option value="True">Male</option>
+                                <option value="False">Female</option>
+                            </select>
+                        </div>
+                        <div class="twelve columns">
+                            <p><small>Check our <a href="#"><strong>terms and conditions</strong></a> before sign up. If you familiar with our terms, go ahead click CREATE MY ACCOUNT button.</small></p>
+                            <button type="submit" id="signup" name="submit" class="radius alert button"><i class="icon-heart"></i> &nbsp;CREATE MY ACCOUNT</button>
                         </div>
                     </form>
                 </div><!--end row-->
@@ -60,7 +71,7 @@
             <!-- end register panel -->
 
             <!-- Register panel 2-->
-            <div id="register_panel_2" class="reveal-modal">
+<!--            <div id="register_panel_2" class="reveal-modal">
                 <div class="row">
                     <div class="twelve columns">
                         <h5 class="pink-text"><i class="icon-magic icon-large"></i> CREATE ACCOUNT </h5>	
@@ -89,13 +100,13 @@
                             <span class="subheader right small-link"><a href="#" data-reveal-id="register_panel_3" class="radius secondary small button">NEXT</a></span>
                         </div>
                     </form>
-                </div><!--end row-->
+                </div>end row
                 <a href="#" class="close-reveal-modal">×</a>
-            </div>
+            </div>-->
             <!-- end register panel 2-->
 
             <!-- Register panel 3-->
-            <div id="register_panel_3" class="reveal-modal">
+<!--            <div id="register_panel_3" class="reveal-modal">
                 <div class="row">
                     <div class="twelve columns">
                         <h5 class="pink-text"><i class="icon-magic icon-large"></i> CREATE ACCOUNT </h5>	
@@ -139,9 +150,9 @@
                             <button type="submit" id="signup" name="submit" class="radius right alert button"><i class="icon-heart"></i> &nbsp;CREATE MY ACCOUNT</button>
                         </div>
                     </form>
-                </div><!--end row-->
+                </div>end row
                 <a href="#" class="close-reveal-modal">×</a>
-            </div>
+            </div>-->
             <!-- end register panel 3-->
 
             <!-- Forgot panel -->

@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
@@ -47,45 +48,31 @@
                 <!--Search bar-->
                 <div id="search-bar">
                     <div class="row">
-                        <form action="#" method="post" class="twelve columns custom">
+                        <form action="UsersFindServlet" method="post" class="twelve columns custom">
                             <div class="row">
                                 <div class="two columns">
                                     <label class="inline">Meet people:</label>
                                 </div>
-                                <div class="two columns">
-                                    <select class="expand">
-                                        <option selected="selected">I am</option>
-                                        <option>Man</option>
-                                        <option>Woman</option>
+
+                                <div class="three columns">
+                                    <select class="expand" name="gender">
+                                        <option value="null" selected="selected">Searching for gender</option>
+                                        <option value="False">Woman</option>
+                                        <option value="True">Man</option>
                                     </select>
                                 </div>
 
                                 <div class="two columns">
-                                    <select class="expand">
-                                        <option selected="selected">Searching for</option>
-                                        <option>Woman</option>
-                                        <option>Man</option>
-                                    </select>
+                                    <input type="text" value="15" name="age1" placeholder="Between Ages" />
+
                                 </div>
 
                                 <div class="two columns">
-                                    <select class="expand customDropdown">
-                                        <option selected="selected">Between ages</option>
-                                        <option>18</option>
-                                        <option>19</option>
-                                    </select>
+                                    <input type="text" value="99" name="age2" placeholder="&...." />
                                 </div>
 
-                                <div class="two columns">
-                                    <select class="expand customDropdown">
-                                        <option selected="selected">&amp;</option>
-                                        <option>18</option>
-                                        <option>19</option>
-                                    </select>
-                                </div>
-
-                                <div class="two columns">
-                                    <button class="small button radius right"><i class="icon-search"></i> &nbsp;SEARCH</button>
+                                <div class="three columns">
+                                    <button class="small button radius right" style="float: left"><i class="icon-search"></i> &nbsp;SEARCH</button>
                                 </div>
 
                             </div><!--end row-->
@@ -110,7 +97,26 @@
 
                             <!--Search List-->
                             <div class="search-list">
-                                <div class="four columns">
+                                <c:if test="${ListSearch != null}">
+                                    <c:forEach items="${ListSearch}" var="p">
+                                        <div class="four columns">
+                                            <div class="search-item">
+                                                <div class="avatar">
+                                                    <img src="assets/images/profile-carousel/thumb_01.jpg" alt="Avatar">
+                                                </div>
+                                                <div class="search-meta">
+                                                    <h5 class="author"><a href="#">${p.name}</a></h5>
+                                                    <p class="date">${p.age} | F | Bi | Single | Bremen, Germany</p>
+                                                </div>
+                                                <div class="search-body">
+                                                    <p>Hello and welcome to the profile of your next true love. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                                </div>
+                                                <p><a href="Profile" class="small button radius secondary"><i class="icon-angle-right"></i> View profile</a></p>
+                                            </div>
+                                        </div>
+                                    </c:forEach>
+                                </c:if>
+<!--                                <div class="four columns">
                                     <div class="search-item">
                                         <div class="avatar">
                                             <img src="assets/images/profile-carousel/thumb_01.jpg" alt="Avatar">
@@ -204,7 +210,7 @@
                                         </div>
                                         <p><a href="Profile" class="small button radius secondary"><i class="icon-angle-right"></i> View profile</a></p>
                                     </div>
-                                </div>
+                                </div>-->
 
                             </div><!--end Search List-->
 
