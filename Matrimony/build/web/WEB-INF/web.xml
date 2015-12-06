@@ -16,6 +16,10 @@
         <servlet-name>ProfileServlet</servlet-name>
         <servlet-class>servlet.ProfileServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HomeServlet</servlet-name>
+        <servlet-class>servlet.HomeServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>ProfileServlet</servlet-name>
         <url-pattern>/Profile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern>/Home</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

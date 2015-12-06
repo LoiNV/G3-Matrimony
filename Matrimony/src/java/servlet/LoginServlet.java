@@ -26,13 +26,18 @@ public class LoginServlet extends HttpServlet {
         String pass = request.getParameter("password");
         
         HttpSession session = request.getSession();
+        if (session.getAttribute("currentURI") == null) {
+            session.setAttribute("currentURI", request.getParameter("uri"));
+        }
         
-        if (username.equals(pass) && username.equals("admin")) {
+        if (username.equals("admin") && username.equals(pass)) {
             session.setAttribute("login", "true");
+            response.sendRedirect(session.getAttribute("currentURI").toString());
         }else{
             session.setAttribute("login", "false");
+            response.sendRedirect("loginPage.jsp");
         }
-        response.sendRedirect(request.getParameter("uri"));
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -17,7 +17,6 @@
 <script type="text/javascript" src="assets/scripts/plugins/carouFredSel/helper-plugins/jquery.ba-throttle-debounce.min.js"></script>
 <script type="text/javascript" src="assets/scripts/plugins/retina/retina.js"></script>
 <script type="text/javascript" src="assets/scripts/plugins/knob/jquery.knob.js"></script>
-<script type="text/javascript" src="assets/scripts/plugins/twitterfeed-ap-1.1/twitterfeed-ap.js"></script>
 <script type="text/javascript" src="assets/scripts/plugins/fittext/jquery.fittext.js"></script>
 <script type="text/javascript" src="assets/scripts/plugins/quovolver/jquery.quovolver.js"></script><!--Quote rotator-->
 

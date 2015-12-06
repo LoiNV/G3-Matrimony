@@ -21,7 +21,7 @@
                     <div class="twelve columns">
                         <h5 class="pink-text"><i class="icon-user icon-large"></i> SIGN IN YOUR ACCOUNT <span class="subheader right small-link"><a href="#" data-reveal-id="register_panel" class="radius secondary small button">CREATE NEW ACCOUNT</a></span></h5>
                     </div>
-                    <form id="login_form" action="Login?uri=${pageContext.request.requestURI}" name="login_form" method="post" class="clearfix">
+                    <form id="login_form" action="Login" name="login_form" method="post" class="clearfix">
                         <div class="twelve columns">
                             <input type="text" id="username" name="username" class="inputbox" placeholder="Username" required>
                         </div>

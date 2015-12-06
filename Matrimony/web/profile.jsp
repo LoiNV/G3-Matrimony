@@ -12,6 +12,77 @@
         <title>Sweet Date - Profile Page </title>
 
         <%@include file="importCSS.jsp" %>
+        
+        <style>		
+		.console { 
+			height: 200px; 
+			overflow: auto; 
+		}
+		.username-msg {color:orange;}
+		.connect-msg {color:green;}
+		.disconnect-msg {color:red;}
+		.send-msg {color:#888}
+	</style>
+        
+        <script src="assets/scripts/socket.io/socket.io.js" type="text/javascript"></script>
+        <script src="assets/scripts/moment.min.js" type="text/javascript"></script>
+        <script>
+
+                var userName1 = 'user1_' + Math.floor((Math.random()*1000)+1);
+                var userName2 = 'user2_' + Math.floor((Math.random()*1000)+1);
+
+		var chat1Socket =  io.connect('http://localhost:9999/chat1');
+
+                function connectHandler(parentId) {
+			return function() {
+                            output('<span class="connect-msg">Client has connected to the server!</span>', parentId);
+                        }
+                }
+
+                function messageHandler(parentId) {
+                        return function(data) {
+			     output('<span class="username-msg">' + data.userName + ':</span> ' + data.message, parentId);
+		        }
+                }
+
+                function disconnectHandler(parentId) {
+                        return function() {
+			     output('<span class="disconnect-msg">The client has disconnected!</span>', parentId);
+                        }
+                }
+
+		function sendMessageHandler(parentId, userName, chatSocket) {
+                        var message = $(parentId + ' .msg').val();
+                        $(parentId + ' .msg').val('');
+                        
+                        var jsonObject = {'@class': 'chat.ChatObject',
+                                          userName: userName, 
+                                          message: message};
+                        chatSocket.json.send(jsonObject);
+		}
+
+
+		chat1Socket.on('connect', connectHandler('#chat'));
+		
+		chat1Socket.on('message', messageHandler('#chat'));
+		
+		chat1Socket.on('disconnect', disconnectHandler('#chat'));
+
+                function sendDisconnect() {
+                        chat1Socket.disconnect();
+                }
+		
+		function sendMessage() {
+                        sendMessageHandler('#chat', userName1, chat1Socket);
+		}
+
+		function output(message, parentId) {
+                        var currentTime = "<span class='time'>" +  moment().format('HH:mm:ss.SSS') + "</span>";
+                        var element = $("<div>" + currentTime + " " + message + "</div>");
+			$(parentId + ' .console').prepend(element);
+		}
+		
+	</script>
     </head>
     <body>
         <div class="inner page boxed-style">
@@ -191,9 +262,16 @@
 
                                         <!--Fourth Tab Content-->
                                         <li id="fourthTab">
-                                            <h4>Content Tab 4</h4>
-                                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                                            <a href="#" class="small radius button">Lorem ipsum</a>
+                                            <div id="chat">
+                                                <div class="console well">
+                                                </div>
+
+                                                <form class="well form-inline" onsubmit="return false;">
+                                                    <input class="msg input-xlarge" type="text" placeholder="message..."/>
+                                                    <button type="button" onClick="sendMessage()" class="btn">Send</button>
+                                                    <button type="button" onClick="sendDisconnect()" class="btn">Disconnect</button>
+                                                </form>
+                                            </div>
                                         </li>
                                         <!--end Fourth Tab Content-->
 

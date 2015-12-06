@@ -97,26 +97,8 @@
 
                             <!--Search List-->
                             <div class="search-list">
-                                <c:if test="${ListSearch != null}">
-                                    <c:forEach items="${ListSearch}" var="p">
-                                        <div class="four columns">
-                                            <div class="search-item">
-                                                <div class="avatar">
-                                                    <img src="assets/images/profile-carousel/thumb_01.jpg" alt="Avatar">
-                                                </div>
-                                                <div class="search-meta">
-                                                    <h5 class="author"><a href="#">${p.name}</a></h5>
-                                                    <p class="date">${p.age} | F | Bi | Single | Bremen, Germany</p>
-                                                </div>
-                                                <div class="search-body">
-                                                    <p>Hello and welcome to the profile of your next true love. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                </div>
-                                                <p><a href="Profile" class="small button radius secondary"><i class="icon-angle-right"></i> View profile</a></p>
-                                            </div>
-                                        </div>
-                                    </c:forEach>
-                                </c:if>
-<!--                                <div class="four columns">
+                               
+                                <div class="four columns">
                                     <div class="search-item">
                                         <div class="avatar">
                                             <img src="assets/images/profile-carousel/thumb_01.jpg" alt="Avatar">
@@ -128,7 +110,7 @@
                                         <div class="search-body">
                                             <p>Hello and welcome to the profile of your next true love. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                         </div>
-                                        <p><a href="Profile" class="small button radius secondary"><i class="icon-angle-right"></i> View profile</a></p>
+                                        <p><a href="Profile?uri=${pageContext.request.requestURI}" class="small button radius secondary"><i class="icon-angle-right"></i> View profile</a></p>
                                     </div>
                                 </div>
 
@@ -210,7 +192,7 @@
                                         </div>
                                         <p><a href="Profile" class="small button radius secondary"><i class="icon-angle-right"></i> View profile</a></p>
                                     </div>
-                                </div>-->
+                                </div>
 
                             </div><!--end Search List-->
 
