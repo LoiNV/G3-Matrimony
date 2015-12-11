@@ -100,6 +100,18 @@ public class TblUsersFacadeREST extends AbstractFacade<TblUsers> {
     }
     
     @GET
+    @Path("findEmailAndPass/{email}/{password}")
+    @Produces({"application/xml", "application/json"})
+    public List<TblUsers> findByEmailAndPassUsers(@PathParam("email") String email, @PathParam("password") String password) {
+        List<TblUsers> ls = new LinkedList<>();
+        Query query = em.createNamedQuery("TblUsers.findByEmailAndPass");
+        query.setParameter("email", email);
+        query.setParameter("password", password);
+        ls = (List<TblUsers>) query.getResultList();
+        return ls;
+    }
+    
+    @GET
     @Path("findAge/{age}")
     @Produces({"application/xml", "application/json"})
     public List<TblUsers> findByAgeUsers(@PathParam("age") Integer age) {

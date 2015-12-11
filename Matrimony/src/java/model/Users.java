@@ -18,9 +18,9 @@ public class Users implements Serializable{
     private String email;
     private boolean gender;
     private String birthday;
-    private String first_name;
-    private String last_name;
-    private String marital_status;
+    private String firstName;
+    private String lastName;
+    private String maritalStatus;
     private int height;
     private int age;
     private String country;
@@ -42,16 +42,16 @@ public class Users implements Serializable{
         this.age = age;
     }
 
-    public Users(int id, String name, String password, String email, boolean gender, String birthday, String first_name, String last_name, String marital_status, int height, int age, String country, String city, String phone, String religion, String caste, int status) {
+    public Users(int id, String name, String password, String email, boolean gender, String birthday, String firstName, String lastName, String maritalStatus, int height, int age, String country, String city, String phone, String religion, String caste, int status) {
         this.id = id;
         this.name = name;
         this.password = password;
         this.email = email;
         this.gender = gender;
         this.birthday = birthday;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.marital_status = marital_status;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.maritalStatus = maritalStatus;
         this.height = height;
         this.age = age;
         this.country = country;
@@ -68,6 +68,14 @@ public class Users implements Serializable{
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPassword() {
@@ -102,28 +110,28 @@ public class Users implements Serializable{
         this.birthday = birthday;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getMarital_status() {
-        return marital_status;
+    public String getMaritalStatus() {
+        return maritalStatus;
     }
 
-    public void setMarital_status(String marital_status) {
-        this.marital_status = marital_status;
+    public void setMaritalStatus(String maritalStatus) {
+        this.maritalStatus = maritalStatus;
     }
 
     public int getHeight() {
@@ -182,14 +190,6 @@ public class Users implements Serializable{
         this.caste = caste;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getStatus() {
         return status;
     }
@@ -197,8 +197,4 @@ public class Users implements Serializable{
     public void setStatus(int status) {
         this.status = status;
     }
-    
-    
-    
-    
 }

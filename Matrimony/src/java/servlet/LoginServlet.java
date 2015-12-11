@@ -5,13 +5,20 @@
  */
 package servlet;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import fpt.ws.UsersWS;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Type;
+import java.util.LinkedList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Users;
 
 /**
  *
@@ -22,16 +29,25 @@ public class LoginServlet extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        UsersWS uws = new UsersWS();
+        Gson g = new Gson();
+        List<Users> ls = new LinkedList<>();
+        Type collectionType = new TypeToken<List<Users>>() {}.getType();
         String username = request.getParameter("username");
         String pass = request.getParameter("password");
+        Class<String> res = String.class;
+        String result = uws.findByEmailAndPassUsers_JSON(res, username, pass);
+        ls = g.fromJson(result, collectionType);
+        System.out.println(ls.size());
         
         HttpSession session = request.getSession();
         if (session.getAttribute("currentURI") == null) {
             session.setAttribute("currentURI", request.getParameter("uri"));
         }
         
-        if (username.equals("admin") && username.equals(pass)) {
+        if (ls.size()>0) {
             session.setAttribute("login", "true");
+            session.setAttribute("infouser", ls.get(0).getId());
             response.sendRedirect(session.getAttribute("currentURI").toString());
         }else{
             session.setAttribute("login", "false");
