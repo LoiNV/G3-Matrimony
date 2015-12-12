@@ -7,6 +7,7 @@ package servlet;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import fpt.utils.JsonUtils;
 import fpt.ws.UsersWS;
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -45,31 +46,28 @@ public class UsersFindServlet extends HttpServlet {
         String result = "";
         Gson g = new Gson();
         UsersWS uws = new UsersWS();
+        
+        String name = request.getParameter("name");
         String gender = request.getParameter("gender");
         String age1 = request.getParameter("age1");
         String age2 = request.getParameter("age2");
-        if (age1.isEmpty() && age2.isEmpty()) {
-            result = uws.findByGenderUsers_JSON(res, gender);
-            ls = g.fromJson(result, collectionType);
-            System.out.println(ls.size());
-            request.setAttribute("ListSearch", ls);
-            RequestDispatcher rd = request.getRequestDispatcher("search-listing.jsp");
-            rd.forward(request, response);
-        } else if (gender.equalsIgnoreCase("null") && age1 != null && age2 != null) {
-            result = uws.findByAgeToAgeUsers_JSON(res, age1, age2);
-            ls = g.fromJson(result, collectionType);
-            request.setAttribute("ListSearch", ls);
-            RequestDispatcher rd = request.getRequestDispatcher("search-listing.jsp");
-            rd.forward(request, response);
-            System.out.println(result);
-        } else if (!gender.equals("null") && age1 != null && age2 != null) {
-            result = uws.findByGenderAndAgeToAgeUsers_JSON(res, gender, age1, age2);
-            ls = g.fromJson(result, collectionType);
-            request.setAttribute("ListSearch", ls);
-            RequestDispatcher rd = request.getRequestDispatcher("search-listing.jsp");
-            rd.forward(request, response);
-            System.out.println(result);
+        String city = request.getParameter("city");
+        String country = request.getParameter("country");
+        System.out.println("Name:"+name+gender+age1+age2);
+        if (name.isEmpty()) {
+            name = " ";
         }
+        if(city.isEmpty())
+            city = " ";
+        if(country.isEmpty())
+            country = " ";
+        
+        result = uws.searchForAll_JSON(res, name, gender, age1, age2, city, country);
+        
+        System.out.println(JsonUtils.getListJson(result).size());
+        request.setAttribute("ListSearch", JsonUtils.getListJson(result));
+        RequestDispatcher rd = request.getRequestDispatcher("search-listing.jsp");
+        rd.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

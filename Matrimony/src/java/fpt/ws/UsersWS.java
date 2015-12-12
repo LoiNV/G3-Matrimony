@@ -132,6 +132,18 @@ public class UsersWS {
         return resource.request(javax.ws.rs.core.MediaType.TEXT_PLAIN).get(String.class);
     }
 
+    public <T> T searchForAll_XML(Class<T> responseType, String name, String gender, String age1, String age2, String city, String country) throws ClientErrorException {
+        WebTarget resource = webTarget;
+        resource = resource.path(java.text.MessageFormat.format("searchForAll/{0}/{1}/{2}/{3}/{4}/{5}", new Object[]{name, gender, age1, age2, city, country}));
+        return resource.request(javax.ws.rs.core.MediaType.APPLICATION_XML).get(responseType);
+    }
+
+    public <T> T searchForAll_JSON(Class<T> responseType, String name, String gender, String age1, String age2, String city, String country) throws ClientErrorException {
+        WebTarget resource = webTarget;
+        resource = resource.path(java.text.MessageFormat.format("searchForAll/{0}/{1}/{2}/{3}/{4}/{5}", new Object[]{name, gender, age1, age2, city, country}));
+        return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
+    }
+
     public <T> T find_XML(Class<T> responseType, String id) throws ClientErrorException {
         WebTarget resource = webTarget;
         resource = resource.path(java.text.MessageFormat.format("{0}", new Object[]{id}));

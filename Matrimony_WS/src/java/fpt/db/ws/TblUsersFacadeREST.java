@@ -28,6 +28,7 @@ import javax.ws.rs.Produces;
 @Stateless
 @Path("fpt.db.entities.tblusers")
 public class TblUsersFacadeREST extends AbstractFacade<TblUsers> {
+
     @PersistenceContext(unitName = "Matrimony_WSPU")
     private EntityManager em;
 
@@ -87,7 +88,7 @@ public class TblUsersFacadeREST extends AbstractFacade<TblUsers> {
     protected EntityManager getEntityManager() {
         return em;
     }
-    
+
     @GET
     @Path("findName/{name}")
     @Produces({"application/xml", "application/json"})
@@ -98,7 +99,24 @@ public class TblUsersFacadeREST extends AbstractFacade<TblUsers> {
         ls = (List<TblUsers>) query.getResultList();
         return ls;
     }
-    
+
+    @GET
+    @Path("searchForAll/{name}/{gender}/{age1}/{age2}/{city}/{country}")
+    @Produces({"application/xml", "application/json"})
+    public List<TblUsers> searchForAll(@PathParam("name") String name, @PathParam("gender") Boolean gender,
+            @PathParam("age1") Integer age1, @PathParam("age2") Integer age2, @PathParam("city") String city,@PathParam("country") String country) {
+        List<TblUsers> ls = new LinkedList<>();
+        Query query = em.createNamedQuery("TblUsers.searchForAll");
+        query.setParameter("name", name);
+        query.setParameter("gender", gender);
+        query.setParameter("age1", age1);
+        query.setParameter("age2", age2);
+        query.setParameter("city", city);
+        query.setParameter("country", country);
+        ls = (List<TblUsers>) query.getResultList();
+        return ls;
+    }
+
     @GET
     @Path("findEmailAndPass/{email}/{password}")
     @Produces({"application/xml", "application/json"})
@@ -110,7 +128,7 @@ public class TblUsersFacadeREST extends AbstractFacade<TblUsers> {
         ls = (List<TblUsers>) query.getResultList();
         return ls;
     }
-    
+
     @GET
     @Path("findAge/{age}")
     @Produces({"application/xml", "application/json"})
@@ -121,7 +139,7 @@ public class TblUsersFacadeREST extends AbstractFacade<TblUsers> {
         ls = (List<TblUsers>) query.getResultList();
         return ls;
     }
-    
+
     @GET
     @Path("findAgeToAge/{age1}/{age2}")
     @Produces({"application/xml", "application/json"})
@@ -133,7 +151,7 @@ public class TblUsersFacadeREST extends AbstractFacade<TblUsers> {
         ls = (List<TblUsers>) query.getResultList();
         return ls;
     }
-    
+
     @GET
     @Path("findGender/{gender}")
     @Produces({"application/xml", "application/json"})
@@ -146,7 +164,7 @@ public class TblUsersFacadeREST extends AbstractFacade<TblUsers> {
         ls1 = ls;
         return ls1;
     }
-    
+
     @GET
     @Path("findGenderAndAgeToAge/{gender}/{age1}/{age2}")
     @Produces({"application/xml", "application/json"})
