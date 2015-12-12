@@ -24,10 +24,9 @@
             <%@include file="testimonial - newsletter.jsp" %>
 
             <%@include file="footer.jsp" %>
-
-            <%@include file="login.jsp" %>
-
+            
             <p id="btnGoUp">Go up</p>
+            
         </div>
 
         <%@include file="importScript.jsp" %>

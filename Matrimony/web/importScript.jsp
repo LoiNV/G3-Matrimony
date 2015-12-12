@@ -2,9 +2,8 @@
 ================================================ -->
 
 <!-- jQuery & Foundation Framework -->
-<script type="text/javascript" src="assets/scripts/jquery.js"></script>
-<script type="text/javascript" src="assets/scripts/foundation.min.js"></script>
 
+<script type="text/javascript" src="assets/scripts/foundation.min.js"></script>
 
 <!-- 3rd Plugins -->
 

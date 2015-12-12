@@ -224,8 +224,6 @@
 
             <%@include file="footer.jsp" %>
 
-            <%@include file="login.jsp" %>
-
             <p id="btnGoUp">Go up</p>
         </div>
 
