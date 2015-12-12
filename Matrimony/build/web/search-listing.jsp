@@ -54,27 +54,55 @@
                                     <label class="inline">Meet people:</label>
                                 </div>
 
+                                <div class="two columns">
+                                    <input type="text" name="name" placeholder="name" />
+                                </div>
+
                                 <div class="three columns">
                                     <select class="expand" name="gender">
-                                        <option value="null" selected="selected">Searching for gender</option>
-                                        <option value="False">Woman</option>
-                                        <option value="True">Man</option>
+                                        <option value="false">Woman</option>
+                                        <option value="true">Man</option>
                                     </select>
                                 </div>
 
                                 <div class="two columns">
-                                    <input type="text" value="15" name="age1" placeholder="Between Ages" />
-
+                                    <select class="expand" name="age1">
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                        <option value="25">25</option>
+                                        <option value="26">26</option>
+                                    </select>
+                                </div>
+                                <div class="two columns">
+                                    <select class="expand" name="age2">
+                                        <option value="26">26</option>
+                                        <option value="25">25</option>
+                                        <option value="24">24</option>
+                                        <option value="23">23</option>
+                                        <option value="22">22</option>
+                                        <option value="21">21</option>
+                                        <option value="20">20</option>
+                                        <option value="19">19</option>
+                                        <option value="18">18</option>
+                                    </select>
                                 </div>
 
                                 <div class="two columns">
-                                    <input type="text" value="99" name="age2" placeholder="&...." />
+                                    <input type="text" name="city" placeholder="city" />
+                                </div>
+
+                                <div class="two columns">
+                                    <input type="text" name="country" placeholder="country" />
                                 </div>
 
                                 <div class="three columns">
-                                    <button class="small button radius right" style="float: left"><i class="icon-search"></i> &nbsp;SEARCH</button>
+                                    <input value="Search" type="submit" class="small button radius right" style="float: left"/>
                                 </div>
-
                             </div><!--end row-->
                         </form>
                     </div><!--end row-->
@@ -97,126 +125,33 @@
 
                             <!--Search List-->
                             <div class="search-list">
-                               
-                                <div class="four columns">
-                                    <div class="search-item">
-                                        <div class="avatar">
-                                            <img src="assets/images/profile-carousel/thumb_01.jpg" alt="Avatar">
+                                <c:if test="${ListSearch!=null}">
+                                    <c:forEach items="${ListSearch}" var="p">
+                                        <div class="four columns">
+                                            <div class="search-item">
+                                                <div class="avatar">
+                                                    <img src="assets/images/profile-carousel/thumb_01.jpg" alt="Avatar">
+                                                </div>
+                                                <div class="search-meta">
+                                                    <h5 class="author"><a href="#">${p.name}</a></h5>
+                                                    <p class="date">${p.age} | F | Bi | ${p.maritalStatus} | ${p.city}, ${p.country}</p>
+                                                </div>
+                                                <div class="search-body">
+                                                    <p>Hello and welcome to the profile of your next true love. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                                </div>
+                                                <p><a href="Profile?uri=${pageContext.request.requestURI}" class="small button radius secondary"><i class="icon-angle-right"></i> View profile</a></p>
+                                            </div>
                                         </div>
-                                        <div class="search-meta">
-                                            <h5 class="author"><a href="#">Hanna Marcovick</a></h5>
-                                            <p class="date">29 | F | Bi | Single | Bremen, Germany</p>
-                                        </div>
-                                        <div class="search-body">
-                                            <p>Hello and welcome to the profile of your next true love. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                        </div>
-                                        <p><a href="Profile?uri=${pageContext.request.requestURI}" class="small button radius secondary"><i class="icon-angle-right"></i> View profile</a></p>
-                                    </div>
-                                </div>
+                                    </c:forEach>
+                                </c:if>
 
-                                <div class="four columns">
-                                    <div class="search-item">
-                                        <div class="avatar">
-                                            <img src="assets/images/profile-carousel/thumb_02.jpg" alt="Avatar">
-                                        </div>
-                                        <div class="search-meta">
-                                            <h5 class="author"><a href="#">Hanna Marcovick</a></h5>
-                                            <p class="date">29 | F | Bi | Single | Bremen, Germany</p>
-                                        </div>
-                                        <div class="search-body">
-                                            <p>Hello and welcome to the profile of your next true love. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                        </div>
-                                        <p><a href="Profile" class="small button radius secondary"><i class="icon-angle-right"></i> View profile</a></p>
-                                    </div>
-                                </div>
 
-                                <div class="four columns">
-                                    <div class="search-item">
-                                        <div class="avatar">
-                                            <img src="assets/images/profile-carousel/thumb_03.jpg" alt="Avatar">
-                                        </div>
-                                        <div class="search-meta">
-                                            <h5 class="author"><a href="#">Hanna Marcovick</a></h5>
-                                            <p class="date">29 | F | Bi | Single | Bremen, Germany</p>
-                                        </div>
-                                        <div class="search-body">
-                                            <p>Hello and welcome to the profile of your next true love. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                        </div>
-                                        <p><a href="Profile" class="small button radius secondary"><i class="icon-angle-right"></i> View profile</a></p>
-                                    </div>
-                                </div>
+                                <!--end row-->
+                                <!--end  Pagination-->
 
-                                <div class="four columns">
-                                    <div class="search-item">
-                                        <div class="avatar">
-                                            <img src="assets/images/profile-carousel/thumb_04.jpg" alt="Avatar">
-                                        </div>
-                                        <div class="search-meta">
-                                            <h5 class="author"><a href="#">Hanna Marcovick</a></h5>
-                                            <p class="date">29 | F | Bi | Single | Bremen, Germany</p>
-                                        </div>
-                                        <div class="search-body">
-                                            <p>Hello and welcome to the profile of your next true love. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                        </div>
-                                        <p><a href="Profile" class="small button radius secondary"><i class="icon-angle-right"></i> View profile</a></p>
-                                    </div>
-                                </div>
-
-                                <div class="four columns">
-                                    <div class="search-item">
-                                        <div class="avatar">
-                                            <img src="assets/images/profile-carousel/thumb_05.jpg" alt="Avatar">
-                                        </div>
-                                        <div class="search-meta">
-                                            <h5 class="author"><a href="#">Hanna Marcovick</a></h5>
-                                            <p class="date">29 | F | Bi | Single | Bremen, Germany</p>
-                                        </div>
-                                        <div class="search-body">
-                                            <p>Hello and welcome to the profile of your next true love. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                        </div>
-                                        <p><a href="Profile" class="small button radius secondary"><i class="icon-angle-right"></i> View profile</a></p>
-                                    </div>
-                                </div>
-
-                                <div class="four columns">
-                                    <div class="search-item">
-                                        <div class="avatar">
-                                            <img src="assets/images/profile-carousel/thumb_06.jpg" alt="Avatar">
-                                        </div>
-                                        <div class="search-meta">
-                                            <h5 class="author"><a href="#">Hanna Marcovick</a></h5>
-                                            <p class="date">29 | F | Bi | Single | Bremen, Germany</p>
-                                        </div>
-                                        <div class="search-body">
-                                            <p>Hello and welcome to the profile of your next true love. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                        </div>
-                                        <p><a href="Profile" class="small button radius secondary"><i class="icon-angle-right"></i> View profile</a></p>
-                                    </div>
-                                </div>
-
-                            </div><!--end Search List-->
-
-                            <!-- Pagination -->
-                            <div class="row">
-                                <div class="twelve columns pagination-centered">
-                                    <ul class="pagination">
-                                        <li class="arrow unavailable"><a href=""><i class="icon-chevron-left"></i></a></li>
-                                        <li class="current"><a href="">1</a></li>
-                                        <li><a href="">2</a></li>
-                                        <li><a href="">3</a></li>
-                                        <li><a href="">4</a></li>
-                                        <li class="unavailable"><a href="">&hellip;</a></li>
-                                        <li><a href="">12</a></li>
-                                        <li><a href="">13</a></li>
-                                        <li class="arrow"><a href=""><i class="icon-chevron-right"></i></a></li>
-                                    </ul>
-                                </div><!--end twelve-->
-                            </div><!--end row-->
-                            <!--end  Pagination-->
-
-                        </div><!--end twelve-->
-                    </div><!--end row-->
-                </div><!--end #main-->
+                            </div><!--end twelve-->
+                        </div><!--end row-->
+                    </div><!--end #main-->
             </section>
             <!--END MAIN SECTION-->
 

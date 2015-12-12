@@ -1,6 +1,68 @@
-<script>
+<!--<script>
+    var right = 0;
+
+    $(document).ready(function () {
+
+        $('.chat_head').click(function () {
+            $('.chat_body').slideToggle('slow');
+        });
+
+        $('.chat_body').click(function (event) {
+
+            var id = $(event.target).attr("id");
+
+            if ($('#box_' + id).length < 1) {
+                right += 255;
+
+                var msgBox = $('<div id ="box_' + id + '" class="msg_box" style="right: ' + right + 'px;"></div>');
+                var msgHead = $('<div id="' + id + '" class="msg_head" onclick="hideBody(this.id);">'+id+'<div id="' + id + '" onclick="closeBox(this.id);" class="close">x</div></div>');
+                var msgWrap = $('<div id="wrap_' + id + '" class="msg_wrap"></div>');
+                var msgBody = $('<div class="msg_body"><div class="msg_push"></div></div>');
+                var msgFooter = $('<div class="msg_footer"></div>');
+                var textarea = $('<textarea class="msg_input msg" rows="2" placeholder="Messages..."></textarea>');
+
+                msgBox.prepend(msgWrap);
+                msgBox.prepend(msgHead);
+                msgWrap.prepend(msgFooter);
+                msgFooter.prepend(textarea);
+                msgWrap.prepend(msgBody);
+                msgBox.insertAfter('.chat_box');
+                $('textarea').keypress(
+                        function (e) {
+                            if (e.keyCode === 13) {
+                                sendMessage();
+                            }
+                        });
+            }
+
+        });
+
+    });
+
+
+    function hideBody(id) {
+        $('#wrap_' + id).slideToggle('slow');
+
+    }
+
+    function closeBox(id) {
+
+        var elem = document.getElementById('box_' + id);
+        elem.parentNode.removeChild(elem);
+        
+        var msgBoxs = document.getElementsByClassName('msg_box');        
+        var j = msgBoxs.length-1;
+        for (var i = 0; i < msgBoxs.length; i++) {
+            
+            msgBoxs[j].style.right = ((i + 1) * 255) +'px';
+            j--;
+        }
+        right = msgBoxs.length *255;
+
+    }
+
+
     var userName1 = 'user1_' + Math.floor((Math.random() * 1000) + 1);
-    
 
     var chat1Socket = io.connect('http://localhost:9999/chat1');
 
@@ -51,33 +113,23 @@
         var currentTime = "<span class='time'>" + moment().format('HH:mm') + "</span>";
         var element = $('<div class="msg_a">' + currentTime + ' ' + message + '</div>');
         element.insertBefore('.msg_push');
-        $('.msg_body').scrollTop($('.msg_body')[0].scrollHeight);
+        if ($('.msg_body').length > 0) {
+            $('.msg_body').scrollTop($('.msg_body')[0].scrollHeight);
+        }
+
 //        $(parentId + ' .msg_body').prepend(element);
     }
 
-    
-</script>
+</script>-->
 
 
 <div class="chat_box">
     <div class="chat_head"> Chat Box</div>
     <div class="chat_body"> 
-        <div class="user"> Krishna Teja</div>
-        <div class="user"> Krishna Teja 2</div>
+        <div id="username1" class="user" > Krishna Teja 1</div>
+        <div id="username2" class="user" > Krishna Teja 2</div>
+        <div id="username3" class="user" > Krishna Teja 3</div>
     </div>
 </div>
 
-<div id ="chat" class="msg_box">
-    <div class="msg_head">Krishna Teja
-        <div class="close">x</div>
-    </div>
-    <div class="msg_wrap">
-        <div class="msg_body">
-            <div class="msg_push"></div>
-        </div>
-        <div class="msg_footer">
-            <textarea class="msg_input msg" rows="2" placeholder="Messages..."></textarea>
-        </div>
-    </div>
 
-</div>
