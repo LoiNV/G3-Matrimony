@@ -42,14 +42,17 @@
 }
 .msg_input{
     width:100%;
+    resize: none;
     border: 1px solid white;
     border-top:1px solid #DDDDDD;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;  
+    box-sizing: border-box;
 }
 
 .close{
+    width: 10px;
+    height: 10px;
     float:right;
     cursor:pointer;
 }
@@ -82,7 +85,7 @@
 
 .msg_a{
     position:relative;
-    background:#FDE4CE;
+    background:#FDE4A1;
     padding:10px;
     min-height:10px;
     margin-bottom:5px;
@@ -95,14 +98,14 @@
     width:0px;
     height:0px;
     border: 10px solid;
-    border-color: transparent #FDE4CE transparent transparent;
+    border-color: transparent #FDE4A1 transparent transparent;
     left:-20px;
     top:7px;
 }
 
 
 .msg_b{
-    background:#EEF2E7;
+    background:#cfffff;
     padding:10px;
     min-height:15px;
     margin-bottom:5px;
@@ -116,12 +119,17 @@
     width:0px;
     height:0px;
     border: 10px solid;
-    border-color: transparent transparent transparent #EEF2E7;
+    border-color: transparent transparent transparent #cfffff;
     right:-20px;
     top:7px;
 }
 
-.username-msg {color:orange;}
+.mnrChat, .mnrBox {
+    color: red;
+    font-weight: bold;  
+}
+
+
 .connect-msg {color:green;}
 .disconnect-msg {color:red;}
-.send-msg {color:#888}
+.send-msg {color:black}

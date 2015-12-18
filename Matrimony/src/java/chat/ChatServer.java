@@ -16,46 +16,47 @@ import com.corundumstudio.socketio.listener.DataListener;
  * @author Admin
  */
 public class ChatServer {
-    final SocketIOServer server;
-    private boolean isStart;
-    
+
+    public static SocketIOServer server;
+
     public ChatServer() {
         Configuration config = new Configuration();
         config.setHostname("localhost");
         config.setPort(9999);
-        
+
         server = new SocketIOServer(config);
-        isStart = false;
-    }
-    
-    public void createNameSpace(String nameSpace){
-
-        server.addNamespace(nameSpace).addEventListener("message", ChatObject.class, new DataListener<ChatObject>() {
-            @Override
-            public void onData(SocketIOClient client, ChatObject data, AckRequest ackRequest) {
-                // broadcast messages to all clients
-                server.addNamespace(nameSpace).getBroadcastOperations().sendEvent("message", data);
-            }
-        });
+        
     }
 
-    public void startServerChat(){          
-        server.startAsync();
-        isStart = true;
-    }
-    
-    public void stopServerChat(){
-        server.stop();
-        isStart = false;
+    public static void createNameSpace(String nameSpace) {
+                
+        if (server.getNamespace(nameSpace) == null) {
+            
+            server.addNamespace(nameSpace).addEventListener("message", ChatObject.class, new DataListener<ChatObject>() {
+
+                @Override
+                public void onData(SocketIOClient client, ChatObject data, AckRequest ackRequest) {
+                    server.addNamespace(nameSpace).getBroadcastOperations().sendEvent("message", data);
+                }
+            });
+        }
     }
 
-    public SocketIOServer getServer() {
-        return server;
+    public static void removeNameSpace(String nameSpace) {
+        server.removeNamespace(nameSpace);
     }
 
-    public boolean isStart() {
-        return isStart;
+    public void startServer() {
+        server.startAsync();            
     }
-    
-    
+
+    public void stopServer() {
+        server.stop();        
+    }
+
+//    public static void main(String[] args) {
+//        ChatServer sv = new ChatServer();
+//        sv.startServerChat();       
+//
+//    }
 }

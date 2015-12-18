@@ -30,12 +30,12 @@ public class HomeServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ChatServer sv = new ChatServer();
-        if (sv.isStart()) {
-            sv.stopServerChat();
+
+        if (ChatServer.server == null) {
+            ChatServer sv = new ChatServer();
+            sv.startServer();
         }
-        sv.startServerChat();
-        sv.createNameSpace("/chat1");
+
         response.sendRedirect("index.jsp");
     }
 
