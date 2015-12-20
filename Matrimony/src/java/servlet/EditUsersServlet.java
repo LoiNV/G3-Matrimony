@@ -9,6 +9,11 @@ import com.google.gson.Gson;
 import fpt.ws.UsersWS;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,39 +41,53 @@ public class EditUsersServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        request.setCharacterEncoding("utf-8");
-        response.setContentType("application/json;charsset=UTF-8");
-        String id = request.getParameter("id");
-        int idTemp = Integer.parseInt(id);
-        
-        String name = request.getParameter("name");
-        String password = request.getParameter("password");
-        String email = request.getParameter("email");
-        int age = Integer.parseInt(request.getParameter("age"));
-        int status = Integer.parseInt(request.getParameter("status"));
-        
-        String firstName = request.getParameter("firstName");
-        String lastName = request.getParameter("lastName");
-        boolean gender = Boolean.parseBoolean(request.getParameter("gender"));
-        String birthday = request.getParameter("birthday");
-        String maritalstatus = request.getParameter("maritalStatus");
-        int height = Integer.parseInt(request.getParameter("height"));
-        String country = request.getParameter("country");
-        String city = request.getParameter("city");
-        String phone = request.getParameter("phone");
-        String religion = request.getParameter("religion");
-        String caste = request.getParameter("caste");
-        System.out.println("ID:"+id+"\nFirstName:"+firstName +"\nLátN:"+ lastName +"\nGender:"+ gender+"\nBirdthday:"+birthday+"\nMari:"+maritalstatus
-                +"\nHegith"+height+"\nCoutry:"+country+"\nCity:"+city+"\nPhone"+phone+"\nReli:"+religion+"\nCaste:"+caste);
-        Users u = new Users(idTemp, name, password, email, gender, birthday, firstName, lastName, maritalstatus,
-                height, age, country, city, phone, religion, caste, status);
-        Gson g = new Gson();
-        String result = g.toJson(u);
-        System.out.println(result);
-        UsersWS uws = new UsersWS();
-        //sak sao ông lại đi truyền vào chuỗi json chỗ đó
-        uws.edit_JSON(u, id);
-        response.sendRedirect("/Matrimony/FindIdUser?id="+id);
+        try {
+            request.setCharacterEncoding("utf-8");
+            response.setContentType("application/json;charsset=UTF-8");
+            String id = request.getParameter("id");
+            int idTemp = Integer.parseInt(id);
+            
+            String name = request.getParameter("name");
+            String password = request.getParameter("password");
+            String email = request.getParameter("email");
+            int status = Integer.parseInt(request.getParameter("status"));
+            String firstName = request.getParameter("firstName");
+            String lastName = request.getParameter("lastName");
+            boolean gender = Boolean.parseBoolean(request.getParameter("gender"));
+            
+//            String day = request.getParameter("day");
+//            String month = request.getParameter("month");
+//            String year = request.getParameter("year");
+           
+            String birthday = request.getParameter("birthday");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            Date birthTemp = sdf.parse(birthday);
+            Date d = new java.util.Date(System.currentTimeMillis());
+            long age1 = d.getTime() - birthTemp.getTime();
+            int age = (int) (age1 / ((24 * 60 * 60 * 1000)+1))/365;
+            
+            String maritalstatus = request.getParameter("maritalStatus");
+            String country = request.getParameter("country");
+            String city = request.getParameter("city");
+            String phone = request.getParameter("phone");
+            String religion = request.getParameter("religion");
+            String caste = request.getParameter("caste");
+            String avatar = request.getParameter("avatar");
+            System.out.println("ID:"+id+"\nFirstName:"+firstName +"\nLátN:"+ lastName +"\nGender:"+ gender+"\nBirdthday:"+birthday+"\nMari:"+maritalstatus
+                    +"\nAvatar"+avatar+"\nCoutry:"+country+"\nCity:"+city+"\nPhone"+phone+"\nReli:"+religion+"\nCaste:"+caste);
+           
+            Users u = new Users(idTemp, name, password, email, gender, birthday, firstName, lastName, maritalstatus, age, country, city, phone, religion, caste, avatar, status);
+            
+            Gson g = new Gson();
+            String result = g.toJson(u);
+            System.out.println(result);
+            UsersWS uws = new UsersWS();
+            uws.edit_JSON(u, id);
+            response.sendRedirect("/Matrimony/FindIdUser?id="+id);
+        } catch (ParseException ex) {
+            Logger.getLogger(EditUsersServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

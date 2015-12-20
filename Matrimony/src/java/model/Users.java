@@ -11,7 +11,8 @@ import java.io.Serializable;
  *
  * @author nghiawin
  */
-public class Users implements Serializable{
+public class Users implements Serializable {
+
     private int id;
     private String name;
     private String password;
@@ -21,13 +22,13 @@ public class Users implements Serializable{
     private String firstName;
     private String lastName;
     private String maritalStatus;
-    private int height;
     private int age;
     private String country;
     private String city;
     private String phone;
     private String religion;
     private String caste;
+    private String avatar;
     private int status;
 
     public Users() {
@@ -42,7 +43,7 @@ public class Users implements Serializable{
         this.age = age;
     }
 
-    public Users(int id, String name, String password, String email, boolean gender, String birthday, String firstName, String lastName, String maritalStatus, int height, int age, String country, String city, String phone, String religion, String caste, int status) {
+    public Users(int id, String name, String password, String email, boolean gender, String birthday, String firstName, String lastName, String maritalStatus, int age, String country, String city, String phone, String religion, String caste, String avatar, int status) {
         this.id = id;
         this.name = name;
         this.password = password;
@@ -52,13 +53,13 @@ public class Users implements Serializable{
         this.firstName = firstName;
         this.lastName = lastName;
         this.maritalStatus = maritalStatus;
-        this.height = height;
         this.age = age;
         this.country = country;
         this.city = city;
         this.phone = phone;
         this.religion = religion;
         this.caste = caste;
+        this.avatar = avatar;
         this.status = status;
     }
 
@@ -110,6 +111,8 @@ public class Users implements Serializable{
         this.birthday = birthday;
     }
 
+ 
+ 
     public String getFirstName() {
         return firstName;
     }
@@ -134,13 +137,15 @@ public class Users implements Serializable{
         this.maritalStatus = maritalStatus;
     }
 
-    public int getHeight() {
-        return height;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setHeight(int height) {
-        this.height = height;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
+
+ 
 
     public int getAge() {
         return age;

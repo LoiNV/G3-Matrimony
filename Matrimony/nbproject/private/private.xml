@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/SEM4/ProjectSem4/G3-Matrimony/Matrimony/web/chatBox.jsp</file>
-            <file>file:/D:/SEM4/ProjectSem4/G3-Matrimony/Matrimony/src/java/servlet/CreateNamespaceServlet.java</file>
-            <file>file:/D:/SEM4/ProjectSem4/G3-Matrimony/Matrimony/web/assets/scripts/script.js</file>
-            <file>file:/D:/SEM4/ProjectSem4/G3-Matrimony/Matrimony/web/assets/styles/style.css</file>
-            <file>file:/D:/SEM4/ProjectSem4/G3-Matrimony/Matrimony/src/java/servlet/HomeServlet.java</file>
-            <file>file:/D:/SEM4/ProjectSem4/G3-Matrimony/Matrimony/src/java/chat/ChatServer.java</file>
+            <file>file:/F:/Hieu/GitHub/G3-Matrimony/Matrimony/web/edit-profile.jsp</file>
+            <file>file:/F:/Hieu/GitHub/G3-Matrimony/Matrimony/src/java/servlet/AdvertismentCreateServlet.java</file>
+            <file>file:/F:/Hieu/GitHub/G3-Matrimony/Matrimony/src/java/servlet/HomeServlet.java</file>
+            <file>file:/F:/Hieu/GitHub/G3-Matrimony/Matrimony/src/java/model/Users.java</file>
         </group>
     </open-files>
 </project-private>

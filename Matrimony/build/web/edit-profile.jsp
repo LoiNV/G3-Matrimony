@@ -188,7 +188,7 @@
                                                 </div>
 
                                                 <div class="callout-speech-wrapp six columns">
-                                                    <p>Height:<input type="text" name="height" value="${u.height}" /></p>
+                                                    <p>Height:<input type="text" name="avatar" value="${u.avatar}" /></p>
                                                 </div>
                                                 
                                                 <div class="callout-speech-wrapp six columns">

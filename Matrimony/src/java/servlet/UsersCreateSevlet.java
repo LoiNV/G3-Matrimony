@@ -16,8 +16,11 @@ import com.google.gson.GsonBuilder;
 import fpt.ws.UsersWS;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.text.ParseException;
+import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Users;
-
 
 /**
  *
@@ -37,27 +40,38 @@ public class UsersCreateSevlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("application/json;charsset=UTF-8");
-      
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        String email = request.getParameter("email");
-        boolean gender = Boolean.parseBoolean(request.getParameter("gender"));
-        String day = request.getParameter("day");
-        String month = request.getParameter("month");
-        String year = request.getParameter("year");
-        String birthday = day+"/"+month+"/"+year;
-        Date d = new Date();
-        SimpleDateFormat fo = new SimpleDateFormat("dd/MM/yyyy");
-        int datenow = Integer.parseInt(fo.format(d).substring(6, 10));
-        int age = datenow - Integer.parseInt(year);
-        Users u = new Users(username, password, email, gender, birthday, age);
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
-        UsersWS uws = new UsersWS();
-        System.out.println(gson.toJson(u));
-        uws.create_JSON(gson.toJson(u));
-        
+        try {
+            response.setContentType("application/json;charsset=UTF-8");
+
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+            String email = request.getParameter("email");
+            boolean gender = Boolean.parseBoolean(request.getParameter("gender"));
+            String day = request.getParameter("day");
+            String month = request.getParameter("month");
+            String year = request.getParameter("year");
+
+            String birthday =day+"-"+month+"-"+year;
+//            String birthday =request.getParameter("birthday");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            Date birthTemp = sdf.parse(birthday);
+            Date d = new Date(System.currentTimeMillis());
+            long age1 = d.getTime() - birthTemp.getTime();
+            int age = (int) (age1 / ((24 * 60 * 60 * 1000)+1))/365;
+            System.out.println("birthDAY"+birthday+"\nNgày Hiện Tại"+d+"\nMili Hien Tai"+d.getTime()+"\nMili birthday"+birthTemp.getTime()+"\nAge:"+age);
+
+            Users u = new Users(username, password, email, gender, birthday, age);
+            Gson gson = new Gson();
+            UsersWS uws = new UsersWS();
+            System.out.println("name: "+u.getName()+"\npass: "+u.getPassword()+"\nEmail: "+u.getEmail()+"\nGender"+u.isGender()+"\nbirthday: "+u.getBirthday()+"\nAge: "+u.getAge());
+            System.out.println(gson.toJson(u));
+            uws.create_JSON(u);
+            
+        } catch (ParseException ex) {
+            Logger.getLogger(UsersCreateSevlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
