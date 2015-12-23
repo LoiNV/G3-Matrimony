@@ -5,6 +5,7 @@
 
     <head>
         <%@include file="importCSS_admin.jsp" %>
+
     </head>
 
 
@@ -18,7 +19,7 @@
                 <%@include file="contentLeft.jsp" %>
 
                 <!-- top navigation -->
-                 <%@include file="topNavigation.jsp" %>
+                <%@include file="topNavigation.jsp" %>
 
 
                 <!-- page content -->
@@ -48,20 +49,21 @@
                                             </thead>
 
                                             <tbody>
-                                            <c:forEach items="${listAdvertisement}" var="a">
-                                                <tr>
-                                                    <td>${a.id}</td>
-                                                    <td>${a.customerId.getId()}</td>
-                                                    <td>${a.status}</td>
-                                                    <td>${a.message}</td>
-                                                    <td>${a.price}</td>
-                                                    <td>${a.createdDate}</td>
-                                                    <td>
-                                                        <a href="">View</a>
-                                                    </td>
-                                                </tr>
+                                                <c:forEach items="${listAdvertisement}" var="a">
+                                                    <tr>
+                                                        <td>${a.id}</td>
+                                                        <td>${a.customerId.getId()}</td>
+                                                        <td>${a.status}</td>
+                                                        <td>${a.message}</td>
+                                                        <td>${a.price}</td>
+                                                        <td>${a.createdDate}</td>
+                                                        <td>
+                                                            <a href="DeleteAdvertisement?id=${a.id}">Delete</a> |
+                                                            <a href="FindIdAdvertisement?id=${a.id}">View</a>
+                                                        </td>
+                                                    </tr>
 
-                                            </c:forEach>
+                                                </c:forEach>
                                             </tbody>
 
                                         </table>
@@ -71,8 +73,7 @@
                         </div>
 
                     </div>
-
-                   <%@include file="footer_admin.jsp" %>
+                    <%@include file="footer_admin.jsp" %>
 
                 </div>
                 <!-- /page content -->
@@ -87,6 +88,7 @@
             <div class="clearfix"></div>
             <div id="notif-group" class="tabbed_notifications"></div>
         </div>
+       
 
         <%@include file="importScript_admin.jsp" %>
     </body>

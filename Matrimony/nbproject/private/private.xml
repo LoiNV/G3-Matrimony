@@ -5,6 +5,8 @@
         <group>
             <file>file:/F:/Hieu/GitHub/G3-Matrimony/Matrimony/web/edit-profile.jsp</file>
             <file>file:/F:/Hieu/GitHub/G3-Matrimony/Matrimony/src/java/servlet/AdvertismentCreateServlet.java</file>
+            <file>file:/F:/Hieu/GitHub/G3-Matrimony/Matrimony/web/search-listing.jsp</file>
+            <file>file:/F:/Hieu/GitHub/G3-Matrimony/Matrimony/src/java/servlet/FindIdUser.java</file>
             <file>file:/F:/Hieu/GitHub/G3-Matrimony/Matrimony/src/java/servlet/HomeServlet.java</file>
             <file>file:/F:/Hieu/GitHub/G3-Matrimony/Matrimony/src/java/model/Users.java</file>
         </group>

@@ -42,7 +42,7 @@ public class UsersCreateSevlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             response.setContentType("application/json;charsset=UTF-8");
-
+            String id= request.getParameter("id");
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             String email = request.getParameter("email");
@@ -66,7 +66,7 @@ public class UsersCreateSevlet extends HttpServlet {
             System.out.println("name: "+u.getName()+"\npass: "+u.getPassword()+"\nEmail: "+u.getEmail()+"\nGender"+u.isGender()+"\nbirthday: "+u.getBirthday()+"\nAge: "+u.getAge());
             System.out.println(gson.toJson(u));
             uws.create_JSON(u);
-            
+             response.sendRedirect("/Matrimony/FindIdUser?id="+id);
         } catch (ParseException ex) {
             Logger.getLogger(UsersCreateSevlet.class.getName()).log(Level.SEVERE, null, ex);
         }

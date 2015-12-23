@@ -55,7 +55,7 @@
                                                     <td>${u.age}</td>
                                                     <td>${u.gender}</td>
                                                     <td>
-                                                        <a href="DeleteProduct?id=${c.id}">Delete</a>
+                                                        <a href="DeleteUser?id=${u.id}">Delete</a>
                                                       
                                                     </td>
                                                 </tr>

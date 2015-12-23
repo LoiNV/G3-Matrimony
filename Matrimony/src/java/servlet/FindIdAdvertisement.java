@@ -6,22 +6,25 @@
 package servlet;
 
 import com.google.gson.Gson;
-import fpt.ws.CustomersWS;
+import fpt.ws.AdvertisementWS;
+import fpt.ws.UsersWS;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Customers;
+import model.Advertisement;
+import model.Users;
 
 /**
  *
  * @author nghiawin
  */
-@WebServlet(name = "CustomersCreateServlet", urlPatterns = {"/CustomersCreateServlet"})
-public class CustomersCreateServlet extends HttpServlet {
+@WebServlet(name = "FindIdAdvertisement", urlPatterns = {"/FindIdAdvertisement"})
+public class FindIdAdvertisement extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,20 +37,15 @@ public class CustomersCreateServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("application/json;charset=UTF-8");
-        
-        String name = request.getParameter("name");
-        String email = request.getParameter("email");
-        String phone = request.getParameter("phone");
-        int position = Integer.parseInt(request.getParameter("position"));
-        int status = Integer.parseInt(request.getParameter("status"));
-        
-        Customers cus = new Customers(name, email, phone, position);
-        Gson gson = new Gson();
-        CustomersWS cws = new CustomersWS();
-        cws.create_JSON(gson.toJson(cus));
-        response.sendRedirect("Thanksyou.jsp");
-       
+     String id = request.getParameter("id");
+        Gson g = new Gson();
+        Class<String> res = String.class;
+        AdvertisementWS aws = new AdvertisementWS();
+        String result = aws.find_JSON(res, id);
+        Advertisement adv = g.fromJson(result, Advertisement.class);
+        request.setAttribute("adv", adv);
+//        RequestDispatcher rd = request.getRequestDispatcher("/Matrimony/FindIdAdvertisement?id="+id);
+//        rd.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
