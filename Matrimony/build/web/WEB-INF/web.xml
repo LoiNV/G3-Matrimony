@@ -40,6 +40,7 @@
         <servlet-name>CreateNamespaceServlet</servlet-name>
         <url-pattern>/createNamespace</url-pattern>
     </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30

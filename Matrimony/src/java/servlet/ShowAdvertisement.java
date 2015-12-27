@@ -48,7 +48,7 @@ public class ShowAdvertisement extends HttpServlet {
         String result = uws.findAll_JSON(res);
         ls = g.fromJson(result, collection);
         request.setAttribute("listAdvertisement", ls);
-        RequestDispatcher rd = request.getRequestDispatcher("showAdvertisement.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("layer_admin/showAdvertisement.jsp");
         rd.forward(request, response);
     }
 

@@ -55,11 +55,11 @@
                                         <div class="eleven columns">
                                             <b>Customer Name:</b><input type="text" name="name" id="name" placeholder="Your name" required>
 
-                                            <b>Email:</b><input type="email" name="email" id="email" placeholder="Price" required>
+                                            <b>Email:</b><input type="email" name="email" id="email" placeholder="Email" required>
 
-                                            <b>Phone</b><input type="text" name="phone" id="phone" placeholder="Duration" required>
+                                            <b>Phone</b><input type="text" name="phone" id="phone" placeholder="Phone" required>
                                             <b>Position</b><input type="number" name="position" id="phone" placeholder="Position" required>
-                                            <b>Status</b><input type="number" name="status" id="phone" placeholder="status" required>
+                                            <input type="hidden" name="status" id="status" placeholder="Status">
                                         </div>
                                         <div class="twelve">
                                             <div class="four columns" style="margin-top: 10px;">

@@ -33,7 +33,7 @@ Tags: dating, clean, responsive, creative, minimal, modern, landing page
 ----------------------------------------- */
 
 * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; /**behavior: url(boxsizing.htc);*/ }
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, th, td { margin: 0; padding: 0; font-size: 13px; direction: ltr; }
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, th, td { margin: 0; padding: 0;font-size: 13px;direction: ltr;}
 body { background: /*#f4f4f4*/ url(../images/patterns/bg-body.gif); color: #777; font-family: 'Open Sans', sans-serif; }
 
 /*** Typography ***/

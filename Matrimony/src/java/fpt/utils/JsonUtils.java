@@ -18,11 +18,11 @@ import model.Users;
  */
 public class JsonUtils {
 
-    public static List<Object> getListJson(String result) {
-        List<Object> ls = new LinkedList<>();
+    public static List<Users> getListJson(String result) {
+        List<Users> ls = new LinkedList<>();
         Gson g = new Gson();
         Class<String> res = String.class;
-        Type collectionType = new TypeToken<List<Object>>() {}.getType();
+        Type collectionType = new TypeToken<List<Users>>() {}.getType();
         ls = g.fromJson(result, collectionType);
         return ls;
     }

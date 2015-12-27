@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Sweet Date - Home Page </title>
-
+    
         <%@include file="importCSS.jsp" %>
     </head>
     <body>
@@ -24,11 +24,13 @@
             <%@include file="testimonial - newsletter.jsp" %>
 
             <%@include file="footer.jsp" %>
+            <%@include file="login.jsp" %>
             
             <p id="btnGoUp">Go up</p>
             
         </div>
 
-        <%@include file="importScript.jsp" %>
+            <%@include file="importScript.jsp" %>
+
     </body>
 </html>

@@ -44,8 +44,8 @@ public class FindIdAdvertisement extends HttpServlet {
         String result = aws.find_JSON(res, id);
         Advertisement adv = g.fromJson(result, Advertisement.class);
         request.setAttribute("adv", adv);
-//        RequestDispatcher rd = request.getRequestDispatcher("/Matrimony/FindIdAdvertisement?id="+id);
-//        rd.forward(request, response);
+      RequestDispatcher rd = request.getRequestDispatcher("layer_admin/showAdvertisement.jsp");
+        rd.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

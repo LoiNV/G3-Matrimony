@@ -50,7 +50,7 @@ public class ShowCustomers extends HttpServlet {
         String result = uws.findAll_JSON(res);
         ls = g.fromJson(result, collection);
         request.setAttribute("listCustomers", ls);
-        RequestDispatcher rd = request.getRequestDispatcher("showCustomers.jsp");
+         RequestDispatcher rd = request.getRequestDispatcher("layer_admin/showCustomers.jsp");
         rd.forward(request, response);
     }
 

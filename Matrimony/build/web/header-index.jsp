@@ -64,6 +64,12 @@
                                         <li><a href="single-article.jsp">Single Article</a></li>
                                     </ul>
                                 </li>
+                                <li class="has-dropdown">
+                                    <a href="#">CONTACT</a>
+                                    <ul class="dropdown">
+                                        <li><a href="createCustomer.jsp">Register - Advertisement</a></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </section><!-- End Nav Section -->
                     </nav>

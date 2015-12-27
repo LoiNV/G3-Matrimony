@@ -55,12 +55,9 @@ public class EditUsersServlet extends HttpServlet {
             String lastName = request.getParameter("lastName");
             boolean gender = Boolean.parseBoolean(request.getParameter("gender"));
             
-//            String day = request.getParameter("day");
-//            String month = request.getParameter("month");
-//            String year = request.getParameter("year");
            
             String birthday = request.getParameter("birthday");
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yy");
             Date birthTemp = sdf.parse(birthday);
             Date d = new java.util.Date(System.currentTimeMillis());
             long age1 = d.getTime() - birthTemp.getTime();

@@ -36,3 +36,12 @@
         s.parentNode.insertBefore(g, s)
     }(document, "script"));
 </script>
+
+
+<!---Date Time--->
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <!-- Load jQuery UI Main JS  -->
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    
+    <!-- Load SCRIPT.JS which will create datepicker for input field  -->
+    <script src="DateTime/js/scripts.js"></script>

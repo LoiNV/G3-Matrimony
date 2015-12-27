@@ -49,7 +49,7 @@ public class ShowUserServlet extends HttpServlet {
         String result = uws.findAll_JSON(res);
         ls = g.fromJson(result, collection);
         request.setAttribute("ListUsers", ls);
-        RequestDispatcher rd = request.getRequestDispatcher("showUser.jsp");
+         RequestDispatcher rd = request.getRequestDispatcher("layer_admin/showUser.jsp");
         rd.forward(request, response);
     }
 
