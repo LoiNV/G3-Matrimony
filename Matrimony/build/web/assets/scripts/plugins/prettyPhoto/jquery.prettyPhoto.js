@@ -60,7 +60,8 @@
 												<a href="#" class="pp_arrow_next">Next</a> \
 											</div> \
 											<p class="pp_description"></p> \
-											<div class="pp_social">{pp_social}</div> \
+											<div class="pp_social"></a> </div> \
+                                                                                        <a class="pp_avt" title="Set avatar" href="#">\
 											<a class="pp_close" href="#">Close</a> \
 										</div> \
 									</div> \
@@ -831,7 +832,13 @@
 				});
 
 			$('a.pp_close').bind('click',function(){ $.prettyPhoto.close(); return false; });
-
+                        
+                        $('a.pp_avt').bind('click', function (){                            
+                            $.get("/Matrimony/SetAvatar",{imgPath: $('#fullResImage').attr("src")},function(){});
+                            $('img#avatar').attr("src", $('#fullResImage').attr("src"));
+                            $.prettyPhoto.close(); 
+                            return false;
+                        });
 
 			if(settings.allow_expand) {
 				$('a.pp_expand').bind('click',function(e){

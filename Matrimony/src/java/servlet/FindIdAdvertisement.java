@@ -6,10 +6,8 @@
 package servlet;
 
 import com.google.gson.Gson;
-import fpt.ws.AdvertisementWS;
-import fpt.ws.UsersWS;
+import fpt.ws.AdvertisementsWS;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +15,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Advertisement;
-import model.Users;
 
 /**
  *
@@ -37,14 +34,14 @@ public class FindIdAdvertisement extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-     String id = request.getParameter("id");
+        String id = request.getParameter("id");
         Gson g = new Gson();
         Class<String> res = String.class;
-        AdvertisementWS aws = new AdvertisementWS();
-        String result = aws.find_JSON(res, id);
+        AdvertisementsWS aws = new AdvertisementsWS();
+        String result = aws.find(res, id);
         Advertisement adv = g.fromJson(result, Advertisement.class);
         request.setAttribute("adv", adv);
-      RequestDispatcher rd = request.getRequestDispatcher("layer_admin/showAdvertisement.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("layer_admin/showAdvertisement.jsp");
         rd.forward(request, response);
     }
 

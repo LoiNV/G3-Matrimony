@@ -8,9 +8,7 @@ package servlet;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import fpt.ws.CustomersWS;
-import fpt.ws.UsersWS;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.lang.reflect.Type;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,7 +19,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Customers;
-import model.Users;
 
 /**
  *
@@ -41,16 +38,17 @@ public class ShowCustomers extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       response.setContentType("application/json;charset=UTF-8");
+        response.setContentType("application/json;charset=UTF-8");
         CustomersWS uws = new CustomersWS();
         List<Customers> ls = new LinkedList<>();
-        Type collection = new TypeToken<List<Customers>>() {}.getType();
+        Type collection = new TypeToken<List<Customers>>() {
+        }.getType();
         Gson g = new Gson();
         Class<String> res = String.class;
-        String result = uws.findAll_JSON(res);
+        String result = uws.findAll(res);
         ls = g.fromJson(result, collection);
         request.setAttribute("listCustomers", ls);
-         RequestDispatcher rd = request.getRequestDispatcher("layer_admin/showCustomers.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("layer_admin/showCustomers.jsp");
         rd.forward(request, response);
     }
 

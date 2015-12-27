@@ -39,7 +39,6 @@
 
 
 <!---Date Time--->
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <!-- Load jQuery UI Main JS  -->
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     

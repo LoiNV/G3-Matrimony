@@ -24,6 +24,26 @@
         <servlet-name>CreateNamespaceServlet</servlet-name>
         <servlet-class>servlet.CreateNamespaceServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddFriendServlet</servlet-name>
+        <servlet-class>servlet.AddFriendServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>servlet.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpLoadFileServlet</servlet-name>
+        <servlet-class>servlet.uploadFile.UpLoadFileServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RequestFriendServlet</servlet-name>
+        <servlet-class>servlet.RequestFriendServlet</servlet-class>
+    </servlet>    
+    <servlet>
+        <servlet-name>SetAvatarServlet</servlet-name>
+        <servlet-class>servlet.SetAvatarServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -40,10 +60,38 @@
         <servlet-name>CreateNamespaceServlet</servlet-name>
         <url-pattern>/createNamespace</url-pattern>
     </servlet-mapping>
-    
+    <servlet-mapping>
+        <servlet-name>AddFriendServlet</servlet-name>
+        <url-pattern>/AddFriend</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpLoadFileServlet</servlet-name>
+        <url-pattern>/UpLoad</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RequestFriendServlet</servlet-name>
+        <url-pattern>/requestFriend</url-pattern>
+    </servlet-mapping>
+      
+    <servlet-mapping>
+        <servlet-name>SetAvatarServlet</servlet-name>
+        <url-pattern>/SetAvatar</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-</web-app>
+    <welcome-file-list>
+        <welcome-file>
+            index.jsp
+        </welcome-file>
+    </welcome-file-list>
+    </web-app>

@@ -14,7 +14,7 @@
 .chat_head,.msg_head{
     background:#f39c12;
     color:white;
-    padding:15px;
+    padding:10px;
     font-weight:bold;
     cursor:pointer;
     border-radius:5px 5px 0px 0px;
@@ -44,15 +44,15 @@
     width:100%;
     resize: none;
     border: 1px solid white;
-    border-top:1px solid #DDDDDD;
+    border-top:1px solid #ccc;    
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;
 }
 
 .close{
-    width: 10px;
-    height: 10px;
+    width: 15px;
+    height: 15px;
     float:right;
     cursor:pointer;
 }

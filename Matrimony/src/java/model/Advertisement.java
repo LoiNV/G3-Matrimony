@@ -11,9 +11,10 @@ import java.io.Serializable;
  *
  * @author nghiawin
  */
-public class Advertisement implements Serializable{
-     private int id;
-     private Customers customerId;
+public class Advertisement implements Serializable {
+
+    private int id;
+    private Customers customerId;
     private String image;
     private String link;
     private int status;
@@ -24,8 +25,6 @@ public class Advertisement implements Serializable{
     public Advertisement() {
     }
 
-
-    
     public Advertisement(String image, String link, String message, double price, String createdDate) {
         this.image = image;
         this.link = link;
@@ -90,8 +89,6 @@ public class Advertisement implements Serializable{
         this.customerId = customerId;
     }
 
-    
-
     public String getCreatedDate() {
         return createdDate;
     }
@@ -100,7 +97,4 @@ public class Advertisement implements Serializable{
         this.createdDate = createdDate;
     }
 
-
-
-  
 }

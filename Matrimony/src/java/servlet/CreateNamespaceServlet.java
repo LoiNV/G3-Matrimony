@@ -5,7 +5,6 @@
  */
 package servlet;
 
-import chat.ChatObject;
 import chat.ChatServer;
 import com.google.gson.Gson;
 import java.io.IOException;
@@ -34,7 +33,7 @@ public class CreateNamespaceServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String ns = "/" + request.getParameter("ns");
-        
+
         ChatServer.createNameSpace(ns);
 
         String json = (new Gson()).toJson(ns);

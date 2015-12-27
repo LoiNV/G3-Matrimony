@@ -8,7 +8,6 @@ package servlet;
 import com.google.gson.Gson;
 import fpt.ws.CustomersWS;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,19 +34,19 @@ public class CustomersCreateServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("application/json;charset=UTF-8");
-        
+
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
         int position = Integer.parseInt(request.getParameter("position"));
         int status = Integer.parseInt(request.getParameter("status"));
-        
+
         Customers cus = new Customers(name, email, phone, position);
         Gson gson = new Gson();
         CustomersWS cws = new CustomersWS();
-        cws.create_JSON(gson.toJson(cus));
+        cws.create(gson.toJson(cus));
         response.sendRedirect("Thanksyou.jsp");
-       
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

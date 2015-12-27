@@ -30,6 +30,7 @@
 	div.pp_default .pp_contract { background: url(../images/prettyPhoto/default/sprite.png) 0 -84px no-repeat; cursor: pointer; width: 28px; height: 28px; } /* Contract button */
 	div.pp_default .pp_contract:hover { background: url(../images/prettyPhoto/default/sprite.png) 0 -113px no-repeat; cursor: pointer; } /* Contract button hover */
 	div.pp_default .pp_close { width: 30px; height: 30px; background: url(../images/prettyPhoto/default/sprite.png) 2px 1px no-repeat; cursor: pointer; } /* Close button */
+	div.pp_default .pp_avt { width: 30px; height: 30px; background: url(../images/prettyPhoto/default/default-avatar.png) center center no-repeat; cursor: pointer; } /* avt button */
 	div.pp_default #pp_full_res .pp_inline { color: #000; } 
 	div.pp_default .pp_gallery ul li a { background: url(../images/prettyPhoto/default/default_thumb.png) center center #f8f8f8; border:1px solid #aaa; }
 	div.pp_default .pp_gallery ul li a:hover,
@@ -463,6 +464,13 @@
 			line-height:22px;
 			text-indent: -10000px;
 		}
+                
+                a.pp_avt {
+			position: absolute; right: 50px; top: 0; 
+			display: block;
+			line-height:22px;
+			text-indent: -10000px;
+		}
 		
 		.pp_bottom {
 			height: 20px;
@@ -537,4 +545,5 @@ a.pp_expand, a.pp_contract, .pp_hoverContainer, .pp_gallery, .pp_top, .pp_bottom
 #pp_full_res iframe { width: 100%!important; height: auto!important; display: block !important; }
 .pp_details { width: 100%!important; padding-left: 3%; padding-right: 4%; padding-top: 10px; padding-bottom: 10px; background-color: #fff; margin-top: -2px!important; min-height: 50px; }
 a.pp_close { right: 10px!important; top: 10px!important; }
+a.pp_avt { right: 10px!important; top: 10px!important; }
 }

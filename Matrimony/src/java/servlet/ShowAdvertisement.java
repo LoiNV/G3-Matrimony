@@ -7,7 +7,7 @@ package servlet;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import fpt.ws.AdvertisementWS;
+import fpt.ws.AdvertisementsWS;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.LinkedList;
@@ -19,7 +19,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Advertisement;
-import model.Customers;
 
 /**
  *
@@ -40,12 +39,13 @@ public class ShowAdvertisement extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("application/json;charset=UTF-8");
-        AdvertisementWS uws = new AdvertisementWS();
+        AdvertisementsWS uws = new AdvertisementsWS();
         List<Advertisement> ls = new LinkedList<>();
-        Type collection = new TypeToken<List<Advertisement>>() {}.getType();
+        Type collection = new TypeToken<List<Advertisement>>() {
+        }.getType();
         Gson g = new Gson();
         Class<String> res = String.class;
-        String result = uws.findAll_JSON(res);
+        String result = uws.findAll(res);
         ls = g.fromJson(result, collection);
         request.setAttribute("listAdvertisement", ls);
         RequestDispatcher rd = request.getRequestDispatcher("layer_admin/showAdvertisement.jsp");

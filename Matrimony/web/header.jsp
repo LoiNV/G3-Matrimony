@@ -16,12 +16,7 @@
                         <a href="#" class="has-tip tip-bottom" data-width="210" title="Pin us on Pinterest"><i class="icon-pinterest"></i></a>
                         <a href="#" class="has-tip tip-bottom" data-width="210" title="Find us on LinkedIn"><i class="icon-linkedin"></i></a>
                     </li>
-
-                    <c:if test="${sessionScope.infouser!=null}">
-                        <li class="three columns hide-for-small">
-                            <a href="FindIdUser?id=${sessionScope.infouser}">Profile</a>
-                        </li>
-                    </c:if>
+                    
                 </ul>
             </div>
         </div>
@@ -51,12 +46,12 @@
                                     <ul class="dropdown">
                                         <li><a href="search-listing.jsp">Search Listing</a></li>
                                         <li><a href="profile.jsp">Profile Page</a></li>
-                                        <li class="has-dropdown"><a href="#" class="sub-menu-link">Third level menu</a>
+<!--                                        <li class="has-dropdown"><a href="#" class="sub-menu-link">Third level menu</a>
                                             <ul class="dropdown">
                                                 <li><a href="#" class="sub-menu-link">Sample</a></li>
                                                 <li><a href="#" class="sub-menu-link">Sample link</a></li>
                                             </ul>
-                                        </li>
+                                        </li>-->
                                     </ul>
                                 </li>
                                 <li class="has-dropdown">
@@ -64,12 +59,6 @@
                                     <ul class="dropdown">
                                         <li><a href="blog.jsp">Blog Page</a></li>
                                         <li><a href="single-article.jsp">Single Article</a></li>
-                                    </ul>
-                                </li>
-                                     <li class="has-dropdown">
-                                    <a href="#">CONTACT</a>
-                                    <ul class="dropdown">
-                                        <li><a href="createCustomer.jsp">Register - Advertisement</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -90,15 +79,41 @@
                 -  Hidded by default to be opened through modal
               -  For faster loading we put all forms at the bottom of page -->
 
-                <!--Login buttons-->  
-                <div class="three columns login-buttons">
-                    <div class="space-b-20 hide-for-small">&nbsp;</div>	
-                    <ul class="button-group radius right">
-                        <li><a href="#" data-reveal-id="login_panel" class="small secondary button radius"><i class="icon-user hide-for-medium-down"></i> LOG IN</a></li>
-                        <li><a href="#" data-reveal-id="register_panel" class="small button radius"><i class="icon-group hide-for-medium-down"></i> SIGN UP</a></li>
-                    </ul>
-                </div>
-                <!--end login buttons-->
+                <c:choose>
+                    <c:when test="${sessionScope.login != null && sessionScope.login == 'true'}">
+                        <div class="three columns">
+                            <div id="demo">
+                                <div class="wrapper">
+                                    <div class="content">
+                                        <ul>
+                                            <li><a href="#">Change password</a></li>
+                                            <li><a href="FindIdUser?id=${sessionScope.infouser.id}">Edit profile</a></li>
+                                            <li><a href="Logout">Logout</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="parent">
+                                        <span class="avt">                                        
+                                            <img id="avatar" style="width: 30px; height: 30px;" src="${sessionScope.infouser.avatar}"/>
+                                        </span>
+                                        <span id="${sessionScope.infouser.id}" class="username">Hi, ${sessionScope.infouser.name}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <!--Login buttons-->  
+                        <div class="three columns login-buttons">
+                            <div class="space-b-20 hide-for-small">&nbsp;</div>	
+                            <ul class="button-group radius right">
+                                <li><a href="#" data-reveal-id="login_panel" class="small secondary button radius"><i class="icon-user hide-for-medium-down"></i> LOG IN</a></li>
+                                <li><a href="#" data-reveal-id="register_panel" class="small button radius"><i class="icon-group hide-for-medium-down"></i> SIGN UP</a></li>
+                            </ul>
+                        </div>
+                        <!--end login buttons-->
+                    </c:otherwise>
+                </c:choose>
 
             </div><!--end row-->
         </div><!--end #header-->

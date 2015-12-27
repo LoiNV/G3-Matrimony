@@ -5,16 +5,17 @@
  */
 package servlet;
 
-import com.google.gson.Gson;
+import fpt.utils.JsonUtils;
+import fpt.ws.ImagesWS;
 import fpt.ws.UsersWS;
 import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Images;
 import model.Users;
 
 /**
@@ -36,15 +37,19 @@ public class FindIdUser extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String id = request.getParameter("id");
-        Gson g = new Gson();
-        Class<String> res = String.class;
+
         UsersWS uws = new UsersWS();
-        String result = uws.find_JSON(res, id);
-        Users u = g.fromJson(result, Users.class);
+        String result = uws.find(String.class, id);
+        Users u = JsonUtils.getUser(result);
         request.setAttribute("u", u);
-        RequestDispatcher rd = request.getRequestDispatcher("edit-profile.jsp");
-        rd.forward(request, response);
-        
+
+        ImagesWS iws = new ImagesWS();
+        String imgs = iws.findByUser(String.class, u.getId() + "");
+        List<Images> listImg = JsonUtils.getListImages(imgs);
+        request.setAttribute("listImg", listImg);
+
+        request.getRequestDispatcher("edit-profile.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

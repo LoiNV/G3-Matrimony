@@ -5,16 +5,13 @@
  */
 package servlet;
 
-import com.google.gson.Gson;
 import fpt.ws.UsersWS;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -46,7 +43,7 @@ public class EditUsersServlet extends HttpServlet {
             response.setContentType("application/json;charsset=UTF-8");
             String id = request.getParameter("id");
             int idTemp = Integer.parseInt(id);
-            
+
             String name = request.getParameter("name");
             String password = request.getParameter("password");
             String email = request.getParameter("email");
@@ -54,15 +51,14 @@ public class EditUsersServlet extends HttpServlet {
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
             boolean gender = Boolean.parseBoolean(request.getParameter("gender"));
-            
-           
+
             String birthday = request.getParameter("birthday");
             SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yy");
             Date birthTemp = sdf.parse(birthday);
-            Date d = new java.util.Date(System.currentTimeMillis());
-            long age1 = d.getTime() - birthTemp.getTime();
-            int age = (int) (age1 / ((24 * 60 * 60 * 1000)+1))/365;
-            
+            long now = System.currentTimeMillis();
+            long age1 = now - birthTemp.getTime();
+            int age = (int) (age1 / ((24 * 60 * 60 * 1000) + 1)) / 365;
+
             String maritalstatus = request.getParameter("maritalStatus");
             String country = request.getParameter("country");
             String city = request.getParameter("city");
@@ -70,21 +66,17 @@ public class EditUsersServlet extends HttpServlet {
             String religion = request.getParameter("religion");
             String caste = request.getParameter("caste");
             String avatar = request.getParameter("avatar");
-            System.out.println("ID:"+id+"\nFirstName:"+firstName +"\nLátN:"+ lastName +"\nGender:"+ gender+"\nBirdthday:"+birthday+"\nMari:"+maritalstatus
-                    +"\nAvatar"+avatar+"\nCoutry:"+country+"\nCity:"+city+"\nPhone"+phone+"\nReli:"+religion+"\nCaste:"+caste);
-           
+
             Users u = new Users(idTemp, name, password, email, gender, birthday, firstName, lastName, maritalstatus, age, country, city, phone, religion, caste, avatar, status);
-            
-            Gson g = new Gson();
-            String result = g.toJson(u);
-            System.out.println(result);
+
             UsersWS uws = new UsersWS();
-            uws.edit_JSON(u, id);
-            response.sendRedirect("/Matrimony/FindIdUser?id="+id);
+
+            uws.edit(u, id);
+            response.sendRedirect("/Matrimony/FindIdUser?id=" + id);
         } catch (ParseException ex) {
             Logger.getLogger(EditUsersServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -10,6 +10,8 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.LinkedList;
 import java.util.List;
+import model.Friends;
+import model.Images;
 import model.Users;
 
 /**
@@ -17,13 +19,31 @@ import model.Users;
  * @author phamt
  */
 public class JsonUtils {
-
-    public static List<Users> getListJson(String result) {
+    static Gson g = new Gson();
+    
+    public static List<Users> getListUser(String json) {
         List<Users> ls = new LinkedList<>();
-        Gson g = new Gson();
-        Class<String> res = String.class;
         Type collectionType = new TypeToken<List<Users>>() {}.getType();
-        ls = g.fromJson(result, collectionType);
+        ls = g.fromJson(json, collectionType);
         return ls;
+    }
+    
+    public static Users getUser(String json){
+        Users u = g.fromJson(json, Users.class);
+        return u;
+    }
+    
+    public static List<Friends> getListFriends(String json) {
+        List<Friends> ls = new LinkedList<>();        
+        Type collectionType = new TypeToken<List<Friends>>() {}.getType();
+        ls = g.fromJson(json, collectionType);
+        return ls;
+    }
+    
+    public static List<Images> getListImages(String json){
+        List<Images> list = new LinkedList<>();
+        Type collectionType = new TypeToken<List<Images>>() {}.getType();
+        list = g.fromJson(json, collectionType);
+        return list;
     }
 }

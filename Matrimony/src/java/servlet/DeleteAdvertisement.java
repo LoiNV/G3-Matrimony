@@ -5,7 +5,7 @@
  */
 package servlet;
 
-import fpt.ws.AdvertisementWS;
+import fpt.ws.AdvertisementsWS;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -34,7 +34,7 @@ public class DeleteAdvertisement extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("application/json;charset=UTF-8");
         String id = request.getParameter("id");
-        AdvertisementWS aws = new AdvertisementWS();
+        AdvertisementsWS aws = new AdvertisementsWS();
         aws.remove(id);
         response.sendRedirect("/Matrimony/ShowAdvertisement");
     }

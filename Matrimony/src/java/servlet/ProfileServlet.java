@@ -28,7 +28,7 @@ public class ProfileServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         request.getRequestDispatcher("/profile.jsp").forward(request, response);
     }
 

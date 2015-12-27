@@ -1,3 +1,5 @@
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <footer>
     <div id="footer">
         <div class="row">
@@ -71,4 +73,11 @@
 
 <%@include file="login.jsp" %>
 
-<%@include file="chatBox.jsp" %>
+<c:if test="${sessionScope.login != null && sessionScope.login == 'true'}">
+    <%@include file="chatBox.jsp" %>    
+</c:if>
+<c:if test="${requestScope.alert != null}">
+    <script>
+        alert('${requestScope.alert}');
+    </script>
+</c:if>

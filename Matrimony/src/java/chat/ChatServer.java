@@ -26,6 +26,13 @@ public class ChatServer {
 
         server = new SocketIOServer(config);
         
+        server.addNamespace("/AddFriend").addEventListener("message", RequestAddFriend.class, new DataListener<RequestAddFriend>() {
+
+                @Override
+                public void onData(SocketIOClient client, RequestAddFriend data, AckRequest ackRequest) {
+                    server.addNamespace("/AddFriend").getBroadcastOperations().sendEvent("message", data);
+                }
+            });
     }
 
     public static void createNameSpace(String nameSpace) {

@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="assets/styles/updates.css">
 <link rel="stylesheet" href="assets/styles/custom.css">
 <link href="assets/styles/style.css" rel="stylesheet" type="text/css"/>
+<link href="assets/styles/user-setting.css" rel="stylesheet" type="text/css"/>
 
 <!--Google Fonts-->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
@@ -31,16 +32,16 @@
 <link rel="apple-touch-icon" sizes="72x72" href="assets/images/apple-touch-icon-72x72.png">
 <link rel="apple-touch-icon" sizes="114x114" href="assets/images/apple-touch-icon-114x114.png">
 <link rel="apple-touch-icon" sizes="144x144" href="assets/images/apple-touch-icon-144x144.png"> 
+<!---Date Time---->
 
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" href="DateTime/css/runnable.css" />
 
 <!-- jQuery & Foundation Framework -->
-<script type="text/javascript" src="assets/scripts/jquery.js"></script>
+<script src="assets/uploadfile/js/jquery-2.1.4.js" type="text/javascript"></script>
 <script type="text/javascript" src="assets/scripts/modernizr.foundation.js"></script> 
 <script src="assets/scripts/socket.io/socket.io.js" type="text/javascript"></script>
 <script src="assets/scripts/moment.min.js" type="text/javascript"></script>
 <script src="assets/scripts/script.js" type="text/javascript"></script>
+<script src="assets/scripts/addFiend.js" type="text/javascript"></script>
 
-<!---Date Time---->
-
-  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-    <link rel="stylesheet" href="DateTime/css/runnable.css" />

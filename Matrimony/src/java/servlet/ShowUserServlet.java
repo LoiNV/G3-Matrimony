@@ -7,10 +7,8 @@ package servlet;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import fpt.utils.JsonUtils;
 import fpt.ws.UsersWS;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.lang.reflect.Type;
 import java.util.LinkedList;
 import java.util.List;
@@ -43,13 +41,14 @@ public class ShowUserServlet extends HttpServlet {
         response.setContentType("application/json;charset=UTF-8");
         UsersWS uws = new UsersWS();
         List<Users> ls = new LinkedList<>();
-        Type collection = new TypeToken<List<Users>>() {}.getType();
+        Type collection = new TypeToken<List<Users>>() {
+        }.getType();
         Gson g = new Gson();
         Class<String> res = String.class;
-        String result = uws.findAll_JSON(res);
+        String result = uws.findAll(res);
         ls = g.fromJson(result, collection);
         request.setAttribute("ListUsers", ls);
-         RequestDispatcher rd = request.getRequestDispatcher("layer_admin/showUser.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("layer_admin/showUser.jsp");
         rd.forward(request, response);
     }
 

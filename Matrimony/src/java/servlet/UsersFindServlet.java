@@ -5,15 +5,11 @@
  */
 package servlet;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import check.CheckFriend;
 import fpt.utils.JsonUtils;
 import fpt.ws.UsersWS;
 import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.LinkedList;
 import java.util.List;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,46 +24,52 @@ import model.Users;
 @WebServlet(name = "UsersFindServlet", urlPatterns = {"/UsersFindServlet"})
 public class UsersFindServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("application/json;charsset=UTF-8");
-        Class<String> res = String.class;
-        List<Users> ls = new LinkedList<>();
-        Type collectionType = new TypeToken<List<Users>>() {}.getType();
         String result = "";
-        Gson g = new Gson();
+
         UsersWS uws = new UsersWS();
-        
+
         String name = request.getParameter("name");
         String gender = request.getParameter("gender");
         String age1 = request.getParameter("age1");
         String age2 = request.getParameter("age2");
         String city = request.getParameter("city");
         String country = request.getParameter("country");
-        System.out.println("Name:"+name+gender+age1+age2);
+
         if (name.isEmpty()) {
             name = " ";
         }
-        if(city.isEmpty())
+        if (city.isEmpty()) {
             city = " ";
-        if(country.isEmpty())
+        }
+        if (country.isEmpty()) {
             country = " ";
-        
-        result = uws.searchForAll_JSON(res, name, gender, age1, age2, city, country);
-        
-        System.out.println(JsonUtils.getListJson(result).size());
-        request.setAttribute("ListSearch", JsonUtils.getListJson(result));
-        RequestDispatcher rd = request.getRequestDispatcher("search-listing.jsp");
-        rd.forward(request, response);
+        }
+
+        result = uws.searchForAll(String.class, name, gender, age1, age2, city, country);
+        List<Users> list = JsonUtils.getListUser(result);
+
+        Users user = (Users) request.getSession().getAttribute("infouser");
+
+        if (user != null) {
+            for (Users u : list) {
+                if (u.getId() == user.getId()) {
+                    list.remove(u);
+                    break;
+                }
+            }
+
+            for (Users u2 : list) {
+                if (CheckFriend.checkExistFriend(user.getId(), u2.getId())) {
+                    u2.setStatus(3);
+                }
+            }
+        }
+
+        request.setAttribute("ListSearch", list);
+        request.getRequestDispatcher("search-listing.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

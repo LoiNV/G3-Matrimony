@@ -6,16 +6,11 @@
 package servlet;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import fpt.ws.AdvertisementWS;
+import fpt.ws.AdvertisementsWS;
 import fpt.ws.CustomersWS;
 import java.io.IOException;
 import java.util.Date;
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,7 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Advertisement;
 import model.Customers;
-import model.Users;
 
 /**
  *
@@ -57,16 +51,16 @@ public class AdvertismentCreateServlet extends HttpServlet {
         Advertisement adv = new Advertisement(image, link, message, price, createdDate);
 //        Advertisement adv = new Advertisement("BBBBB", "AA", "AAAAA", 99, "19-12-2015");
         CustomersWS cws = new CustomersWS();
-        Class<String> res = String.class; 
-        String result = cws.find_JSON(res, customerId);
+        Class<String> res = String.class;
+        String result = cws.find(res, customerId);
         Gson gson = new Gson();
         Customers u = gson.fromJson(result, Customers.class);
         adv.setCustomerId(u);
-        AdvertisementWS aws = new AdvertisementWS();
+        AdvertisementsWS aws = new AdvertisementsWS();
         System.out.println(gson.toJson(adv));
-        aws.create_JSON(gson.toJson(adv));
+        aws.create(gson.toJson(adv));
         response.sendRedirect("Thanksyou.jsp");
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

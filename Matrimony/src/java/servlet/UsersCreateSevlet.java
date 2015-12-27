@@ -12,16 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import fpt.utils.JsonUtils;
 import fpt.ws.UsersWS;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.text.ParseException;
-import java.util.Calendar;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.Users;
 
 /**
@@ -42,35 +37,47 @@ public class UsersCreateSevlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("application/json;charsset=UTF-8");
         try {
-            response.setContentType("application/json;charsset=UTF-8");
-            
+
+            Gson gson = new Gson();
+            UsersWS uws = new UsersWS();
+
+            String email = request.getParameter("email");
             String username = request.getParameter("username");
             String password = request.getParameter("password");
-            String email = request.getParameter("email");
             boolean gender = Boolean.parseBoolean(request.getParameter("gender"));
-
-            String birthday =request.getParameter("birthday");
+            String birthday = request.getParameter("birthday");
             SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yy");
             Date birthTemp = sdf.parse(birthday);
             long currentTime = System.currentTimeMillis();
             long time = currentTime - birthTemp.getTime();
-            int age = (int) (time / ((24 * 60 * 60 * 1000)+1))/365;
-            
-            Users u = new Users(username, password, email, gender, birthday, age);
-            Gson gson = new Gson();
-            UsersWS uws = new UsersWS();
-            
-            uws.create_JSON(gson.toJson(u));
-            
-            String u2 = uws.findByEmailUsers_JSON(String.class, email);
-            List<Users> listU = JsonUtils.getListJson(u2);
-            int id = listU.get(0).getId();
-            request.getRequestDispatcher("FindIdUser?id="+ id).forward(request, response);
+            int age = (int) (time / ((24 * 60 * 60 * 1000) + 1)) / 365;
+
+            String u2 = uws.findByEmailUsers(String.class, email);
+            Users user = JsonUtils.getUser(u2);
+            if (user != null) {
+                if (age >= 18) {
+                    Users u = new Users(username, password, email, gender, birthday, age);
+                    u.setAvatar("http://" + request.getServerName() + ":" + request.getServerPort() + "/Matrimony/img/default.png");
+                    uws.create(gson.toJson(u));
+
+                    request.setAttribute("alert", "Register successful!");
+                    request.getRequestDispatcher("FindIdUser?id=" + user.getId()).forward(request, response);
+                } else {
+                    request.setAttribute("alert", "You you are under age!");
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                }
+
+            } else {
+                request.setAttribute("alert", "Email already exist!");
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }
+
         } catch (ParseException ex) {
-            Logger.getLogger(UsersCreateSevlet.class.getName()).log(Level.SEVERE, null, ex);
+            request.setAttribute("alert", "Register Failed!");
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
-       
 
     }
 
