@@ -188,8 +188,8 @@
                                         <!--Third Tab Content-->
                                         <li id="thirdTab">
                                             <h4>Content Tab 3</h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                            <p>We asked each of our parents to share a piece of marriage advice during the ceremony. We were all crying. </p>
+                                            <p>When it was my mom’s turn, everyone laughed as she proceeded to unfurl a giant scroll of parental advice (a prop she had brought with her). But the takeaway is that both couples have been married for 30+ years and there will be good years and hard years, and that love and laughter will help you weather it all. </p>
                                         </li>
                                         <!--end Third Tab Content-->
 

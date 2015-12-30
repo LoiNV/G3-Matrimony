@@ -3,7 +3,7 @@
                     <div class="row">
                         <div class="twelve columns">
                             <h2><span class="no-bg">Why Choose To <span class="pink-text">Become a Member?</span></span></h2>
-                            <p class="lead">Here you have some reasons and some features. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <p class="lead">Here you have some reasons and some features.</p>
                         </div><!--end twelve-->
 
                         <ul class="no-bullet">
@@ -16,7 +16,7 @@
                                     </a>
                                 </div>
                                 <h4>100% for FREE</h4>
-                                <p>You can register and create your profile for FREE! Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+                                <p>You can register and create your profile for FREE!</p>
                                 <p><a href="#" class="small button radius secondary"><i class="icon-angle-right"></i> READ MORE</a></p>
                             </li>
 
@@ -29,7 +29,7 @@
                                     </a>
                                 </div>
                                 <h4>Matching compatible partner</h4>
-                                <p>Invite friends to help you find your perfect match. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <p>Invite friends to help you find your perfect match.</p>
                                 <p><a href="#" class="small button radius secondary"><i class="icon-angle-right"></i> READ MORE</a></p>
                             </li>
 
@@ -42,7 +42,7 @@
                                     </a>
                                 </div>
                                 <h4>Share experiences</h4>
-                                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                <p>Becoming a natural flirt is less about mastering the right words and actions and has more to do with getting the right mindset.</p>
                                 <p><a href="#" class="small button radius secondary"><i class="icon-angle-right"></i> READ MORE</a></p>
                             </li>
                         </ul>

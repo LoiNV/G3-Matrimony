@@ -55,7 +55,7 @@
                             <!-- Begin Article -->
                             <div class="row">
                                 <div class="twelve columns">
-                                    <h2 class="article-title"><a href="#"><span class="pink-text">Using slider</span> as a media blog content</a></h2>
+                                    <h2 class="article-title"><a href="#"><span class="pink-text">Wedding dress shopping:</span> 10 tips to help you find the right dress</a></h2>
 
                                     <div class="article-meta clearfix">
                                         <ul class="link-list">
@@ -90,8 +90,10 @@
                                                 <cite>Isaac Asimov</cite></p>
                                         </blockquote>
 
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-
+                                        <p>You've got the ring, set the date and booked the venue. Now comes the fun part – choosing your wedding dress.</p>
+                                        <p>As a former bridal consultant, I've acted as a confidante, a family therapist and a heavyweight dress-lifting champion in the search for a bride's dream gown. I've also seen the initial enthusiasm surrounding the dress hunt morph into exhaustion over a necessary chore.</p>
+                                        <p>Your wedding is supposed to be the happiest day of your life, so don't let the time leading up to it become the most stressful one. To ease the search for your perfect dress, "be open to the bridal consultants' suggestions," says Danielle Andrews Sunkel, cofounder of The Wedding Planners Institute of Canada.
+                                        </p>
                                     </div><!--end article-content-->
                                 </div><!--end twelve-->
                             </div><!--end row-->
@@ -114,7 +116,7 @@
                                             <p class="date">January 06, 2011</p>
                                         </div>
                                         <div class="comment-body">
-                                            <p>Morbi velit eros, sagittis in facilisis non, rhoncus et erat. Nam posuere tristique sem, eu ultricies tortor imperdiet vitae. Curabitur lacinia neque non metus.</p>
+                                            <p>Figure out what kind of wedding you want (size, budget, etc) and get on the same page before you tell your families you’re engaged. It’s a very small window of time.</p>                                        
                                         </div>
                                     </li>
                                     <li class="comment">
@@ -126,7 +128,7 @@
                                             <p class="date">January 06, 2011</p>
                                         </div>
                                         <div class="comment-body">
-                                            <p>Morbi velit eros, sagittis in facilisis non, rhoncus et erat. Nam posuere tristique sem, eu ultricies tortor imperdiet vitae. Curabitur lacinia neque non metus.</p>
+                                            <p>You don’t have to have bridesmaids and groomsmen. </p>
                                         </div>
                                     </li>
                                     <li class="comment">
@@ -138,7 +140,7 @@
                                             <p class="date">January 06, 2011</p>
                                         </div>
                                         <div class="comment-body">
-                                            <p>Morbi velit eros, sagittis in facilisis non, rhoncus et erat. Nam posuere tristique sem, eu ultricies tortor imperdiet vitae. Curabitur lacinia neque non metus.</p>
+                                            <p>May I know the brand of your wedding gown?/p>
                                         </div>
                                     </li>
                                     <li class="comment">
@@ -150,7 +152,7 @@
                                             <p class="date">January 06, 2011</p>
                                         </div>
                                         <div class="comment-body">
-                                            <p>Morbi velit eros, sagittis in facilisis non, rhoncus et erat. Nam posuere tristique sem, eu ultricies tortor imperdiet vitae. Curabitur lacinia neque non metus.</p>
+                                            <p>I was really stressed all throughout my wedding day.</p>
                                         </div>
 
                                         <!--Comment Reply-->
@@ -164,7 +166,7 @@
                                                     <p class="date">January 06, 2011</p>
                                                 </div>
                                                 <div class="comment-body">
-                                                    <p>Morbi velit eros, sagittis in facilisis non, rhoncus et erat. Nam posuere tristique sem, eu ultricies tortor imperdiet vitae. Curabitur lacinia neque non metus.</p>
+                                                    <p>The guests are all about you and really only want the best for you and your spouse for the years ahead. Soak it all in, enjoy the love!</p>
                                                 </div>
 
                                                 <!--Second Comment Reply-->
@@ -178,7 +180,7 @@
                                                             <p class="date">January 06, 2011</p>
                                                         </div>
                                                         <div class="comment-body">
-                                                            <p>Morbi velit eros, sagittis in facilisis non, rhoncus et erat. Nam posuere tristique sem, eu ultricies tortor imperdiet vitae. Curabitur lacinia neque non metus.</p>
+                                                            <p>I was given this advice right before my wedding. I followed it to a t – and am so thankful for it! </p>
                                                         </div>
                                                     </li>
                                                 </ul>
