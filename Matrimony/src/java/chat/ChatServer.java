@@ -17,28 +17,36 @@ import com.corundumstudio.socketio.listener.DataListener;
  */
 public class ChatServer {
 
-    public static SocketIOServer server;
+    public static final String HOST = "localhost";
+    public static final int PORT = 9999;
+    private SocketIOServer server;
+    private boolean start;
 
     public ChatServer() {
-        Configuration config = new Configuration();
-        config.setHostname("localhost");
-        config.setPort(9999);
 
-        server = new SocketIOServer(config);
-        
-        server.addNamespace("/AddFriend").addEventListener("message", RequestAddFriend.class, new DataListener<RequestAddFriend>() {
+        Configuration config = new Configuration();
+            config.setHostname(HOST);
+            config.setPort(PORT);
+
+            server = new SocketIOServer(config);
+
+            server.addNamespace("/AddFriend").addEventListener("message", RequestAddFriend.class, new DataListener<RequestAddFriend>() {
 
                 @Override
                 public void onData(SocketIOClient client, RequestAddFriend data, AckRequest ackRequest) {
                     server.addNamespace("/AddFriend").getBroadcastOperations().sendEvent("message", data);
                 }
             });
+
+            server.startAsync();
+            start = true;
+        
     }
 
-    public static void createNameSpace(String nameSpace) {
-                
+    public String createNameSpace(String nameSpace) {        
+       
         if (server.getNamespace(nameSpace) == null) {
-            
+
             server.addNamespace(nameSpace).addEventListener("message", ChatObject.class, new DataListener<ChatObject>() {
 
                 @Override
@@ -46,24 +54,39 @@ public class ChatServer {
                     server.addNamespace(nameSpace).getBroadcastOperations().sendEvent("message", data);
                 }
             });
+            
         }
-    }
-
-    public static void removeNameSpace(String nameSpace) {
-        server.removeNamespace(nameSpace);
+        return "http://" + HOST + ":" + PORT + nameSpace;
     }
 
     public void startServer() {
-        server.startAsync();            
+        if (!start) {
+            server.startAsync();
+            start = true;
+        }
     }
 
     public void stopServer() {
-        server.stop();        
+        if (start) {
+            server.stop();
+            start = false;
+        }
     }
 
-//    public static void main(String[] args) {
-//        ChatServer sv = new ChatServer();
-//        sv.startServerChat();       
-//
-//    }
+    public boolean isStart() {
+        return start;
+    }
+
+    public SocketIOServer getServer() {
+        return server;
+    }
+
+    public String getHost() {
+        return HOST;
+    }
+
+    public int getPort() {
+        return PORT;
+    }
+
 }

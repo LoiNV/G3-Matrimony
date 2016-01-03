@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -35,10 +36,6 @@
             </section>
             <!--END BREADCRUMBS SECTION-->
 
-
-
-
-
             <!-- PROFILE SECTION
             ================================================ -->
             <section>
@@ -47,22 +44,21 @@
                         <div class="twelve columns">
                             <h2 class="sweetfont left">Customers</h2>
                             <hr>
-                            <div class="twelve columns" style="padding: 0px 200px 200px 200px">
+                            <div class="twelve columns">
                                 <div class="panel">
-                                    <h3 style="padding: 10px 0 0 40px">Register</h3>
+                                    <h3>Register Customers</h3>
                                     <!--Newsletter form-->
                                     <form id="create-form" name="create-form" action="CustomersCreateServlet" method="post" class="row" style="padding:30px 0 40px 40px;line-height: 30px;">
-                                        <div class="eleven columns">
+                                        <div class="seven columns">
                                             <b>Customer Name:</b><input type="text" name="name" id="name" placeholder="Your name" required>
 
                                             <b>Email:</b><input type="email" name="email" id="email" placeholder="Email" required>
 
                                             <b>Phone</b><input type="text" name="phone" id="phone" placeholder="Phone" required>
-                                            <b>Position</b><input type="number" name="position" id="phone" placeholder="Position" required>
-                                            <input type="hidden" name="status" id="status" placeholder="Status">
                                         </div>
+                                        
                                         <div class="twelve">
-                                            <div class="four columns" style="margin-top: 10px;">
+                                            <div class="six columns" style="margin-top: 10px;">
                                                 <p><button type="submit" id="create-submit" name="create-submit" class="small radius button expand">Register</button></p>
                                             </div>
                                         </div>

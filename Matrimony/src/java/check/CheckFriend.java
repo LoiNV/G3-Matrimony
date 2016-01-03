@@ -21,9 +21,7 @@ public class CheckFriend {
     
     public static List<Friends> getUserFriend(int id){
         
-        List<Friends> list = new LinkedList<>();
-        
-        
+        List<Friends> list = new LinkedList<>();        
         List<Friends> listF = JsonUtils.getListFriends(fws.findAll(String.class));
         
         for (Friends f : listF) {
@@ -32,7 +30,7 @@ public class CheckFriend {
             }
         }
         return list;
-    }
+    }   
     
     public static boolean checkExistFriend(int id1, int id2){
         

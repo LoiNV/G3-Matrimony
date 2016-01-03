@@ -19,17 +19,16 @@ import model.Users;
  */
 public class LogoutServlet extends HttpServlet {
 
-   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Users u = (Users) session.getAttribute("infouser");
-        u.setStatus(0);
-        session.setAttribute("login", "false");
-        session.setAttribute("infouser", null);
-        
+        if (session.getAttribute("infouser") != null) {           
+            session.setAttribute("login", "false");
+            session.setAttribute("infouser", null);    
+        }
+
         response.sendRedirect("index.jsp");
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

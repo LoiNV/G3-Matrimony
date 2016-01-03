@@ -15,7 +15,7 @@
     </head>
     <body>
         <div class="page boxed-style">
-            <%@include file="header-index.jsp" %>
+            <%@include file="header-index.jsp" %>            
 
             <%@include file="calltoaction.jsp" %>
 

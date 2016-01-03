@@ -5,7 +5,6 @@
 
     <head>
         <%@include file="importCSS_admin.jsp" %>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/x.x.x/jquery.min.js"></script>
 
     </head>
 
@@ -38,12 +37,12 @@
                                         <table id="example" class="table table-striped responsive-utilities jambo_table">
                                             <thead>
                                                 <tr class="headings">
-                                                    <th>Advertisement ID</th>
-                                                    <th>Customers ID </th>
-                                                    <th>Status</th>
-                                                    <th>Message</th>
-                                                    <th>Price</th>
+                                                    <th>ID</th>
+                                                    <th>Customers </th>
+                                                    <th>Duration</th>
+                                                    <th>Amount</th>
                                                     <th>Create Date</th>
+                                                    <th>Status</th>                                                    
                                                     <th class=" no-link last"><span class="nobr">Action</span>
                                                     </th>
                                                 </tr>
@@ -53,14 +52,14 @@
                                                 <c:forEach items="${listAdvertisement}" var="a">
                                                     <tr>
                                                         <td>${a.id}</td>
-                                                        <td>${a.customerId.getId()}</td>
-                                                        <td>${a.status}</td>
-                                                        <td>${a.message}</td>
-                                                        <td>${a.price}</td>
+                                                        <td>${a.customerId.getName()}</td>
+                                                        <td>${a.duration} Week</td>
+                                                        <td>${a.amount}</td>
                                                         <td>${a.createdDate}</td>
+                                                        <td>${a.status}</td>
                                                         <td>
                                                             <a href="DeleteAdvertisement?id=${a.id}">Delete</a> |
-                                                            <a href="FindIdAdvertisement?id=${a.id}" class="view" >View</a>
+                                                            <a href="ActiveAdv?id=${a.id}">Active</a>
                                                         </td>
                                                     </tr>
 
@@ -88,15 +87,11 @@
                 <div id="notif-group" class="tabbed_notifications"></div>
             </div>
 
-            <%@include file="importScript_admin.jsp" %>
+
 
         </div>
-        <div id="element_to_pop_up">
-            <a class="b-close">x</a>
-            <output name="id" >${adv.id}</output>
-            <output name="price" >${adv.price}</output>
-        </div>
-
+      
+        <%@include file="importScript_admin.jsp" %>
     </body>
 
 </html>

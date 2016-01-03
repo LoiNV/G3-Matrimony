@@ -9,6 +9,7 @@ import check.CheckFriend;
 import fpt.utils.JsonUtils;
 import fpt.ws.UsersWS;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -49,8 +50,8 @@ public class UsersFindServlet extends HttpServlet {
         }
 
         result = uws.searchForAll(String.class, name, gender, age1, age2, city, country);
-        List<Users> list = JsonUtils.getListUser(result);
-
+        List<Users> list = new LinkedList<>();
+        list = JsonUtils.getListUser(result);
         Users user = (Users) request.getSession().getAttribute("infouser");
 
         if (user != null) {

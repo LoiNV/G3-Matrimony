@@ -153,8 +153,8 @@ ul.pagination li.current a:hover, ul.pagination li.current a:focus { background:
 #profile-slider { background: url(../images/loading.gif) center center no-repeat; /*height: 416px;*/ }
 #profile-slider img { display: none; border: none; }
 #profile-slider.orbit { background: none; }
-#profile-slider.orbit img { display: block; }
-#profile-slider.orbit .big-profile-image {border: 10px solid #fff; }
+#profile-slider.orbit img { display: block; height: 250px; width: 250px;}
+#profile-slider.orbit .big-profile-image {border: 10px solid #fff; height: 250px; width: 250px;}
 .profile-slider-wrapp { background: url(../images/hearts_bg.png) 45px 30px no-repeat; padding-top: 30px; }
 .profile-slider-wrapp ul.orbit-bullets { position: absolute; z-index: 30; list-style: none; bottom: -20px; left: 50%; margin-left: -50px; padding: 0; }
 .profile-slider-wrapp ul.orbit-bullets li.has-thumb { width: 60px; height: 60px; margin: 0 10px; -webkit-border-radius: 50%; -moz-border-radius: 50%; -ms-border-radius: 50%; -o-border-radius: 50%; border-radius: 50%; }
@@ -342,7 +342,7 @@ ul.accordion > li{ border-top: none;  margin-bottom: 8px; }
 .search-list { margin: 0 0 40px; display: inline-block; }
 .search-item { border: 1px solid #e5e5e5; list-style: none; text-align: center; margin-top: 100px; }
 .search-meta {}
-.search-body { padding: 0 10px; }	
+.search-body { padding: 0 10px; height: 100px;}	
 .search-item .avatar { width: 94px; height: 94px; overflow: hidden; position: relative; z-index: 1; margin: -45px auto 25px; border: 4px solid #fff;
 		border-radius: 100%; -moz-border-radius: 100%; -webkit-border-radius: 100%;
 		-moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;

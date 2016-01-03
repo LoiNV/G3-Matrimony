@@ -1,12 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <filter>
-        <filter-name>LoginFilter</filter-name>
-        <filter-class>filter.LoginFilter</filter-class>
+        <filter-name>loginFiler</filter-name>
+        <filter-class>filter.loginFiler</filter-class>
+    </filter>
+    <filter>
+        <filter-name>homeFilter</filter-name>
+        <filter-class>filter.homeFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>AdminFilter</filter-name>
+        <filter-class>filter.AdminFilter</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>LoginFilter</filter-name>
-        <servlet-name>ProfileServlet</servlet-name>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/layer_admin/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/ShowAdvertisement</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/ShowCustomers</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/ShowUserServlet</url-pattern>
+    </filter-mapping>    
+    <filter-mapping>
+        <filter-name>homeFilter</filter-name>
+        <url-pattern>/index.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>loginFiler</filter-name>
+        <url-pattern>/subscription.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>loginFiler</filter-name>
+        <url-pattern>/Profile</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>loginFiler</filter-name>
+        <url-pattern>/profile.jsp</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
@@ -39,11 +75,61 @@
     <servlet>
         <servlet-name>RequestFriendServlet</servlet-name>
         <servlet-class>servlet.RequestFriendServlet</servlet-class>
-    </servlet>    
+    </servlet>
     <servlet>
         <servlet-name>SetAvatarServlet</servlet-name>
         <servlet-class>servlet.SetAvatarServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Checkout</servlet-name>
+        <servlet-class>com.paypal.CheckoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <description/>
+        <display-name>Return</display-name>
+        <servlet-name>Return</servlet-name>
+        <servlet-class>com.paypal.ReturnServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReplyCustomnerServlet</servlet-name>
+        <servlet-class>servlet.ReplyCustomnerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpImageAdvServlet</servlet-name>
+        <servlet-class>servlet.uploadFile.UpImageAdvServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangePassServlet</servlet-name>
+        <servlet-class>servlet.ChangePassServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SenMailServlet</servlet-name>
+        <servlet-class>servlet.SenMailServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StartServlet</servlet-name>
+        <servlet-class>servlet.StartServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DelImageServlet</servlet-name>
+        <servlet-class>servlet.DelImageServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ActiveAdvServlet</servlet-name>
+        <servlet-class>servlet.ActiveAdvServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginAdmin</servlet-name>
+        <servlet-class>servlet.LoginAdmin</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Checkout</servlet-name>
+        <url-pattern>/Checkout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Return</servlet-name>
+        <url-pattern>/Return</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -79,19 +165,48 @@
         <servlet-name>RequestFriendServlet</servlet-name>
         <url-pattern>/requestFriend</url-pattern>
     </servlet-mapping>
-      
     <servlet-mapping>
         <servlet-name>SetAvatarServlet</servlet-name>
         <url-pattern>/SetAvatar</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReplyCustomnerServlet</servlet-name>
+        <url-pattern>/reply</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpImageAdvServlet</servlet-name>
+        <url-pattern>/UpImageAdv</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangePassServlet</servlet-name>
+        <url-pattern>/ChangePass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SenMailServlet</servlet-name>
+        <url-pattern>/SenMail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StartServlet</servlet-name>
+        <url-pattern>/StartServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DelImageServlet</servlet-name>
+        <url-pattern>/delImage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActiveAdvServlet</servlet-name>
+        <url-pattern>/ActiveAdv</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginAdmin</servlet-name>
+        <url-pattern>/LoginAdmin</url-pattern>
+    </servlet-mapping>
     <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
+        <session-timeout>60</session-timeout>
     </session-config>
     <welcome-file-list>
         <welcome-file>
-            index.jsp
+            /index.jsp
         </welcome-file>
     </welcome-file-list>
-    </web-app>
+</web-app>

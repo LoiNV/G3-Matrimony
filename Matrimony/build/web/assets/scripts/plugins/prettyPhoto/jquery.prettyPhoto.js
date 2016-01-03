@@ -61,7 +61,6 @@
 											</div> \
 											<p class="pp_description"></p> \
 											<div class="pp_social"></a> </div> \
-                                                                                        <a class="pp_avt" title="Set avatar" href="#">\
 											<a class="pp_close" href="#">Close</a> \
 										</div> \
 									</div> \
@@ -618,6 +617,9 @@
 		*/
 		function _getDimensions(width,height){
 			width = parseFloat(width);
+                        if (width < 200) {
+                            width = 220;
+                        }
 			height = parseFloat(height);
 			
 			// Get the details height, to do so, I need to clone it since it's invisible
@@ -833,12 +835,6 @@
 
 			$('a.pp_close').bind('click',function(){ $.prettyPhoto.close(); return false; });
                         
-                        $('a.pp_avt').bind('click', function (){                            
-                            $.get("/Matrimony/SetAvatar",{imgPath: $('#fullResImage').attr("src")},function(){});
-                            $('img#avatar').attr("src", $('#fullResImage').attr("src"));
-                            $.prettyPhoto.close(); 
-                            return false;
-                        });
 
 			if(settings.allow_expand) {
 				$('a.pp_expand').bind('click',function(e){

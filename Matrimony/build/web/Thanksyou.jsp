@@ -17,6 +17,8 @@
         <title>Sweet Date - Search Page </title>
 
         <%@include file="importCSS.jsp" %>
+        <link href="assets/styles/subscriptioncss/subscript.css" rel="stylesheet" type="text/css"/>
+
     </head>
     <body>
         <div class="inner page boxed-style">
@@ -45,7 +47,8 @@
                         <div class="twelve columns">
                             <h1 style="font-family: Yesteryear,cursive; font-size: 75px" ><span class="pink-text">Thanks you.</span></h1>
                             <h4 style="font-family: Yesteryear,cursive;font-size: 40px">We will contact you as soon as possible !!!</h4>
-                            
+                            <h4 style="font-family: Yesteryear,cursive;font-size: 40px">Click <a href="index.jsp">here</a> to return Home Page</h4>
+
                         </div><!--end row-->
                     </div><!--end #main-->
                 </div>

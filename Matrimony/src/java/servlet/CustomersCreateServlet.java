@@ -37,11 +37,9 @@ public class CustomersCreateServlet extends HttpServlet {
 
         String name = request.getParameter("name");
         String email = request.getParameter("email");
-        String phone = request.getParameter("phone");
-        int position = Integer.parseInt(request.getParameter("position"));
-        int status = Integer.parseInt(request.getParameter("status"));
+        String phone = request.getParameter("phone");        
 
-        Customers cus = new Customers(name, email, phone, position);
+        Customers cus = new Customers(name, email, phone, 1);
         Gson gson = new Gson();
         CustomersWS cws = new CustomersWS();
         cws.create(gson.toJson(cus));

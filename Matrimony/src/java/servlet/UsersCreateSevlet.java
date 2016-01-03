@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import fpt.utils.JsonUtils;
+import fpt.utils.MD5;
 import fpt.ws.UsersWS;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,7 +38,7 @@ public class UsersCreateSevlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("application/json;charsset=UTF-8");
+        
         try {
 
             Gson gson = new Gson();
@@ -45,25 +46,34 @@ public class UsersCreateSevlet extends HttpServlet {
 
             String email = request.getParameter("email");
             String username = request.getParameter("username");
-            String password = request.getParameter("password");
+            String password = MD5.encodePwd(request.getParameter("password"));
             boolean gender = Boolean.parseBoolean(request.getParameter("gender"));
             String birthday = request.getParameter("birthday");
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yy");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             Date birthTemp = sdf.parse(birthday);
             long currentTime = System.currentTimeMillis();
             long time = currentTime - birthTemp.getTime();
-            int age = (int) (time / ((24 * 60 * 60 * 1000) + 1)) / 365;
+            int age = (int) (time / ((24 * 60 * 60 * 1000) + 1)) / 365;          
 
             String u2 = uws.findByEmailUsers(String.class, email);
             Users user = JsonUtils.getUser(u2);
-            if (user != null) {
+            if (user == null) {
                 if (age >= 18) {
                     Users u = new Users(username, password, email, gender, birthday, age);
-                    u.setAvatar("http://" + request.getServerName() + ":" + request.getServerPort() + "/Matrimony/img/default.png");
-                    uws.create(gson.toJson(u));
+                    
+                    u.setAvatar(request.getScheme() +"://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() +"/img/default.png");
+                    uws.create(u);
+                    System.out.println(email);
+                    String u3 = uws.findByEmailUsers(String.class, email);
+                    System.out.println(u3);
+                    Users user2 = JsonUtils.getUser(u3);
+                    System.out.println(user2.getName() + "");
 
                     request.setAttribute("alert", "Register successful!");
-                    request.getRequestDispatcher("FindIdUser?id=" + user.getId()).forward(request, response);
+                    request.getSession().setAttribute("infouser", user2);
+                    request.getSession().setAttribute("login", "true");
+                    request.getSession().setAttribute("timeActive", 0);
+                    request.getRequestDispatcher("FindIdUser?id=" + user2.getId()).forward(request, response);
                 } else {
                     request.setAttribute("alert", "You you are under age!");
                     request.getRequestDispatcher("index.jsp").forward(request, response);

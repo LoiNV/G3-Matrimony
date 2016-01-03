@@ -1,4 +1,5 @@
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <header>
     <div class="header-bg">
         <!--Top links-->
@@ -15,10 +16,14 @@
                         <a href="#" class="has-tip tip-bottom" data-width="210" title="Pin us on Pinterest"><i class="icon-pinterest"></i></a>
                         <a href="#" class="has-tip tip-bottom" data-width="210" title="Find us on LinkedIn"><i class="icon-linkedin"></i></a>
                     </li>
-                    
+
                 </ul>
+
             </div>
+
+
         </div>
+
         <!--end top-links-->
 
         <div id="header">
@@ -43,22 +48,13 @@
                                 <li class="has-dropdown">
                                     <a href="#">PAGES</a>
                                     <ul class="dropdown">
-                                        <li><a href="search-listing.jsp">Search Listing</a></li>
-                                        <li><a href="profile.jsp">Profile Page</a></li>
-<!--                                        <li class="has-dropdown"><a href="#" class="sub-menu-link">Third level menu</a>
-                                            <ul class="dropdown">
-                                                <li><a href="#" class="sub-menu-link">Sample</a></li>
-                                                <li><a href="#" class="sub-menu-link">Sample link</a></li>
-                                            </ul>
-                                        </li>-->
+                                        <li><a href="search-listing.jsp">Search Match</a></li>
+                                        <li><a href="blog.jsp">Blog Page</a></li>
+                                        <li><a href="createCustomer.jsp">Register Advertisement</a></li>
                                     </ul>
                                 </li>
                                 <li class="has-dropdown">
-                                    <a href="#">BLOG</a>
-                                    <ul class="dropdown">
-                                        <li><a href="blog.jsp">Blog Page</a></li>
-                                        <li><a href="single-article.jsp">Single Article</a></li>
-                                    </ul>
+                                    <a href="subscription.jsp?uri=subscription.jsp">Subscription</a>                                    
                                 </li>
                             </ul>
                         </section><!-- End Nav Section -->
@@ -84,8 +80,8 @@
                             <div id="demo">
                                 <div class="wrapper">
                                     <div class="content">
-                                        <ul>
-                                            <li><a href="#">Change password</a></li>
+                                        <ul class="has-dropdown">
+                                            <li><a href="#" data-reveal-id="repass_panel">Change password</a></li>
                                             <li><a href="FindIdUser?id=${sessionScope.infouser.id}">Edit profile</a></li>
                                             <li><a href="Logout">Logout</a></li>
                                         </ul>
@@ -95,7 +91,7 @@
                                         <span class="avt">                                        
                                             <img id="avatar" style="width: 30px; height: 30px;" src="${sessionScope.infouser.avatar}"/>
                                         </span>
-                                        <span id="${sessionScope.infouser.id}" class="username">Hi, ${sessionScope.infouser.name}</span>
+                                        <span  class="username" id="${sessionScope.infouser.id}" name="${sessionScope.infouser.name}">Hi, ${sessionScope.infouser.name}</span>
                                     </div>
                                 </div>
                             </div>
@@ -123,7 +119,10 @@
                                 <p class="lead text-resize">Serious dating with <strong>SweetDate4u</strong><br>Your perfect match is just a click away</p>
                             </div>
                             <!--Search form-->
-                            <form action="#" method="post" class="custom form-search">
+                            <form action="UsersFindServlet" method="post" class="custom form-search">
+                                <input name="name" type="hidden" value=" "/>
+                                <input name="city" type="hidden" value=" "/>
+                                <input name="country" type="hidden" value=" "/>
                                 <div class="row">
                                     <div class="five mobile-four columns">
                                         <label class="right inline">I am:</label>
@@ -140,9 +139,9 @@
                                         <label class="right inline">Searching for:</label>
                                     </div>
                                     <div class="seven mobile-four columns">
-                                        <select class="expand">
-                                            <option selected="selected">Woman</option>
-                                            <option>Man</option>
+                                        <select class="expand" name="gender">
+                                            <option value="false" selected="selected">Woman</option>
+                                            <option value="true">Man</option>
                                         </select>
                                     </div>
                                 </div><!--end row-->
@@ -151,18 +150,50 @@
                                         <label class="right inline">Age:</label>
                                     </div>
                                     <div class="three mobile-one columns">
-                                        <select class="expand customDropdown">
-                                            <option selected="selected">18</option>
-                                            <option>19</option>
+                                        <select class="expand customDropdown" name="age1">
+                                            <option value="18" selected="selected" >18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                            <option value="24">24</option>
+                                            <option value="25">25</option>
+                                            <option value="26">26</option>
+                                            <option value="27">27</option>
+                                            <option value="28">28</option>
+                                            <option value="29">28</option>
+                                            <option value="30">30</option>
+                                            <option value="31">31</option>
+                                            <option value="32">32</option>
+                                            <option value="33">33</option>
+                                            <option value="34">34</option>
+                                            <option value="35">35</option>
                                         </select>
                                     </div>
                                     <div class="one mobile-one columns text-center">
                                         <label class="inline">to</label>
                                     </div>
                                     <div class="three mobile-one columns">
-                                        <select class="expand customDropdown">
-                                            <option selected="selected">29</option>
-                                            <option>30</option>
+                                        <select class="expand customDropdown" name="age2">
+                                            <option value="35" selected="selected">35</option>
+                                            <option value="34">34</option>
+                                            <option value="33">33</option>
+                                            <option value="32">32</option>
+                                            <option value="31">31</option>
+                                            <option value="30">30</option>
+                                            <option value="29">29</option>
+                                            <option value="28">28</option>
+                                            <option value="27">27</option>
+                                            <option value="26">26</option>
+                                            <option value="25">25</option>
+                                            <option value="24">24</option>
+                                            <option value="23">23</option>
+                                            <option value="22">22</option>
+                                            <option value="21">21</option>
+                                            <option value="20">20</option>
+                                            <option value="19">19</option>
+                                            <option value="18">18</option>
                                         </select>
                                     </div>
                                 </div><!--end row-->
@@ -185,19 +216,9 @@
 
                                 <div class="carousel-profiles responsive">
                                     <ul id="profile-thumbs">
-                                        <li><a href="#"><img src="assets/images/profile-carousel/thumb_01.jpg" alt=""></a></li>
-                                        <li><a href="#"><img src="assets/images/profile-carousel/thumb_02.jpg" alt=""></a></li>
-                                        <li><a href="#"><img src="assets/images/profile-carousel/thumb_03.jpg" alt=""></a></li>
-                                        <li><a href="#"><img src="assets/images/profile-carousel/thumb_04.jpg" alt=""></a></li>
-                                        <li><a href="#"><img src="assets/images/profile-carousel/thumb_05.jpg" alt=""></a></li>
-                                        <li><a href="#"><img src="assets/images/profile-carousel/thumb_06.jpg" alt=""></a></li>
-                                        <li><a href="#"><img src="assets/images/profile-carousel/thumb_07.jpg" alt=""></a></li>
-                                        <li><a href="#"><img src="assets/images/profile-carousel/thumb_08.jpg" alt=""></a></li>
-                                        <li><a href="#"><img src="assets/images/profile-carousel/thumb_09.jpg" alt=""></a></li>
-                                        <li><a href="#"><img src="assets/images/profile-carousel/thumb_10.jpg" alt=""></a></li>
-                                        <li><a href="#"><img src="assets/images/profile-carousel/thumb_11.jpg" alt=""></a></li>
-                                        <li><a href="#"><img src="assets/images/profile-carousel/thumb_12.jpg" alt=""></a></li>
-                                        <li><a href="#"><img src="assets/images/profile-carousel/thumb_13.jpg" alt=""></a></li>
+                                        <c:forEach items="${list}" var="u">
+                                            <li><a href="Profile?uri=Profile?id=${p.id}&id=${p.id}"><img style="height: 93px; width: 93px;" src="${u.avatar}" alt=""></a></li>
+                                        </c:forEach>
                                     </ul>
                                 </div><!--end carousel-profiles-->
                             </div><!--end form-footer-->

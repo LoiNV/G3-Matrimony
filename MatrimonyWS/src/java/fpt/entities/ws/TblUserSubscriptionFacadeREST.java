@@ -5,11 +5,17 @@
  */
 package fpt.entities.ws;
 
+import fpt.entities.TblImages;
+import fpt.entities.TblSubcription;
 import fpt.entities.TblUserSubscription;
+import fpt.entities.TblUsers;
+import java.util.LinkedList;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -26,6 +32,10 @@ import javax.ws.rs.Produces;
 @Stateless
 @Path("fpt.entities.tblusersubscription")
 public class TblUserSubscriptionFacadeREST extends AbstractFacade<TblUserSubscription> {
+    @EJB
+    private TblSubcriptionFacadeREST tblSubcriptionFacadeREST;
+    @EJB
+    private TblUsersFacadeREST tblUsersFacadeREST;
     @PersistenceContext(unitName = "MatrimonyWSPU")
     private EntityManager em;
 
@@ -86,4 +96,31 @@ public class TblUserSubscriptionFacadeREST extends AbstractFacade<TblUserSubscri
         return em;
     }
     
+    @GET
+    @Path("findByUser/{userId}")
+    @Produces({"application/json"})
+    public List<TblUserSubscription> findByUser(@PathParam("userId") Integer userId) {
+        
+        TblUsers u = tblUsersFacadeREST.find(userId);
+        
+        List<TblUserSubscription> ls = new LinkedList<>();
+        Query query = em.createNamedQuery("TblUserSubscription.findByUser");
+        query.setParameter("userId", u);
+        ls = (List<TblUserSubscription>) query.getResultList();
+        return ls;
+    }
+    
+//    @GET
+//    @Path("findBySub/{subId}")
+//    @Produces({"application/json"})
+//    public List<TblUserSubscription> findBySub(@PathParam("subId") Integer subId) {
+//        
+//        TblSubcription s = tblSubcriptionFacadeREST.find(subId);
+//        
+//        List<TblUserSubscription> ls = new LinkedList<>();
+//        Query query = em.createNamedQuery("TblUserSubscription.findBySub");
+//        query.setParameter("subId", s);
+//        ls = (List<TblUserSubscription>) query.getResultList();
+//        return ls;
+//    }
 }

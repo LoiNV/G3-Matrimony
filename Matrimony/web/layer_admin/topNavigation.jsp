@@ -25,7 +25,7 @@
                                         <li>
                                             <a href="javascript:;">Help</a>
                                         </li>
-                                        <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                                        <li><a href="loginAdmin.jsp"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -39,7 +39,7 @@
                                         <li>
                                             <a>
                                                 <span class="image">
-                                                    <img src="images/img.jpg" alt="Profile Image" />
+                                                    <img src="${pageContext.request.getContextPath()}/admin/images/img.jpg" alt="Profile Image" />
                                                 </span>
                                                 <span>
                                                     <span>John Smith</span>

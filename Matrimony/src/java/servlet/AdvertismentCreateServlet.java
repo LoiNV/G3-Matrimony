@@ -18,48 +18,41 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Advertisement;
 import model.Customers;
+import servlet.uploadFile.UploadFile;
 
 /**
  *
  * @author nghiawin
  */
-@WebServlet(name = "AdvertismentCreateServlet", urlPatterns = {"/AdvertismentCreateServlet"})
+@WebServlet(name = "AdvertismentCreateServlet", urlPatterns = {"/AdvertismentCreate"})
 public class AdvertismentCreateServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("application/json;charsset=UTF-8");
 
-        String customerId = request.getParameter("customerId");
-        String image = request.getParameter("image");
+        String image = "No image";
+        if (request.getSession().getAttribute("imgAdv") != null) {
+            image = request.getSession().getAttribute("imgAdv").toString();
+        }
         String link = request.getParameter("link");
         String message = request.getParameter("message");
-        double price = Double.parseDouble(request.getParameter("price"));
+        int durration = Integer.parseInt(request.getParameter("duration"));
+        double amount = Double.parseDouble(request.getParameter("PAYMENTREQUEST_0_AMT"));
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String createdDate = sdf.format(date);
-        System.out.println("\nimage:" + image + "\nlink:" + link + "\nmessage" + message + "\nprice:" + price + "\nDate:" + createdDate);
-        Advertisement adv = new Advertisement(image, link, message, price, createdDate);
-//        Advertisement adv = new Advertisement("BBBBB", "AA", "AAAAA", 99, "19-12-2015");
-        CustomersWS cws = new CustomersWS();
-        Class<String> res = String.class;
-        String result = cws.find(res, customerId);
+
+        Advertisement adv = new Advertisement(image, link, durration, message, amount, createdDate);
+
         Gson gson = new Gson();
-        Customers u = gson.fromJson(result, Customers.class);
-        adv.setCustomerId(u);
-        AdvertisementsWS aws = new AdvertisementsWS();
-        System.out.println(gson.toJson(adv));
-        aws.create(gson.toJson(adv));
-        response.sendRedirect("Thanksyou.jsp");
+        Customers cus = (Customers) request.getSession().getAttribute("customer");
+        adv.setCustomerId(cus);
+
+        request.getSession().setAttribute("Advertisment", adv);
+        request.getSession().setAttribute("paymentType", "adv");
+
+        request.getRequestDispatcher("Checkout?PAYMENTREQUEST_0_AMT="+amount+"&&currencyCodeType=USD&&paymentType=Sale").forward(request, response);
 
     }
 

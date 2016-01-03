@@ -10,8 +10,10 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.LinkedList;
 import java.util.List;
+import model.Advertisement;
 import model.Friends;
 import model.Images;
+import model.Subcription;
 import model.Users;
 
 /**
@@ -43,6 +45,20 @@ public class JsonUtils {
     public static List<Images> getListImages(String json){
         List<Images> list = new LinkedList<>();
         Type collectionType = new TypeToken<List<Images>>() {}.getType();
+        list = g.fromJson(json, collectionType);
+        return list;
+    }
+    
+    public static List<Subcription> getListSubcriptions(String json){
+        List<Subcription> list = new LinkedList<>();
+        Type collectionType = new TypeToken<List<Subcription>>() {}.getType();
+        list = g.fromJson(json, collectionType);
+        return list;
+    }
+    
+    public static List<Advertisement> getListAdv(String json){
+        List<Advertisement> list = new LinkedList<>();
+        Type collectionType = new TypeToken<List<Advertisement>>() {}.getType();
         list = g.fromJson(json, collectionType);
         return list;
     }

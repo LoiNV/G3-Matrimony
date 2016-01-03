@@ -1,3 +1,28 @@
+.sweetfont{
+    margin-left: 20px;
+}
+.advertisment{
+    position:fixed;
+    left: 0px;
+    bottom:0px;
+    width:400px;
+    height: auto;
+    z-index: 9999;
+}
+
+.close-adv{
+    float: right;
+    width: 20px;
+    height: 20px;
+    margin-bottom: -20px;
+    background: #fff;
+    text-align: center;
+    z-index: 9999;
+    cursor: pointer;
+    position: relative;
+    border-radius: 10px;
+    padding: 3px;
+}
 
 .chat_box{
     position:fixed;
@@ -68,10 +93,11 @@
     padding:10px 30px;
 }
 .user:hover{
-    background:#f8f8f8;
+    background:#B7D3A1;
     cursor:pointer;
 
 }
+
 .user:before{
     content:'';
     position:absolute;
@@ -79,7 +105,7 @@
     height:10px;
     width:10px;
     left:10px;
-    top:15px;
+    top:12px;
     border-radius:6px;
 }
 
@@ -124,7 +150,7 @@
     top:7px;
 }
 
-.mnrChat, .mnrBox {
+.mnrChat {
     color: red;
     font-weight: bold;  
 }

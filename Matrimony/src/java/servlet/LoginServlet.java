@@ -6,6 +6,7 @@
 package servlet;
 
 import fpt.utils.JsonUtils;
+import fpt.utils.MD5;
 import fpt.ws.UsersWS;
 import java.io.IOException;
 import java.util.List;
@@ -22,33 +23,37 @@ import model.Users;
  */
 public class LoginServlet extends HttpServlet {
 
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         UsersWS uws = new UsersWS();
-        
-        String username = request.getParameter("username");
-        String pass = request.getParameter("password");
-        String user = uws.findByEmailAndPassUsers(String.class, username, pass);
-        Users u = JsonUtils.getUser(user);
 
-        
+        String username = request.getParameter("email");
+        String pass = MD5.encodePwd(request.getParameter("password"));
+        String user = uws.findByEmailAndPassUsers(String.class, username, pass);
+        Users u = JsonUtils.getUser(user);        
+
         HttpSession session = request.getSession();
-        if (session.getAttribute("currentURI") == null) {
-            session.setAttribute("currentURI", request.getParameter("uri"));
-        }
-        
+
         if (u != null) {
-            session.setAttribute("login", "true");
-            u.setStatus(1);
+            session.setAttribute("login", "true");            
             session.setAttribute("infouser", u);
             
-            response.sendRedirect(session.getAttribute("currentURI").toString());
-        }else{
+            String time = uws.getTimesActive(u.getId() + "");
+            session.setAttribute("timeActive", time);
+
+            if (session.getAttribute("currentURI") == null) {
+                if (request.getParameter("uri") == null) {
+                    response.sendRedirect("index.jsp");
+                }else{
+                    response.sendRedirect(request.getParameter("uri"));
+                }
+            } else {
+                response.sendRedirect(session.getAttribute("currentURI").toString());
+            }
+        } else {
             session.setAttribute("login", "false");
             response.sendRedirect("loginPage.jsp");
         }
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -77,6 +82,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         processRequest(request, response);
     }
 

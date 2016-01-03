@@ -29,7 +29,6 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(fpt.entities.ws.SysdiagramsFacadeREST.class);
         resources.add(fpt.entities.ws.TblAdvertisementFacadeREST.class);
         resources.add(fpt.entities.ws.TblCustomersFacadeREST.class);
         resources.add(fpt.entities.ws.TblFriendsFacadeREST.class);

@@ -9,7 +9,25 @@
                 <h5><i class="icon-heart"></i> About us</h5>
                 <p>Lorem ipsum dolor sit amet, has an nullam sadipscing ullamcorper, nisl graeci minimum usu no, ne est erat deseruisse vituperata.</p>
                 <p><i class="icon-envelope"></i> &nbsp;<a href="tel:1234567890"><span class="__cf_email__" data-cfemail="d5bcbbb3ba95a6a2b0b0a1b1b4a1b0e1a0fbb6bab8">[email&#160;protected]</span><script data-cfhash='f9e31' type="text/javascript">
-                    /* <![CDATA[ */!function(){try{var t = "currentScript"in document?document.currentScript:function(){for (var t = document.getElementsByTagName("script"), e = t.length; e--; )if (t[e].getAttribute("data-cfhash"))return t[e]}(); if (t && t.previousSibling){var e, r, n, i, c = t.previousSibling, a = c.getAttribute("data-cfemail"); if (a){for (e = "", r = parseInt(a.substr(0, 2), 16), n = 2; a.length - n; n += 2)i = parseInt(a.substr(n, 2), 16) ^ r, e += String.fromCharCode(i); e = document.createTextNode(e), c.parentNode.replaceChild(e, c)}t.parentNode.removeChild(t); }} catch (u){}}()/* ]]> */</script></a><br>&nbsp;<i class="icon-mobile-phone icon-large"></i> &nbsp;&nbsp;(123) 456-7890</p>
+                    /* <![CDATA[ */!function () {
+                        try {
+                            var t = "currentScript"in document ? document.currentScript : function () {
+                                for (var t = document.getElementsByTagName("script"), e = t.length; e--; )
+                                    if (t[e].getAttribute("data-cfhash"))
+                                        return t[e]
+                            }();
+                            if (t && t.previousSibling) {
+                                var e, r, n, i, c = t.previousSibling, a = c.getAttribute("data-cfemail");
+                                if (a) {
+                                    for (e = "", r = parseInt(a.substr(0, 2), 16), n = 2; a.length - n; n += 2)
+                                        i = parseInt(a.substr(n, 2), 16) ^ r, e += String.fromCharCode(i);
+                                    e = document.createTextNode(e), c.parentNode.replaceChild(e, c)
+                                }
+                                t.parentNode.removeChild(t);
+                            }
+                        } catch (u) {
+                        }
+                    }()/* ]]> */</script></a><br>&nbsp;<i class="icon-mobile-phone icon-large"></i> &nbsp;&nbsp;(123) 456-7890</p>
                 <p class="footer-social-icons">Stay in touch:<br>
                     <a href="#" class="has-tip tip-bottom" data-width="210" title="Follow us on Twitter"><i class="icon-twitter-sign icon-2x"></i></a>
                     <a href="#" class="has-tip tip-bottom" data-width="210" title="Find us on Facebook"><i class="icon-facebook-sign icon-2x"></i></a>
@@ -65,7 +83,7 @@
 
             <div class="twelve columns">
                 <hr>
-                <p>Copyright &copy; 2013 YourSweetName Network. All Rights Reserved. A premium landing page from <a href="http://themeforest.net/user/SeventhQueen/portfolio?ref=SeventhQueen" target="_blank">Seven<sup>th</sup> Queen</a></p>
+                <p>Copyright &copy; 2013 YourSweetName Network. All Rights Reserved. A premium landing page from <a href="#" target="_blank">Seven<sup>th</sup> Queen</a></p>
             </div>
         </div>
     </div><!--end footer-->
@@ -74,6 +92,8 @@
 <%@include file="login.jsp" %>
 
 <c:if test="${sessionScope.login != null && sessionScope.login == 'true'}">
+    <script src="assets/scripts/script.js" type="text/javascript"></script>
+    <script src="assets/scripts/addFiend.js" type="text/javascript"></script>
     <%@include file="chatBox.jsp" %>    
 </c:if>
 <c:if test="${requestScope.alert != null}">
@@ -81,3 +101,15 @@
         alert('${requestScope.alert}');
     </script>
 </c:if>
+
+<!--Advertisment-->
+
+<div class="advertisment">
+    <span class="close-adv ">X</span>
+    <a href="${sessionScope.adv.link}" target="_blank"><img src="${sessionScope.adv.image}"/></a>
+</div>
+<script>
+    $('.close-adv').click(function (){
+        $('.advertisment').hide();
+    });
+</script>

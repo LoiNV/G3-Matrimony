@@ -74,7 +74,7 @@
 
                                 <div class="twelve columns">
                                     <div class="article-content">
-                                        <p>Everyone gets nervous on first dates. There are a lot of questions we ask ourselves in advance.<br><br> “Will the two of us get along? Will we hook up? Will I do or say something so stupid and embarrassing that I am haunted by shame for the rest of my life?”</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br><br>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                                         <p><a href="single-article.jsp" class="radius small button secondary">Continue reading</a></p>
                                     </div><!--end article-content-->
                                 </div><!--end twelve-->
@@ -108,7 +108,7 @@
 
                                 <div class="twelve columns">
                                     <div class="article-content">
-                                        <p>She drove an hour and a half to meet me in a poorly-lit gas station parking lot. We had a lot of time to kill, so we went to a restaurant to eat and start getting to know one another.<br><br>From there, we went to a divey bar for a drink, where an extremely trashed teenager kept us company and told us all about her ex-boyfriend.</p>
+                                        <p>Curabitur risus est, aliquam at vehicula hendrerit, lacinia sit amet diam. Nulla tristique arcu et nulla ullamcorper sit amet varius odio condimentum.<br><br>Ut semper porttitor ipsum, et cursus erat volutpat vitae. Pellentesque odio massa, egestas non euismod eget, ultrices ac orci. Donec purus augue, tempus a iaculis quis, pretium volutpat ipsum. Donec vitae rhoncus turpis.</p>
                                         <p><a href="#" class="radius small button secondary">Continue reading</a></p>
                                     </div><!--end article-content-->
                                 </div><!--end twelve-->
@@ -140,7 +140,7 @@
 
                                 <div class="twelve columns">
                                     <div class="article-content">
-                                        <p>Texted a girls number I saw on a bathroom wall in a club while I was taking a piss. Seems like a nice girl, thinks its hilarious how I got her number. <br><br>Text and call all the time for a couple of months and she says shes coming to my city to see some friends so we should meet up. Meet up, go for a beer and food. Get on awesome.</p>
+                                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.<br><br>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
                                         <p><a href="#" class="radius small button secondary">Continue reading</a></p>
                                     </div><!--end article-content-->
                                 </div><!--end twelve-->
@@ -206,9 +206,9 @@
                                 </div>
 
                                 <div class="widgets clearfix">
-                                    <h5>Flirting Tips</h5>
-                                    <p>Flirting is an incredibly fast and powerful way to attract a woman. <br><br>Many men struggle with it, not realizing that a few simple flirting tips for guys can dramatically increase any man’s ability to flirt successfully.</p>
-                                    <a href="" target="_blank">Learn about</a>
+                                    <h5>Our Text</h5>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br><br>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+                                    <a href="http://www.lipsum.com/" target="_blank">Learn about</a>
                                 </div>
 
                             </div> <!--end Widgets Container-->

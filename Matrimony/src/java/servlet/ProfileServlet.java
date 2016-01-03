@@ -5,11 +5,17 @@
  */
 package servlet;
 
+import fpt.utils.JsonUtils;
+import fpt.ws.ImagesWS;
+import fpt.ws.UsersWS;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Images;
+import model.Users;
 
 /**
  *
@@ -28,6 +34,14 @@ public class ProfileServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        String id = request.getParameter("id");
+        Users u = JsonUtils.getUser(new UsersWS().find(String.class, id));
+        request.setAttribute("u", u);
+        ImagesWS iws = new ImagesWS();
+        String imgs = iws.findByUser(String.class, u.getId() + "");
+        List<Images> listImg = JsonUtils.getListImages(imgs);
+        request.setAttribute("listImg", listImg);
 
         request.getRequestDispatcher("/profile.jsp").forward(request, response);
     }

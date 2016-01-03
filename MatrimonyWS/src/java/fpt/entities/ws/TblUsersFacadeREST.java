@@ -6,9 +6,15 @@
 package fpt.entities.ws;
 
 import com.google.gson.Gson;
+import fpt.entities.TblUserSubscription;
 import fpt.entities.TblUsers;
-import java.util.LinkedList;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -24,11 +30,13 @@ import javax.ws.rs.Produces;
 
 /**
  *
- * @author phamt
+ * @author Admin
  */
 @Stateless
 @Path("fpt.entities.tblusers")
 public class TblUsersFacadeREST extends AbstractFacade<TblUsers> {
+    @EJB
+    private TblUserSubscriptionFacadeREST tblUserSubscriptionFacadeREST;
     @PersistenceContext(unitName = "MatrimonyWSPU")
     private EntityManager em;
 
@@ -36,7 +44,7 @@ public class TblUsersFacadeREST extends AbstractFacade<TblUsers> {
         super(TblUsers.class);
     }
 
-    @POST    
+    @POST
     @Override
     @Consumes({"application/json"})
     public void create(TblUsers entity) {
@@ -92,11 +100,14 @@ public class TblUsersFacadeREST extends AbstractFacade<TblUsers> {
     @GET
     @Path("findByEmail/{email}")
     @Produces({"application/json"})
-    public TblUsers findByEmailUsers(@PathParam("email") String email) {        
+    public TblUsers findByEmailUsers(@PathParam("email") String email) {
         Query query = em.createNamedQuery("TblUsers.findByEmail");
         query.setParameter("email", email);
         List<TblUsers> ls = (List<TblUsers>) query.getResultList();
-        return ls.get(0);
+        if (ls.size()>0) {
+            return ls.get(0);
+        }
+        return null;
     }
 
     @GET
@@ -104,7 +115,7 @@ public class TblUsersFacadeREST extends AbstractFacade<TblUsers> {
     @Produces({"application/json"})
     public List<TblUsers> searchForAll(@PathParam("name") String name, @PathParam("gender") Boolean gender,
             @PathParam("age1") Integer age1, @PathParam("age2") Integer age2, @PathParam("city") String city, @PathParam("country") String country) {
-        
+
         Query query = em.createNamedQuery("TblUsers.searchForAll");
         query.setParameter("name", name);
         query.setParameter("gender", gender);
@@ -112,7 +123,7 @@ public class TblUsersFacadeREST extends AbstractFacade<TblUsers> {
         query.setParameter("age2", age2);
         query.setParameter("city", city);
         query.setParameter("country", country);
-        
+
         return (List<TblUsers>) query.getResultList();
     }
 
@@ -120,20 +131,49 @@ public class TblUsersFacadeREST extends AbstractFacade<TblUsers> {
     @Path("findEmailAndPass/{email}/{password}")
     @Produces({"application/json"})
     public TblUsers findByEmailAndPassUsers(@PathParam("email") String email, @PathParam("password") String password) {
-         
+
         Query query = em.createNamedQuery("TblUsers.findByEmailAndPass");
         query.setParameter("email", email);
         query.setParameter("password", password);
         List<TblUsers> ls = (List<TblUsers>) query.getResultList();
-        return ls.get(0);
+        if (ls.size()>0) {
+            return ls.get(0);
+        }
+        return null;
     }
-   
+
     @POST
     @Path("createUser")
     @Produces({"application/json"})
-    public void createUser(String json){
+    public void createUser(String json) {
         Gson g = new Gson();
         TblUsers user = g.fromJson(json, TblUsers.class);
         super.create(user);
+    }
+
+    @GET
+    @Path("getTimesActive/{id}")
+    @Produces("text/plain")
+    public String getTimesActive(@PathParam("id") Integer id) {
+
+        int time = 0;
+        String s="";
+        List<TblUserSubscription> listUS = tblUserSubscriptionFacadeREST.findByUser(id);
+        for (TblUserSubscription us : listUS) {
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                Date createDate = sdf.parse(us.getChargedDate().replaceAll("-", "/"));
+                
+                long currentTime = System.currentTimeMillis();
+                long duration = currentTime - createDate.getTime();
+                int day = (int) (duration / (24 * 60 * 60 * 1000));
+                
+                time += (us.getSubId().getDuration() - day);
+            } catch (ParseException ex) {
+                Logger.getLogger(TblUsersFacadeREST.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return time+"";
+
     }
 }

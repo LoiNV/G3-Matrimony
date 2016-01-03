@@ -44,22 +44,14 @@
                                 <li class="has-dropdown">
                                     <a href="#">PAGES</a>
                                     <ul class="dropdown">
-                                        <li><a href="search-listing.jsp">Search Listing</a></li>
-                                        <li><a href="profile.jsp">Profile Page</a></li>
-<!--                                        <li class="has-dropdown"><a href="#" class="sub-menu-link">Third level menu</a>
-                                            <ul class="dropdown">
-                                                <li><a href="#" class="sub-menu-link">Sample</a></li>
-                                                <li><a href="#" class="sub-menu-link">Sample link</a></li>
-                                            </ul>
-                                        </li>-->
+                                        <li><a href="search-listing.jsp">Search Match</a></li>
+                                        <li><a href="blog.jsp">Blog Page</a></li>
+                                        <li><a href="createCustomer.jsp">Register Advertisement</a></li>
+
                                     </ul>
                                 </li>
                                 <li class="has-dropdown">
-                                    <a href="#">BLOG</a>
-                                    <ul class="dropdown">
-                                        <li><a href="blog.jsp">Blog Page</a></li>
-                                        <li><a href="single-article.jsp">Single Article</a></li>
-                                    </ul>
+                                    <a href="subscription.jsp?uri=subscription.jsp">Subscription</a>    
                                 </li>
                             </ul>
                         </section><!-- End Nav Section -->
@@ -85,8 +77,8 @@
                             <div id="demo">
                                 <div class="wrapper">
                                     <div class="content">
-                                        <ul>
-                                            <li><a href="#">Change password</a></li>
+                                        <ul class="dropdown">
+                                            <li><a href="#" data-reveal-id="repass_panel">Change password</a></li>
                                             <li><a href="FindIdUser?id=${sessionScope.infouser.id}">Edit profile</a></li>
                                             <li><a href="Logout">Logout</a></li>
                                         </ul>
@@ -96,7 +88,7 @@
                                         <span class="avt">                                        
                                             <img id="avatar" style="width: 30px; height: 30px;" src="${sessionScope.infouser.avatar}"/>
                                         </span>
-                                        <span id="${sessionScope.infouser.id}" class="username">Hi, ${sessionScope.infouser.name}</span>
+                                        <span id="${sessionScope.infouser.id}" class="username" name="${sessionScope.infouser.name}">Hi, ${sessionScope.infouser.name}</span>
                                     </div>
                                 </div>
                             </div>
@@ -113,10 +105,10 @@
                         </div>
                         <!--end login buttons-->
                     </c:otherwise>
-                </c:choose>
+                </c:choose>     
 
             </div><!--end row-->
         </div><!--end #header-->
     </div><!--end header-bg-->
-</header>
+</header>    
 <!--END HEADER SECTION-->

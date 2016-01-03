@@ -17,11 +17,11 @@ public class RequestAddFriend {
     public RequestAddFriend() {
     }
 
-    public RequestAddFriend(String fromId, String toId, String fromName) {
+    public RequestAddFriend(String fromId, String fromName, String toId) {
         super();
         this.fromId = fromId;
-        this.toId = toId;
         this.fromName = fromName;
+        this.toId = toId;
     }
 
     public String getFromId() {

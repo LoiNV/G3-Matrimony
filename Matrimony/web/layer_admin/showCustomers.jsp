@@ -57,7 +57,7 @@
                                                     <td>${c.position}</td>
                                                     <td>${c.status}</td>
                                                     <td>
-                                                        <a href="">Send</a>
+                                                        <a href="SenMail?id=${c.id}">Accept</a>
                                                         
                                                     </td>
                                                 </tr>

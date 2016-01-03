@@ -54,9 +54,9 @@ public class AddFriendServlet extends HttpServlet {
 
             request.setAttribute("listFriends", null);
 
-            out.println(g.toJson("Add " + user.getName() + " success"));
+            out.println(g.toJson(user.getName() + " Accepted"));
         } else {
-            out.println(g.toJson(user.getName() + " Not Accept"));
+            out.println(g.toJson(user.getName() + "Did Not Accept"));
         }
 
     }

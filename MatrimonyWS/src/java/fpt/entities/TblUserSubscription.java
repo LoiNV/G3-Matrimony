@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "TblUserSubscription.findAll", query = "SELECT t FROM TblUserSubscription t"),
     @NamedQuery(name = "TblUserSubscription.findById", query = "SELECT t FROM TblUserSubscription t WHERE t.id = :id"),
+    @NamedQuery(name = "TblUserSubscription.findByUser", query = "SELECT t FROM TblUserSubscription t WHERE t.userId = :userId"),
     @NamedQuery(name = "TblUserSubscription.findByChargedDate", query = "SELECT t FROM TblUserSubscription t WHERE t.chargedDate = :chargedDate")})
 public class TblUserSubscription implements Serializable {
     private static final long serialVersionUID = 1L;

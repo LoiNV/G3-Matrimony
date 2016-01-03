@@ -44,7 +44,7 @@ public class UploadFile {
 
                         String root = request.getServletContext().getRealPath("/");
                         String dir = root + "/img/" + name;
-                        path = "http://" + request.getServerName() + ":" + request.getServerPort() + "/Matrimony/img/" + name + "/" + fileName;
+                        path = request.getScheme() +"://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() +"/img/" + name + "/" + fileName;
 
                    
                         File folder = new File(dir);

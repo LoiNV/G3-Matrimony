@@ -5,6 +5,7 @@
  */
 package servlet;
 
+import com.google.gson.Gson;
 import fpt.ws.UsersWS;
 import java.io.IOException;
 import java.util.Date;
@@ -37,17 +38,17 @@ public class EditUsersServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("application/json;charsset=UTF-8");
         try {
-            request.setCharacterEncoding("utf-8");
-            response.setContentType("application/json;charsset=UTF-8");
+
+            UsersWS uws = new UsersWS();
+
             String id = request.getParameter("id");
-            int idTemp = Integer.parseInt(id);
 
             String name = request.getParameter("name");
-            String password = request.getParameter("password");
-            String email = request.getParameter("email");
-            int status = Integer.parseInt(request.getParameter("status"));
+
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
             boolean gender = Boolean.parseBoolean(request.getParameter("gender"));
@@ -65,13 +66,27 @@ public class EditUsersServlet extends HttpServlet {
             String phone = request.getParameter("phone");
             String religion = request.getParameter("religion");
             String caste = request.getParameter("caste");
-            String avatar = request.getParameter("avatar");
+            String desc = request.getParameter("desc");
 
-            Users u = new Users(idTemp, name, password, email, gender, birthday, firstName, lastName, maritalstatus, age, country, city, phone, religion, caste, avatar, status);
+            String u = uws.find(String.class, id);
+            Users user = new Gson().fromJson(u, Users.class);
+            user.setName(name);
+            user.setFirstName(firstName);
+            user.setLastName(lastName);
+            user.setGender(gender);
+            user.setBirthday(birthday);
+            user.setAge(age);
+            user.setMaritalStatus(maritalstatus);
+            user.setCountry(country);
+            user.setCity(city);
+            user.setPhone(phone);
+            user.setReligion(religion);
+            user.setCaste(caste);
+            user.setDescription(desc);
 
-            UsersWS uws = new UsersWS();
+            uws.edit(user, id);
 
-            uws.edit(u, id);
+            request.getSession().setAttribute("infouser", user);
             response.sendRedirect("/Matrimony/FindIdUser?id=" + id);
         } catch (ParseException ex) {
             Logger.getLogger(EditUsersServlet.class.getName()).log(Level.SEVERE, null, ex);

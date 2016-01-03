@@ -14,22 +14,24 @@ import java.io.Serializable;
 public class Advertisement implements Serializable {
 
     private int id;
-    private Customers customerId;
     private String image;
     private String link;
-    private int status;
+    private int duration;
     private String message;
-    private double price;
+    private double amount;
     private String createdDate;
+    private int status;
+    private Customers customerId;
 
     public Advertisement() {
     }
 
-    public Advertisement(String image, String link, String message, double price, String createdDate) {
+    public Advertisement(String image, String link, int duration, String message, double amount, String createdDate) {
         this.image = image;
         this.link = link;
+        this.duration = duration;
         this.message = message;
-        this.price = price;
+        this.amount = amount;
         this.createdDate = createdDate;
     }
 
@@ -73,14 +75,22 @@ public class Advertisement implements Serializable {
         this.message = message;
     }
 
-    public double getPrice() {
-        return price;
+    public int getDuration() {
+        return duration;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+    
     public Customers getCustomerId() {
         return customerId;
     }

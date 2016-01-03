@@ -16,6 +16,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Customers;
 import model.Images;
 import model.Users;
 
@@ -25,24 +26,26 @@ import model.Users;
  */
 public class UpLoadFileServlet extends HttpServlet {
 
-   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         Users user = (Users) request.getSession().getAttribute("infouser");
-        String path = UploadFile.upload(request, user.getName());
-        
-        if (!path.equals("")) {
-            Images img = new Images(path, user);
-            String json = new Gson().toJson(img, Images.class);
-            ImagesWS iws = new ImagesWS();
-            iws.create(json);
-            
-            String imgs = iws.findByUser(String.class, user.getId()+"");
-            List<Images> listImg = JsonUtils.getListImages(imgs);
-            request.setAttribute("listImg", listImg);
-        }
-        request.getRequestDispatcher("edit-profile.jsp?id="+user.getId()+"#my-photos").forward(request, response);
+        if (user != null) {
+            String path = UploadFile.upload(request, user.getName());
+
+            if (!path.equals("")) {
+                Images img = new Images(path, user);
+                String json = new Gson().toJson(img, Images.class);
+                ImagesWS iws = new ImagesWS();
+                iws.create(json);
+
+                String imgs = iws.findByUser(String.class, user.getId() + "");
+                List<Images> listImg = JsonUtils.getListImages(imgs);
+                request.setAttribute("listImg", listImg);
+            }
+            request.getRequestDispatcher("edit-profile.jsp?id=" + user.getId() + "#my-photos").forward(request, response);
+        } 
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

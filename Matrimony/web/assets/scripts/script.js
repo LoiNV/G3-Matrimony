@@ -15,6 +15,11 @@ $(document).ready(function () {
     });
 
     var user = document.getElementsByClassName('user');
+    
+    if (user.lenght===0 || user.lenght === undefined) {        
+        $.get('/Matrimony/createNamespace', {ns: "AddFriend"}, function (data) {});
+    }
+    
     for (var i = 0, max = user.length; i < max; i++) {
         createMessageBox(user[i]);
         closeBox(user[i].id);
@@ -51,13 +56,13 @@ function createMessageBox(user) {
     
     if ($('#box_' + id).length < 1) {
 
-        userName = $('.username').html();
+        userName = $('.username').attr('name');
 
         $.get('/Matrimony/createNamespace', {ns: id}, function (data) {
 
             if (chatSocket[id] === undefined) {
-
-                chatSocket[id] = io.connect('http://localhost:9999' + data);
+                
+                chatSocket[id] = io.connect(data);
 
                 chatSocket[id].on('connect', connectHandler(id));
 
@@ -71,7 +76,9 @@ function createMessageBox(user) {
         right += 255;
 
         var msgBox = $('<div id ="box_' + id + '" class="msg_box" style="right: ' + right + 'px;"></div>');
-        var msgHead = $('<div id="' + id + '" class="msg_head" onclick="hideBody(this.id);"><span class="mnrBox"></span>' + $(user).html() + '<div id="' + id + '" onclick="closeBox(this.id);" class="close">X</div></div>');
+        var msgHead = $('<div id="' + id + '" class="msg_head" onclick="hideBody(this.id);">\
+                            <span style="color: red; font-weight: bold;" class="'+id+'_mnrBox"></span>' + $(user).html() + '\
+                            <div id="' + id + '" onclick="closeBox(this.id);" class="close">X</div></div>');
         var msgWrap = $('<div id="wrap_' + id + '" class="msg_wrap"></div>');
         var msgBody = $('<div class="msg_body"><div class="push_' + id + '"></div></div>');
         var msgFooter = $('<div class="msg_footer"></div>');
@@ -97,7 +104,7 @@ function createMessageBox(user) {
 function hideBody(id) {
     $('#wrap_' + id).slideToggle('slow');
     notReadMsgBox[id] = 0;
-    $('#' + id + ' .mnrBox').text('');
+    $('.' + id + '_mnrBox').text('');
 }
 
 function closeBox(id) {
@@ -126,11 +133,11 @@ function messageHandler(id) {
 
     return function (data) {
         if ($('#box_' + id).length) {
-
-            if (!($('#wrap_' + id).is(':visible'))) {
-
+            
+            if (!($('#wrap_' + id).is(':visible'))) {                
                 notReadMsgBox[id]++;
-                $('#' + id + ' .mnrBox').text('(' + notReadMsgBox[id] + ')');
+                $('.' + id + '_mnrBox').text('(' + notReadMsgBox[id] + ')');
+                console.log(notReadMsgBox[id]+'');
             }
 
             if (data.userName === userName) {

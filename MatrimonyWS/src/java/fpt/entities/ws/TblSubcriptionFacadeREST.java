@@ -10,6 +10,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -86,4 +87,14 @@ public class TblSubcriptionFacadeREST extends AbstractFacade<TblSubcription> {
         return em;
     }
     
+    @GET
+    @Path("findByName/{name}")
+    @Produces({"application/json"})
+    public TblSubcription findByName(@PathParam("name") String name){
+        Query q = em.createNamedQuery("TblSubcription.findByName");
+        q.setParameter("name", name);
+        
+        return (TblSubcription) q.getResultList().get(0);
+    }
+ 
 }

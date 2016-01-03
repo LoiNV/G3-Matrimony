@@ -39,13 +39,12 @@ public class ShowCustomers extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("application/json;charset=UTF-8");
-        CustomersWS uws = new CustomersWS();
+        CustomersWS cws = new CustomersWS();
         List<Customers> ls = new LinkedList<>();
-        Type collection = new TypeToken<List<Customers>>() {
-        }.getType();
+        Type collection = new TypeToken<List<Customers>>() {}.getType();
         Gson g = new Gson();
         Class<String> res = String.class;
-        String result = uws.findAll(res);
+        String result = cws.findAll(res);
         ls = g.fromJson(result, collection);
         request.setAttribute("listCustomers", ls);
         RequestDispatcher rd = request.getRequestDispatcher("layer_admin/showCustomers.jsp");

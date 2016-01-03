@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author phamt
+ * @author Admin
  */
 @Entity
 @Table(name = "tbl_Users")
@@ -54,7 +54,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "TblUsers.findByAvatar", query = "SELECT t FROM TblUsers t WHERE t.avatar = :avatar"),
     @NamedQuery(name = "TblUsers.findByLongtitude", query = "SELECT t FROM TblUsers t WHERE t.longtitude = :longtitude"),
     @NamedQuery(name = "TblUsers.findByLatitude", query = "SELECT t FROM TblUsers t WHERE t.latitude = :latitude"),
-    @NamedQuery(name = "TblUsers.findByStatus", query = "SELECT t FROM TblUsers t WHERE t.status = :status")})
+    @NamedQuery(name = "TblUsers.findByStatus", query = "SELECT t FROM TblUsers t WHERE t.status = :status"),
+    @NamedQuery(name = "TblUsers.findByDescription", query = "SELECT t FROM TblUsers t WHERE t.description = :description")})
 public class TblUsers implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -65,7 +66,7 @@ public class TblUsers implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 50)
+    @Size(min = 1, max = 20)
     @Column(name = "name")
     private String name;
     @Basic(optional = false)
@@ -126,6 +127,9 @@ public class TblUsers implements Serializable {
     private BigInteger latitude;
     @Column(name = "status")
     private Integer status;
+    @Size(max = 1073741823)
+    @Column(name = "description")
+    private String description;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
     private Collection<TblImages> tblImagesCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId1")
@@ -141,6 +145,16 @@ public class TblUsers implements Serializable {
     public TblUsers(Integer id) {
         this.id = id;
     }
+
+    public TblUsers(String name, String password, String email, boolean gender, String birthday, int age) {
+        this.name = name;
+        this.password = password;
+        this.email = email;
+        this.gender = gender;
+        this.birthday = birthday;
+        this.age = age;
+    }
+    
 
     public TblUsers(Integer id, String name, String password, String email, boolean gender, String birthday, int age) {
         this.id = id;
@@ -304,6 +318,14 @@ public class TblUsers implements Serializable {
         this.status = status;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @XmlTransient
     public Collection<TblImages> getTblImagesCollection() {
         return tblImagesCollection;
@@ -339,7 +361,7 @@ public class TblUsers implements Serializable {
     public void setTblUserSubscriptionCollection(Collection<TblUserSubscription> tblUserSubscriptionCollection) {
         this.tblUserSubscriptionCollection = tblUserSubscriptionCollection;
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;

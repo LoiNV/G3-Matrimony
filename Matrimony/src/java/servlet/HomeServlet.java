@@ -5,12 +5,21 @@
  */
 package servlet;
 
-import chat.ChatServer;
+import fpt.utils.JsonUtils;
+import fpt.ws.AdvertisementsWS;
+import fpt.ws.UsersWS;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Random;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Advertisement;
+import model.Users;
 
 /**
  *
@@ -18,24 +27,36 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class HomeServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        if (ChatServer.server == null) {
-            ChatServer sv = new ChatServer();
-            sv.startServer();
+        UsersWS uws = new UsersWS();
+        List<Users> listU = JsonUtils.getListUser(uws.findAll(String.class));
+        Random r = new Random();
+        List<Users> list = new LinkedList<>();
+
+        Collections.shuffle(listU);
+        for (int i = 0; i < 8; i++) {
+            HashMap<String, Users> urls = new HashMap<>();
+            urls.put("Value", listU.get(i));
+            list.add(urls.get("Value"));
+        }
+    
+        request.setAttribute("list", list);
+        
+        AdvertisementsWS aws = new AdvertisementsWS();
+        List<Advertisement> ls = new LinkedList<>();        
+        String result = aws.findAll(String.class);
+        
+        ls = JsonUtils.getListAdv(result);
+        for (Advertisement a : ls) {
+            if (a.getStatus() == 1) {
+                request.getSession().setAttribute("adv", a);
+                break;
+            }
         }
 
-        response.sendRedirect("index.jsp");
+       request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

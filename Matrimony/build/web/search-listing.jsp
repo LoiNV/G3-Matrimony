@@ -60,35 +60,53 @@
 
                                 <div class="three columns">
                                     <select class="expand" name="gender">
-                                        <option value="false">Woman</option>
+                                        <option selected="selected" value="false">Woman</option>
                                         <option value="true">Man</option>
                                     </select>
                                 </div>
 
                                 <div class="two columns">
                                     <select class="expand" name="age1">
-                                        <option value="18">18</option>
-                                        <option value="19">19</option>
-                                        <option value="20">20</option>
-                                        <option value="21">21</option>
-                                        <option value="22">22</option>
-                                        <option value="23">23</option>
-                                        <option value="24">24</option>
-                                        <option value="25">25</option>
-                                        <option value="26">26</option>
+                                        <option value="18" selected="selected" >18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                            <option value="24">24</option>
+                                            <option value="25">25</option>
+                                            <option value="26">26</option>
+                                            <option value="27">27</option>
+                                            <option value="28">28</option>
+                                            <option value="29">28</option>
+                                            <option value="30">30</option>
+                                            <option value="31">31</option>
+                                            <option value="32">32</option>
+                                            <option value="33">33</option>
+                                            <option value="34">34</option>
+                                            <option value="35">35</option>
                                     </select>
                                 </div>
                                 <div class="two columns">
                                     <select class="expand" name="age2">
-                                        <option value="26">26</option>
-                                        <option value="25">25</option>
-                                        <option value="24">24</option>
-                                        <option value="23">23</option>
-                                        <option value="22">22</option>
-                                        <option value="21">21</option>
-                                        <option value="20">20</option>
-                                        <option value="19">19</option>
-                                        <option value="18">18</option>
+                                        <option value="35" selected="selected">35</option>
+                                            <option value="34">34</option>
+                                            <option value="33">33</option>
+                                            <option value="32">32</option>
+                                            <option value="31">31</option>
+                                            <option value="30">30</option>
+                                            <option value="29">29</option>
+                                            <option value="28">28</option>
+                                            <option value="27">27</option>
+                                            <option value="26">26</option>
+                                            <option value="25">25</option>
+                                            <option value="24">24</option>
+                                            <option value="23">23</option>
+                                            <option value="22">22</option>
+                                            <option value="21">21</option>
+                                            <option value="20">20</option>
+                                            <option value="19">19</option>
+                                            <option value="18">18</option>
                                     </select>
                                 </div>
 
@@ -121,7 +139,7 @@
                     <div class="row">
                         <div class="twelve columns">
                             <h2>Search profile <span class="pink-text">results</span></h2>
-                            <p class="lead">Your search returns 24 matches:</p>
+                            <p class="lead">Your search returns ${ListSearch.size()} matches:</p>
 
                             <!--Search List-->
                             <div class="search-list">
@@ -130,16 +148,19 @@
                                         <div class="four columns">
                                             <div class="search-item">
                                                 <div class="avatar">
-                                                    <img src="assets/images/profile-carousel/thumb_01.jpg" alt="Avatar">
+                                                    <img style="width: 93px; height: 93px;" src="${p.avatar}" alt="Avatar">
                                                 </div>
                                                 <div class="search-meta">
                                                     <h5 class="author"><a href="#">${p.name}</a></h5>
-                                                    <p class="date">${p.age} | F | Bi | ${p.maritalStatus} | ${p.city}, ${p.country}</p>
+                                                    <p class="date">${p.age} | ${p.maritalStatus} | ${p.city}, ${p.country}</p>
                                                 </div>
                                                 <div class="search-body">
-                                                    <p>Hello and welcome to the profile of your next true love. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                                    <p>${p.description}</p>
                                                 </div>
-                                                <p><a href="Profile?uri=${pageContext.request.requestURI}" class="small button radius secondary"><i class="icon-angle-right"></i> View profile</a></p>
+                                                <a href="Profile?uri=Profile?id=${p.id}&id=${p.id}" class="small button radius secondary"><i class="icon-angle-right"></i> View profile</a>&nbsp;&nbsp;&nbsp;
+                                                <c:if test="${p.status != 3 && sessionScope.timeActive >0}"> 
+                                                    <a href="#" id="${p.id}" class="addFriend small button radius secondary"><i class="icon-angle-right"></i> Add Friend</a>
+                                                </c:if>
                                             </div>
                                         </div>
                                     </c:forEach>

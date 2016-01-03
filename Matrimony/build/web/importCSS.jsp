@@ -39,9 +39,8 @@
 
 <!-- jQuery & Foundation Framework -->
 <script src="assets/uploadfile/js/jquery-2.1.4.js" type="text/javascript"></script>
-<script type="text/javascript" src="assets/scripts/modernizr.foundation.js"></script> 
+<script src="assets/scripts/modernizr.foundation.js" type="text/javascript"></script> 
 <script src="assets/scripts/socket.io/socket.io.js" type="text/javascript"></script>
 <script src="assets/scripts/moment.min.js" type="text/javascript"></script>
-<script src="assets/scripts/script.js" type="text/javascript"></script>
-<script src="assets/scripts/addFiend.js" type="text/javascript"></script>
+
 

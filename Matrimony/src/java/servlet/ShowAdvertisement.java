@@ -7,6 +7,7 @@ package servlet;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import fpt.utils.JsonUtils;
 import fpt.ws.AdvertisementsWS;
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -38,18 +39,15 @@ public class ShowAdvertisement extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("application/json;charset=UTF-8");
+        
         AdvertisementsWS uws = new AdvertisementsWS();
-        List<Advertisement> ls = new LinkedList<>();
-        Type collection = new TypeToken<List<Advertisement>>() {
-        }.getType();
-        Gson g = new Gson();
-        Class<String> res = String.class;
-        String result = uws.findAll(res);
-        ls = g.fromJson(result, collection);
+        List<Advertisement> ls = new LinkedList<>();        
+        String result = uws.findAll(String.class);
+        
+        ls = JsonUtils.getListAdv(result);
         request.setAttribute("listAdvertisement", ls);
-        RequestDispatcher rd = request.getRequestDispatcher("layer_admin/showAdvertisement.jsp");
-        rd.forward(request, response);
+        request.getRequestDispatcher("layer_admin/showAdvertisement.jsp").forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
