@@ -29,7 +29,7 @@
                         <div class="nine columns">
                             <ul class="breadcrumbs hide-for-small">
                                 <li><a href="index.jsp">Home</a></li>
-                                <li class="current"><a href="single-article.jsp">Search result page example</a></li>
+                                <li class="current"><a href="#">Search result page</a></li>
                             </ul>
                         </div>
 
@@ -68,45 +68,17 @@
                                 <div class="two columns">
                                     <select class="expand" name="age1">
                                         <option value="18" selected="selected" >18</option>
-                                            <option value="19">19</option>
-                                            <option value="20">20</option>
-                                            <option value="21">21</option>
-                                            <option value="22">22</option>
-                                            <option value="23">23</option>
-                                            <option value="24">24</option>
-                                            <option value="25">25</option>
-                                            <option value="26">26</option>
-                                            <option value="27">27</option>
-                                            <option value="28">28</option>
-                                            <option value="29">28</option>
-                                            <option value="30">30</option>
-                                            <option value="31">31</option>
-                                            <option value="32">32</option>
-                                            <option value="33">33</option>
-                                            <option value="34">34</option>
-                                            <option value="35">35</option>
+                                        <c:forEach begin="19" end="60" var="age">
+                                            <option value="${age}">${age}</option>
+                                        </c:forEach>                                        
                                     </select>
                                 </div>
                                 <div class="two columns">
                                     <select class="expand" name="age2">
-                                        <option value="35" selected="selected">35</option>
-                                            <option value="34">34</option>
-                                            <option value="33">33</option>
-                                            <option value="32">32</option>
-                                            <option value="31">31</option>
-                                            <option value="30">30</option>
-                                            <option value="29">29</option>
-                                            <option value="28">28</option>
-                                            <option value="27">27</option>
-                                            <option value="26">26</option>
-                                            <option value="25">25</option>
-                                            <option value="24">24</option>
-                                            <option value="23">23</option>
-                                            <option value="22">22</option>
-                                            <option value="21">21</option>
-                                            <option value="20">20</option>
-                                            <option value="19">19</option>
-                                            <option value="18">18</option>
+                                        <option value="25" selected="selected">25</option>
+                                        <c:forEach begin="18" end="60" var="age">
+                                            <option value="${age}">${age}</option>
+                                        </c:forEach>   
                                     </select>
                                 </div>
 
@@ -118,8 +90,8 @@
                                     <input type="text" name="country" placeholder="country" />
                                 </div>
 
-                                <div class="three columns">
-                                    <input value="Search" type="submit" class="small button radius right" style="float: left"/>
+                                <div class="four columns">
+                                    <input value="Search" type="submit" class="small button radius right" style="float: left; margin: 3px;"/>
                                 </div>
                             </div><!--end row-->
                         </form>
@@ -128,10 +100,6 @@
             </section>
             <!--END SEARCH BAR SECTION-->
 
-
-
-
-
             <!-- MAIN SECTION
             ================================================ -->
             <section>
@@ -139,16 +107,26 @@
                     <div class="row">
                         <div class="twelve columns">
                             <h2>Search profile <span class="pink-text">results</span></h2>
-                            <p class="lead">Your search returns ${ListSearch.size()} matches:</p>
+                            <c:if test="${listResult !=null}">
+                                <p class="lead">Your search returns (${(pageCurrent-1)*9}-
+                                    <c:choose>
+                                        <c:when test="${pageCurrent*9 < ListSearch.size()}">
+                                            ${pageCurrent*9}
+                                        </c:when>
+                                        <c:otherwise>
+                                            ${ListSearch.size()}
+                                        </c:otherwise>
+                                    </c:choose>
+                                    )/ ${ListSearch.size()} matches:
+                                </p>
 
-                            <!--Search List-->
-                            <div class="search-list">
-                                <c:if test="${ListSearch!=null}">
-                                    <c:forEach items="${ListSearch}" var="p">
+                                <!--Search List-->
+                                <div class=" twelve columns search-list">                                
+                                    <c:forEach items="${listResult}" var="p">
                                         <div class="four columns">
                                             <div class="search-item">
                                                 <div class="avatar">
-                                                    <img style="width: 93px; height: 93px;" src="${p.avatar}" alt="Avatar">
+                                                    <img style="width: 100%; height: 100%;" src="${p.avatar}" alt="Avatar">
                                                 </div>
                                                 <div class="search-meta">
                                                     <h5 class="author"><a href="#">${p.name}</a></h5>
@@ -164,7 +142,17 @@
                                             </div>
                                         </div>
                                     </c:forEach>
+                                    <div class="pager twelve columns" style="margin-top: 20px">
+                                        <ul> 
+                                            <li><a href="ResultSearch?page=1"><<</a></li>
+                                                <c:forEach begin="1" end="${pageCount+1}" var="i">
+                                                <li><a href="ResultSearch?page=${i}">${i}</a></li>
+                                                </c:forEach>
+                                            <li><a href="ResultSearch?page=${pageCount+1}">>></a></li>
+                                        </ul>
+                                    </div>
                                 </c:if>
+
 
 
                                 <!--end row-->

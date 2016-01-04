@@ -5,6 +5,7 @@
  */
 package servlet;
 
+import chat.ChatServer;
 import fpt.utils.JsonUtils;
 import fpt.ws.AdvertisementsWS;
 import fpt.ws.UsersWS;
@@ -26,10 +27,16 @@ import model.Users;
  * @author Admin
  */
 public class HomeServlet extends HttpServlet {
+    
+    ChatServer chat = new ChatServer();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        if (!chat.isStart()) {
+            chat.startServer();
+        }
+        
         UsersWS uws = new UsersWS();
         List<Users> listU = JsonUtils.getListUser(uws.findAll(String.class));
         Random r = new Random();

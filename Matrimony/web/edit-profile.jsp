@@ -4,13 +4,14 @@
     Author     : Admin
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Sweet Date - Profile Page </title>
+        
+        <title>Sweet Date - My Profile Page </title>
 
         <%@include file="importCSS.jsp" %>
         <link href="assets/uploadfile/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
@@ -32,17 +33,11 @@
                     <div class="row">
                         <div class="nine columns">
                             <ul class="breadcrumbs hide-for-small">
-                                <li><a href="index.html">Home</a></li>
-                                <li class="current"><a href="profile.html">Hanna Marcovick profile</a></li>
+                                <li><a href="index.jsp">Home</a></li>
+                                <li class="current"><a href="#">${u.name} profile</a></li>
                             </ul>
                         </div>
-                        <div class="three columns">
-                            <ul class="inline-list right">
-                                <li>Next profile </li>
-                                <li><a href="#" title="Previous profile"><i class="icon-chevron-left"></i></a></li>
-                                <li><a href="#" title="Next profile"><i class="icon-chevron-right"></i></a></li>
-                            </ul>
-                        </div>
+
                     </div><!--end row-->
                 </div><!--end breadcrumbs-wrapp-->
             </section>
@@ -58,9 +53,9 @@
                 <div id="profile">
                     <div class="row">
                         <div class="twelve columns">
-                            <h2 class="sweetfont left">Hanna Marcovick</h2>
+                            <h2 class="sweetfont left">${u.name}</h2>
                             <hr>
-                            <h6 class="subheader">29 | F | Bi | Single | Bremen, Germany</h6>
+                            <h6 class="subheader">${u.age} | ${u.maritalStatus} | ${u.city}, ${u.country}</h6>
 
                             <div class="row">
                                 <div class="five columns">
@@ -73,7 +68,7 @@
 
                                         </div><!--end profile-slider-->
                                     </div><!--end profile-slider-wrapp-->
-                                    <h3 style="color:red; margin-left: 15px">Active: ${sessionScope.timeActive} Days <br/><a style="margin-left: 30px;" href="subscription.jsp?uri=subscription.jsp"> Subscription</a></h3>
+                                    <h3 style="color:red; margin-left: 15px">Active: ${sessionScope.timeActive} Days <br/><a style="margin-left: 20px;" href="subscription.jsp?uri=subscription.jsp"> Subscription</a></h3>
                                 </div><!--end five-->
 
                                 <form action="EditUsersServlet" method="post">
@@ -126,15 +121,32 @@
 
                                                 <div class="six columns">Gender:
                                                     <select name="gender" style="height: 30px;color:#999999;border-color: #cccccc;font-size:10pt;">
-                                                        <option value="True">Male</option>
-                                                        <option value="False">Female</option>
+                                                        <c:choose>
+                                                            <c:when test="${u.gender}">
+                                                                <option value="True">Male</option>
+                                                                <option value="False">Female</option>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <option value="False">Female</option>
+                                                                <option value="True">Male</option>
+                                                            </c:otherwise>
+                                                        </c:choose>   
                                                     </select>
                                                 </div>
 
                                                 <div class="callout-speech-wrapp six columns">Marital Status:
                                                     <select name="maritalStatus" style="height: 30px;color:#999999;border-color: #cccccc;font-size:10pt;">
-                                                        <option value="Single">Single</option>
-                                                        <option value="Married">Married</option>
+                                                        <c:choose>
+                                                            <c:when test="${u.maritalStatus eq 'Single'}">
+                                                                <option value="Single">Single</option>
+                                                                <option value="Married">Married</option>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <option value="Married">Married</option>
+                                                                <option value="Single">Single</option>
+                                                            </c:otherwise>
+                                                        </c:choose>  
+
                                                     </select>
                                                 </div>   
 
@@ -200,7 +212,7 @@
                                                         $('.fileinput-upload-button').click(function () {
                                                             setTimeout(function () {
                                                                 location.reload();
-                                                            }, 500);
+                                                            }, 1000);
 
                                                         });
 
@@ -218,23 +230,23 @@
                                                                         $.prettyPhoto.close();
                                                                         return false;
                                                                     });
-                                                                    
+
                                                                     var imgId = this.id;
-                                                                    
+
                                                                     $('a.pp_del').bind('click', function () {
-                                                                        
+
                                                                         if (confirm('Are you sure delete?')) {
                                                                             $.get("/Matrimony/delImage", {imgID: imgId}, function (data) {
                                                                                 alert(data);
                                                                                 setTimeout(function () {
                                                                                     location.reload();
-                                                                                }, 100);
+                                                                                }, 500);
                                                                             });
 
                                                                             $.prettyPhoto.close();
                                                                             return false;
                                                                         }
-                                                                        
+
                                                                     });
                                                                 }
                                                             });

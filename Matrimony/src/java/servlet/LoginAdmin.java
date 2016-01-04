@@ -36,7 +36,7 @@ public class LoginAdmin extends HttpServlet {
 
         UsersWS uws = new UsersWS();
 
-        String username = request.getParameter("username");
+        String username = request.getParameter("email");
         String pass = MD5.encodePwd(request.getParameter("password"));
         String user = uws.findByEmailAndPassUsers(String.class, username, pass);
         Users u = JsonUtils.getUser(user);

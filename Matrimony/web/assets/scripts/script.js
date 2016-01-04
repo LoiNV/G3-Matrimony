@@ -14,11 +14,8 @@ $(document).ready(function () {
         $('.chat_body').slideToggle('slow');
     });
 
-    var user = document.getElementsByClassName('user');
-    
-    if (user.lenght===0 || user.lenght === undefined) {        
-        $.get('/Matrimony/createNamespace', {ns: "AddFriend"}, function (data) {});
-    }
+    var user = document.getElementsByClassName('user'); 
+
     
     for (var i = 0, max = user.length; i < max; i++) {
         createMessageBox(user[i]);

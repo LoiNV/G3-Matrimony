@@ -28,17 +28,10 @@
                     <div class="row">
                         <div class="nine columns">
                             <ul class="breadcrumbs hide-for-small">
-                                <li><a href="index.html">Home</a></li>
-                                <li class="current"><a href="profile.html">Hanna Marcovick profile</a></li>
+                                <li><a href="index.jsp">Home</a></li>
+                                <li class="current"><a href="#">${u.name} profile</a></li>
                             </ul>
-                        </div>
-                        <div class="three columns">
-                            <ul class="inline-list right">
-                                <li>Next profile </li>
-                                <li><a href="#" title="Previous profile"><i class="icon-chevron-left"></i></a></li>
-                                <li><a href="#" title="Next profile"><i class="icon-chevron-right"></i></a></li>
-                            </ul>
-                        </div>
+                        </div>                        
                     </div><!--end row-->
                 </div><!--end breadcrumbs-wrapp-->
             </section>
@@ -170,8 +163,8 @@
 
                                     </ul>
                                     <div class="six columns">
-                                        <c:if test="${p.status != 3 && sessionScope.timeActive >0}"> 
-                                            <a href="#" id="${p.id}" class="addFriend small button radius secondary"><i class="icon-angle-right"></i> Add Friend</a>
+                                        <c:if test="${u.status != 3 && sessionScope.timeActive >0}"> 
+                                            <a href="#" id="${u.id}" class="addFriend small button radius secondary"><i class="icon-angle-right"></i> Add Friend</a>
                                         </c:if>
                                     </div>
 

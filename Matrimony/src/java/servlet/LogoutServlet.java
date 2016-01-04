@@ -24,6 +24,7 @@ public class LogoutServlet extends HttpServlet {
         HttpSession session = request.getSession();
         if (session.getAttribute("infouser") != null) {           
             session.setAttribute("login", "false");
+            session.setAttribute("timeActive", 0);
             session.setAttribute("infouser", null);    
         }
 

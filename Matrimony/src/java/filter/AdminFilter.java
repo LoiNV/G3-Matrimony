@@ -95,18 +95,11 @@ public class AdminFilter implements Filter {
         Throwable problem = null;
         try {
             HttpServletRequest rq = (HttpServletRequest) request;
-        HttpSession session = rq.getSession(false) ;
-            if (session.getAttribute("login")!=null) {
-                if (session.getAttribute("login").toString().equals("true")) {
-                    chain.doFilter(request, response);
-                }else{
-                    
-                    rq.getRequestDispatcher("loginPage.jsp").forward(request, response);
-                }
-                
-            } else {
-               
-                rq.getRequestDispatcher("loginPage.jsp").forward(request, response);
+            HttpSession session = rq.getSession(false) ;
+            if (session.getAttribute("admin")!=null) {
+                chain.doFilter(request, response);                
+            } else {               
+                rq.getRequestDispatcher("loginAdmin.jsp").forward(request, response);
             }
         } catch (Throwable t) {
 	    // If an exception is thrown somewhere down the filter chain,

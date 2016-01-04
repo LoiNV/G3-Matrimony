@@ -5,6 +5,7 @@
  */
 package servlet;
 
+import chat.ChatServer;
 import com.google.gson.Gson;
 import fpt.utils.JsonUtils;
 import fpt.ws.FriendsWS;
@@ -48,9 +49,11 @@ public class AddFriendServlet extends HttpServlet {
             String createDate = dateFormat.format(new Date());
 
             String namespace = user.getId() + "_" + fromUser.getId();
+             System.out.println(g.toJson(namespace));
             Friends fr = new Friends(user, fromUser, createDate, namespace);
-
             fws.create(g.toJson(fr));
+            System.out.println(g.toJson(namespace));
+//            ChatServer.createNameSpace(namespace);
 
             request.setAttribute("listFriends", null);
 

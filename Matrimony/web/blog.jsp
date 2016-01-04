@@ -28,7 +28,7 @@
                         <div class="nine columns">
                             <ul class="breadcrumbs hide-for-small">
                                 <li><a href="index.jsp">Home</a></li>
-                                <li class="current"><a href="blog.jsp">Blog page example</a></li>
+                                <li class="current"><a href="#">Blog page</a></li>
                             </ul>
                         </div>
 

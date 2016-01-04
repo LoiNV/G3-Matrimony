@@ -36,12 +36,10 @@
                                         <table id="example" class="table table-striped responsive-utilities jambo_table">
                                             <thead>
                                                 <tr class="headings">
-                                                    <th>Customers ID</th>
-                                                    <th>Customers Name </th>
+                                                    <th>ID</th>
+                                                    <th>Name </th>
                                                     <th>Email</th>
                                                     <th>Phone Number</th>
-                                                    <th>Position</th>
-                                                    <th>Status</th>
                                                     <th class=" no-link last"><span class="nobr">Action</span>
                                                     </th>
                                                 </tr>
@@ -54,8 +52,6 @@
                                                     <td>${c.name}</td>
                                                     <td>${c.email}</td>
                                                     <td>${c.phone}</td>
-                                                    <td>${c.position}</td>
-                                                    <td>${c.status}</td>
                                                     <td>
                                                         <a href="SenMail?id=${c.id}">Accept</a>
                                                         

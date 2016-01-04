@@ -35,7 +35,7 @@ public class UpLoadFileServlet extends HttpServlet {
 
             if (!path.equals("")) {
                 Images img = new Images(path, user);
-                String json = new Gson().toJson(img, Images.class);
+                String json = new Gson().toJson(img);
                 ImagesWS iws = new ImagesWS();
                 iws.create(json);
 

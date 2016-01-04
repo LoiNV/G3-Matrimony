@@ -53,8 +53,11 @@
                                         <li><a href="createCustomer.jsp">Register Advertisement</a></li>
                                     </ul>
                                 </li>
-                                <li class="has-dropdown">
-                                    <a href="subscription.jsp?uri=subscription.jsp">Subscription</a>                                    
+                                <c:if test="${sessionScope.login != null && sessionScope.login == 'true' && sessionScope.timeActive > 0}">
+                                    <li><a href="MatchSingle">MATCH</a></li>
+                                </c:if>                                
+                                <li class="">
+                                    <a href="subscription.jsp?uri=subscription.jsp">SUBSCRIPTION</a>                                    
                                 </li>
                             </ul>
                         </section><!-- End Nav Section -->
@@ -65,7 +68,7 @@
                 <!-- Logo -->
                 <div class="four columns pull-five">
                     <h1 id="logo">A premium landing page made for Lovers
-                        <a href="index.jsp"><img src="assets/images/logo.png" width="294" height="108" alt="Landing Page HTML Template"></a>
+                        <a href="index.jsp"><img src="assets/images/logo.png" width="294" height="108" alt="Landing Page"></a>
                     </h1>
                 </div>
                 <!--end logo-->
@@ -80,7 +83,7 @@
                             <div id="demo">
                                 <div class="wrapper">
                                     <div class="content">
-                                        <ul class="has-dropdown">
+                                        <ul class="">
                                             <li><a href="#" data-reveal-id="repass_panel">Change password</a></li>
                                             <li><a href="FindIdUser?id=${sessionScope.infouser.id}">Edit profile</a></li>
                                             <li><a href="Logout">Logout</a></li>
@@ -152,23 +155,9 @@
                                     <div class="three mobile-one columns">
                                         <select class="expand customDropdown" name="age1">
                                             <option value="18" selected="selected" >18</option>
-                                            <option value="19">19</option>
-                                            <option value="20">20</option>
-                                            <option value="21">21</option>
-                                            <option value="22">22</option>
-                                            <option value="23">23</option>
-                                            <option value="24">24</option>
-                                            <option value="25">25</option>
-                                            <option value="26">26</option>
-                                            <option value="27">27</option>
-                                            <option value="28">28</option>
-                                            <option value="29">28</option>
-                                            <option value="30">30</option>
-                                            <option value="31">31</option>
-                                            <option value="32">32</option>
-                                            <option value="33">33</option>
-                                            <option value="34">34</option>
-                                            <option value="35">35</option>
+                                            <c:forEach begin="19" end="60" var="age">
+                                                <option value="${age}">${age}</option>
+                                            </c:forEach>  
                                         </select>
                                     </div>
                                     <div class="one mobile-one columns text-center">
@@ -176,24 +165,10 @@
                                     </div>
                                     <div class="three mobile-one columns">
                                         <select class="expand customDropdown" name="age2">
-                                            <option value="35" selected="selected">35</option>
-                                            <option value="34">34</option>
-                                            <option value="33">33</option>
-                                            <option value="32">32</option>
-                                            <option value="31">31</option>
-                                            <option value="30">30</option>
-                                            <option value="29">29</option>
-                                            <option value="28">28</option>
-                                            <option value="27">27</option>
-                                            <option value="26">26</option>
-                                            <option value="25">25</option>
-                                            <option value="24">24</option>
-                                            <option value="23">23</option>
-                                            <option value="22">22</option>
-                                            <option value="21">21</option>
-                                            <option value="20">20</option>
-                                            <option value="19">19</option>
-                                            <option value="18">18</option>
+                                            <option value="25" selected="selected">25</option>
+                                            <c:forEach begin="18" end="60" var="age">
+                                                <option value="${age}">${age}</option>
+                                            </c:forEach>  
                                         </select>
                                     </div>
                                 </div><!--end row-->
@@ -218,7 +193,7 @@
                                     <ul id="profile-thumbs">
                                         <c:forEach items="${list}" var="u">
                                             <li><a href="Profile?uri=Profile?id=${p.id}&id=${p.id}"><img style="height: 93px; width: 93px;" src="${u.avatar}" alt=""></a></li>
-                                        </c:forEach>
+                                                </c:forEach>
                                     </ul>
                                 </div><!--end carousel-profiles-->
                             </div><!--end form-footer-->

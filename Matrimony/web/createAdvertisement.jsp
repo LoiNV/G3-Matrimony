@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Sweet Date - Profile Page </title>
+        <title>Sweet Date - Advertisement Page </title>
 
         <%@include file="importCSS.jsp" %>    
         <link href="assets/uploadfile/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
@@ -33,8 +33,8 @@
                     <div class="row">
                         <div class="nine columns">
                             <ul class="breadcrumbs hide-for-small">
-                                <li><a href="index.html">Home</a></li>
-                                <li class="current"><a href="profile.html">Hanna Marcovick profile</a></li>
+                                <li><a href="index.jsp">Home</a></li>
+                                <li class="current"><a href="#">Advertisement</a></li>
                             </ul>
                         </div>
 

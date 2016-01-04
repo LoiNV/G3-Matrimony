@@ -5,6 +5,7 @@
  */
 package servlet;
 
+import check.CheckFriend;
 import fpt.utils.JsonUtils;
 import fpt.ws.ImagesWS;
 import fpt.ws.UsersWS;
@@ -34,9 +35,13 @@ public class ProfileServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String id = request.getParameter("id");
+        Users myUser = (Users) request.getSession().getAttribute("infouser");
         Users u = JsonUtils.getUser(new UsersWS().find(String.class, id));
+        if (CheckFriend.checkExistFriend(u.getId(), myUser.getId())) {
+            u.setStatus(3);
+        }
         request.setAttribute("u", u);
         ImagesWS iws = new ImagesWS();
         String imgs = iws.findByUser(String.class, u.getId() + "");

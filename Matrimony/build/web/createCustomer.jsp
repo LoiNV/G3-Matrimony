@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Sweet Date - Profile Page </title>
+        <title>Sweet Date - Customer Page </title>
 
         <%@include file="importCSS.jsp" %>        
 
@@ -26,8 +26,8 @@
                     <div class="row">
                         <div class="nine columns">
                             <ul class="breadcrumbs hide-for-small">
-                                <li><a href="index.html">Home</a></li>
-                                <li class="current"><a href="profile.html">Hanna Marcovick profile</a></li>
+                                <li><a href="index.jsp">Home</a></li>
+                                <li class="current"><a href="#">Register Advertisement</a></li>
                             </ul>
                         </div>
                      
@@ -46,7 +46,7 @@
                             <hr>
                             <div class="twelve columns">
                                 <div class="panel">
-                                    <h3>Register Customers</h3>
+                                    <h3>Information Customers</h3>
                                     <!--Newsletter form-->
                                     <form id="create-form" name="create-form" action="CustomersCreateServlet" method="post" class="row" style="padding:30px 0 40px 40px;line-height: 30px;">
                                         <div class="seven columns">

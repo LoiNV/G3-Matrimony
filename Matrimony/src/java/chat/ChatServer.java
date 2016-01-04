@@ -19,7 +19,7 @@ public class ChatServer {
 
     public static final String HOST = "localhost";
     public static final int PORT = 9999;
-    private SocketIOServer server;
+    private static SocketIOServer server;
     private boolean start;
 
     public ChatServer() {
@@ -43,8 +43,9 @@ public class ChatServer {
         
     }
 
-    public String createNameSpace(String nameSpace) {        
+    public static String createNameSpace(String ns) {        
        
+        String nameSpace ="/"+ns;
         if (server.getNamespace(nameSpace) == null) {
 
             server.addNamespace(nameSpace).addEventListener("message", ChatObject.class, new DataListener<ChatObject>() {

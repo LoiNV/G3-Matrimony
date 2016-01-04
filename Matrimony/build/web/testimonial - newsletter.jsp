@@ -79,7 +79,7 @@
                                                 <span class="prefix"><i class="icon-envelope"></i></span>
                                             </div>
                                             <div class="ten mobile-three columns">
-                                                <input type="email" name="email" id="email" placeholder="Your email" required>
+                                                <input type="email" name="yemail" id="email" placeholder="Your email" required>
                                             </div>
                                         </div>
                                     </div>

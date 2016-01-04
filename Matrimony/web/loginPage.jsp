@@ -24,7 +24,7 @@
                     </div>
                     <form id="login_form" action="Login" name="login_form" method="post" class="clearfix">
                         <div class="twelve columns">
-                            <input type="text" id="username" name="username" class="inputbox" placeholder="Username" required>
+                            <input type="text" id="username" name="email" class="inputbox" placeholder="Email" required>
                         </div>
                         <div class="twelve columns">
                             <input type="password" id="password" name="password" class="inputbox" placeholder="Password" required>

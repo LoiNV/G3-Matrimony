@@ -83,7 +83,7 @@
 
             <div class="twelve columns">
                 <hr>
-                <p>Copyright &copy; 2013 YourSweetName Network. All Rights Reserved. A premium landing page from <a href="#" target="_blank">Seven<sup>th</sup> Queen</a></p>
+                <p>Copyright &copy; 2015 . All Rights Reserved. A premium landing page from <a href="#">G3-Matrimony</a></p>
             </div>
         </div>
     </div><!--end footer-->
@@ -91,7 +91,7 @@
 
 <%@include file="login.jsp" %>
 
-<c:if test="${sessionScope.login != null && sessionScope.login == 'true'}">
+<c:if test="${sessionScope.login != null && sessionScope.login == 'true' && sessionScope.timeActive > 0}">
     <script src="assets/scripts/script.js" type="text/javascript"></script>
     <script src="assets/scripts/addFiend.js" type="text/javascript"></script>
     <%@include file="chatBox.jsp" %>    

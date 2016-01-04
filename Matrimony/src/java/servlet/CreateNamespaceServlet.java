@@ -20,19 +20,14 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class CreateNamespaceServlet extends HttpServlet {
 
-    ChatServer chat = new ChatServer();
-
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String ns = "/" + request.getParameter("ns");
-        if (!chat.isStart()) {
-            chat.startServer();
-        }
-        String namespace = chat.createNameSpace(ns);
-        System.out.println(chat.getServer()+"");
-        System.out.println(chat.isStart()+"");
-        System.out.println(namespace+"");
+        String ns = request.getParameter("ns");
+        
+        String namespace = ChatServer.createNameSpace(ns);
+        
         String json = (new Gson()).toJson(namespace);
 
         response.setContentType("application/json;charset=UTF-8");

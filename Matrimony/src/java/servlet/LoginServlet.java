@@ -33,12 +33,12 @@ public class LoginServlet extends HttpServlet {
         Users u = JsonUtils.getUser(user);        
 
         HttpSession session = request.getSession();
-
+        String time = "0";
         if (u != null) {
             session.setAttribute("login", "true");            
             session.setAttribute("infouser", u);
             
-            String time = uws.getTimesActive(u.getId() + "");
+            time = uws.getTimesActive(u.getId() + "");
             session.setAttribute("timeActive", time);
 
             if (session.getAttribute("currentURI") == null) {

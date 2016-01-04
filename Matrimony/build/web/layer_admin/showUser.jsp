@@ -52,8 +52,16 @@
                                                     <td>${u.id}</td>
                                                     <td>${u.name}</td>
                                                     <td>${u.email}</td>
-                                                    <td>${u.age}</td>
-                                                    <td>${u.gender}</td>
+                                                    <td style="text-align: right; margin-right: 20px">${u.birthday}</td>
+                                                    <c:choose>
+                                                        <c:when test="${u.gender}">
+                                                            <td>Male</td>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <td>FeMale</td>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                    
                                                     <td>
                                                         <a href="DeleteUser?id=${u.id}">Delete</a>
                                                       

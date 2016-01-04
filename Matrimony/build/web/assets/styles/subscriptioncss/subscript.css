@@ -137,7 +137,7 @@ a.navItem { color: rgb(255, 255, 255); text-decoration: none; padding: 0px 7px 5
 .rate { float: left; border: 4px solid rgb(193, 195, 198); border-radius: 2px; margin: 0px 22px; position: relative; }
 .rate.ui-active { border: 4px solid rgb(102, 104, 112); margin: 0px 20px; }
 .rate.ui-active .rate-box.rate-box-middle { width: 214px; }
-.rate-box { float: left; width: 236px; vertical-align: top; background-color: rgb(255, 255, 255); padding: 0px 0px 10px; min-height: 105px; }
+.rate-box { float: left; width: 231px; vertical-align: top; background-color: rgb(255, 255, 255); padding: 0px 0px 10px; min-height: 105px; }
 /*.rate-box.rate-box-left { background: transparent url('rate-left.png') no-repeat scroll left top; }*/
 .rate-box.rate-box-middle { text-align: center; width: 210px; }
 /*.rate-box.rate-box-right { text-align: center; background: transparent url('rate-right.png') no-repeat scroll left top; }*/

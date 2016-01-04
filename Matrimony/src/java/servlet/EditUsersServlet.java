@@ -38,17 +38,17 @@ public class EditUsersServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setCharacterEncoding("utf-8");
-        response.setCharacterEncoding("utf-8");
-        response.setContentType("application/json;charsset=UTF-8");
+        
+        
         try {
-
+            request.setCharacterEncoding("UTF-8");
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("application/json;charsset=UTF-8");
             UsersWS uws = new UsersWS();
+            Gson g = new Gson();
 
             String id = request.getParameter("id");
-
             String name = request.getParameter("name");
-
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
             boolean gender = Boolean.parseBoolean(request.getParameter("gender"));
@@ -66,10 +66,10 @@ public class EditUsersServlet extends HttpServlet {
             String phone = request.getParameter("phone");
             String religion = request.getParameter("religion");
             String caste = request.getParameter("caste");
-            String desc = request.getParameter("desc");
-
+            String desc = new String(request.getParameter("desc").getBytes("ISO-8859-1"));
+            
             String u = uws.find(String.class, id);
-            Users user = new Gson().fromJson(u, Users.class);
+            Users user = g.fromJson(u, Users.class);
             user.setName(name);
             user.setFirstName(firstName);
             user.setLastName(lastName);
@@ -83,7 +83,6 @@ public class EditUsersServlet extends HttpServlet {
             user.setReligion(religion);
             user.setCaste(caste);
             user.setDescription(desc);
-
             uws.edit(user, id);
 
             request.getSession().setAttribute("infouser", user);

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : loginAdmin
-    Created on : Jan 3, 2016, 12:16:38 PM
+    Document   : loginAd
+    Created on : Jan 4, 2016, 7:22:56 PM
     Author     : Admin
 --%>
 
@@ -10,9 +10,7 @@
 
     <head>
         <%@include file="layer_admin/importCSS_admin.jsp" %>
-
     </head>
-
 
     <body class="nav-md">
 
@@ -34,7 +32,7 @@
                             <div class="panel-body">
                                 <form class="form-horizontal" method="post" action="LoginAdmin">
                                     <div class="input-group">
-                                        <input style="width: 400px" class="form-control" type="text" name="username" placeholder="Email"/>
+                                        <input style="width: 400px" class="form-control" type="email" name="email" placeholder="Email"/>
                                     </div>
                                     <div class="input-group">
                                         <input style="width: 400px" class="form-control" type="password" name="password" placeholder="Password"/>
@@ -45,7 +43,7 @@
                                                 <input type="checkbox" name="remember"/> Remember me
                                             </label>
                                         </div>
-                                        
+
                                     </div>
                                     <div class="form-group">
                                         <input class="btn btn-success" type="submit" value="Login"/>
@@ -59,15 +57,6 @@
                 </div>
 
             </div>
-
-            <div id="custom_notifications" class="custom-notifications dsp_none">
-                <ul class="list-unstyled notifications clearfix" data-tabbed_notifications="notif-group">
-                </ul>
-                <div class="clearfix"></div>
-                <div id="notif-group" class="tabbed_notifications"></div>
-            </div>
-
-
 
         </div>
 

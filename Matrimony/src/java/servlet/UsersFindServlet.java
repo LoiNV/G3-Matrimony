@@ -68,9 +68,9 @@ public class UsersFindServlet extends HttpServlet {
                 }
             }
         }
-
-        request.setAttribute("ListSearch", list);
-        request.getRequestDispatcher("search-listing.jsp").forward(request, response);
+        
+        request.getSession().setAttribute("ListSearch", list);
+        request.getRequestDispatcher("ResultSearch?page=1").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

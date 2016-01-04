@@ -26,8 +26,8 @@
                     <div class="row">
                         <div class="nine columns">
                             <ul class="breadcrumbs hide-for-small">
-                                <li><a href="index.html">Home</a></li>
-                                <li class="current"><a href="profile.html">Hanna Marcovick profile</a></li>
+                                <li><a href="index.jsp">Home</a></li>
+                                <li class="current"><a href="#">Subscription</a></li>
                             </ul>
                         </div>
 
@@ -66,40 +66,19 @@
                                                 <td class="benefits-col-middle highlight"></td>
                                                 <td></td>
                                             </tr>
-
-                                            <tr class="odd">
-                                                <td class="benefits-col-first">Connect faster with IM</td>
+                                            <tr class="even">
+                                                <td class="benefits-col-first">Add friends</td>
                                                 <td class="benefits-col-middle highlight"></td>
                                                 <td></td>
                                             </tr>
                                             <tr class="even">
-                                                <td class="benefits-col-first">Send &amp; receive email messages</td>
+                                                <td class="benefits-col-first">Send &amp; receive messages online</td>
                                                 <td class="benefits-col-middle highlight"></td>
                                                 <td></td>
                                             </tr>
+                                            
                                             <tr class="odd">
-                                                <td class="benefits-col-first">Respond to email messages</td>
-                                                <td class="benefits-col-middle highlight"></td>
-                                                <td></td>
-                                            </tr>
-
-                                            <tr class="even">
-                                                <td class="benefits-col-first">Remove members from view</td>
-                                                <td class="benefits-col-middle highlight"></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr class="odd">
-                                                <td class="benefits-col-first">See who's viewed you</td>
-                                                <td class="benefits-col-middle highlight"></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr class="even">
-                                                <td class="benefits-col-first">One click search type</td>
-                                                <td class="benefits-col-middle highlight"></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr class="odd">
-                                                <td class="benefits-col-first">Receive SingledOut matches</td>
+                                                <td class="benefits-col-first">Receive Singled Out matches</td>
                                                 <td class="benefits-col-middle highlight"></td>
                                                 <td></td>
                                             </tr>
@@ -118,15 +97,7 @@
                                                 <td class="benefits-col-middle highlight"></td>
                                                 <td class="highlight"></td>
                                             </tr>
-                                            <tr class="odd">
-                                                <td class="benefits-col-first">Send winks</td>
-                                                <td class="benefits-col-middle highlight"></td>
-                                                <td class="highlight"></td>
-                                            </tr>
-                                            <tr class="even">
-                                                <td class="benefits-col-first"> Receive text alerts for winks &amp; emails
-                                                </td>
-                                            </tr>
+                                            
                                         </tbody>
                                     </table>
                                 </div>

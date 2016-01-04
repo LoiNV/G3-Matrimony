@@ -50,8 +50,11 @@
 
                                     </ul>
                                 </li>
-                                <li class="has-dropdown">
-                                    <a href="subscription.jsp?uri=subscription.jsp">Subscription</a>    
+                                <c:if test="${sessionScope.login != null && sessionScope.login == 'true' && sessionScope.timeActive > 0}">
+                                    <li><a href="MatchSingle">MATCH</a></li>
+                                </c:if>  
+                                <li class="">
+                                    <a href="subscription.jsp?uri=subscription.jsp">SUBSCRIPTION</a>    
                                 </li>
                             </ul>
                         </section><!-- End Nav Section -->

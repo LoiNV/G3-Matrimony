@@ -27,7 +27,7 @@
     <filter-mapping>
         <filter-name>AdminFilter</filter-name>
         <url-pattern>/ShowUserServlet</url-pattern>
-    </filter-mapping>    
+    </filter-mapping>
     <filter-mapping>
         <filter-name>homeFilter</filter-name>
         <url-pattern>/index.jsp</url-pattern>
@@ -122,6 +122,22 @@
         <servlet-name>LoginAdmin</servlet-name>
         <servlet-class>servlet.LoginAdmin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ResultSearchServlet</servlet-name>
+        <servlet-class>servlet.ResultSearchServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminServlet</servlet-name>
+        <servlet-class>servlet.AdminServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutAdmin</servlet-name>
+        <servlet-class>servlet.LogoutAdmin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MatchSingleServlet</servlet-name>
+        <servlet-class>servlet.MatchSingleServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checkout</servlet-name>
         <url-pattern>/Checkout</url-pattern>
@@ -200,6 +216,22 @@
     <servlet-mapping>
         <servlet-name>LoginAdmin</servlet-name>
         <url-pattern>/LoginAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResultSearchServlet</servlet-name>
+        <url-pattern>/ResultSearch</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminServlet</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutAdmin</servlet-name>
+        <url-pattern>/LogoutAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MatchSingleServlet</servlet-name>
+        <url-pattern>/MatchSingle</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>60</session-timeout>
