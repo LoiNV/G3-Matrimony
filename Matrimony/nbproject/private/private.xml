@@ -3,10 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/SEM4/ProjectSem4/G3-Matrimony/Matrimony/src/java/fpt/ws/UsersWS.java</file>
+            <file>file:/D:/SEM4/ProjectSem4/G3-Matrimony/Matrimony/web/assets/scripts/addFiend.js</file>
             <file>file:/D:/SEM4/ProjectSem4/G3-Matrimony/Matrimony/src/java/servlet/UsersCreateSevlet.java</file>
-            <file>file:/D:/SEM4/ProjectSem4/G3-Matrimony/Matrimony/src/java/model/Users.java</file>
-            <file>file:/D:/SEM4/ProjectSem4/G3-Matrimony/Matrimony/src/java/servlet/LoginServlet.java</file>
+            <file>file:/D:/SEM4/ProjectSem4/G3-Matrimony/Matrimony/web/chatBox.jsp</file>
+            <file>file:/D:/SEM4/ProjectSem4/G3-Matrimony/Matrimony/web/assets/scripts/script.js</file>
+            <file>file:/D:/SEM4/ProjectSem4/G3-Matrimony/Matrimony/src/java/servlet/EditUsersServlet.java</file>
+            <file>file:/D:/SEM4/ProjectSem4/G3-Matrimony/Matrimony/web/edit-profile.jsp</file>
+            <file>file:/D:/SEM4/ProjectSem4/G3-Matrimony/Matrimony/src/java/servlet/AddFriendServlet.java</file>
+            <file>file:/D:/SEM4/ProjectSem4/G3-Matrimony/Matrimony/src/java/chat/ChatServer.java</file>
+            <file>file:/D:/SEM4/ProjectSem4/G3-Matrimony/Matrimony/src/java/servlet/ShowCustomers.java</file>
         </group>
     </open-files>
 </project-private>

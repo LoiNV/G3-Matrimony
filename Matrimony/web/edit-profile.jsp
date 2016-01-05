@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
+
         <title>Sweet Date - My Profile Page </title>
 
         <%@include file="importCSS.jsp" %>
@@ -104,7 +104,7 @@
                                                 <input type="hidden" name="id" value="${u.id}" />                                              
 
                                                 <div style="padding: 0 16px;">
-                                                    Nick Name:<input type="text" name="name" value="${u.name}"  required/>
+                                                    Nick Name:<input type="text" name="name" value="${u.name}" required/>
                                                 </div>
 
                                                 <div class="callout-speech-wrapp six columns">
@@ -200,6 +200,10 @@
                                                     </form>
 
                                                     <script>
+                                                        $("input[type=text]").on("change", function () {
+                                                            this.value = this.value.trim();
+                                                        });
+
                                                         $("#file_1").fileinput({
                                                             uploadUrl: 'http://localhost:8080/Matrimony/UpLoad',
                                                             allowedFileExtensions: ['jpg', 'png', 'gif'],
@@ -213,16 +217,13 @@
                                                             setTimeout(function () {
                                                                 location.reload();
                                                             }, 1000);
-
                                                         });
-
                                                         $(document).ready(function () {
 
                                                             $('a.imagelink').click(function (ev) {
                                                                 if ($('.pp_details').length > 0) {
                                                                     $('.pp_details').prepend('<a class="pp_avt" title="Set avatar" href="#">');
                                                                     $('.pp_details').prepend('<a class="pp_del" title="Del avatar" href="#">');
-
                                                                     $('a.pp_avt').bind('click', function () {
                                                                         $.get("/Matrimony/SetAvatar", {imgPath: $('#fullResImage').attr("src")}, function () {
                                                                         });
@@ -230,9 +231,7 @@
                                                                         $.prettyPhoto.close();
                                                                         return false;
                                                                     });
-
                                                                     var imgId = this.id;
-
                                                                     $('a.pp_del').bind('click', function () {
 
                                                                         if (confirm('Are you sure delete?')) {
@@ -242,7 +241,6 @@
                                                                                     location.reload();
                                                                                 }, 500);
                                                                             });
-
                                                                             $.prettyPhoto.close();
                                                                             return false;
                                                                         }
@@ -250,7 +248,6 @@
                                                                     });
                                                                 }
                                                             });
-
                                                         });
 
 
@@ -271,6 +268,13 @@
                 </div><!--end profile-->
             </section>
             <!--END PROFILE SECTION-->
+            <%
+                if (request.getParameter("alert") != null) {
+            %>
+            <script>alert('<%=request.getParameter("alert")%>');</script>
+            <%
+                }
+            %>
 
 
             <%@include file="testimonial - newsletter.jsp" %>

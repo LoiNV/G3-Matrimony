@@ -28,13 +28,13 @@ import model.Users;
  */
 public class AddFriendServlet extends HttpServlet {
 
-    FriendsWS fws = new FriendsWS();
+    
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("application/json;charsset=UTF-8");
         PrintWriter out = response.getWriter();
-
+        FriendsWS fws = new FriendsWS();
         Gson g = new Gson();
 
         String id = request.getParameter("fromId");
@@ -49,15 +49,13 @@ public class AddFriendServlet extends HttpServlet {
             String createDate = dateFormat.format(new Date());
 
             String namespace = user.getId() + "_" + fromUser.getId();
-             System.out.println(g.toJson(namespace));
             Friends fr = new Friends(user, fromUser, createDate, namespace);
             fws.create(g.toJson(fr));
-            System.out.println(g.toJson(namespace));
 //            ChatServer.createNameSpace(namespace);
 
             request.setAttribute("listFriends", null);
 
-            out.println(g.toJson(user.getName() + " Accepted"));
+            out.println(g.toJson(user.getName() + "/"+namespace));
         } else {
             out.println(g.toJson(user.getName() + "Did Not Accept"));
         }

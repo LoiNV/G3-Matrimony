@@ -91,10 +91,8 @@
 
 <%@include file="login.jsp" %>
 
-<c:if test="${sessionScope.login != null && sessionScope.login == 'true' && sessionScope.timeActive > 0}">
-    <script src="assets/scripts/script.js" type="text/javascript"></script>
-    <script src="assets/scripts/addFiend.js" type="text/javascript"></script>
-    <%@include file="chatBox.jsp" %>    
+<c:if test="${sessionScope.login != null && sessionScope.login == 'true' && sessionScope.timeActive > 0}">    
+    <%@include file="chatBox.jsp" %> 
 </c:if>
 <c:if test="${requestScope.alert != null}">
     <script>

@@ -12,7 +12,7 @@ import java.math.BigInteger;
  *
  * @author nghiawin
  */
-public class Users implements Serializable {
+public class Users  implements Serializable {
 
     private int id;
     private String name;

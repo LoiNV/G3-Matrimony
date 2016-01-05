@@ -55,7 +55,7 @@ public class SubcriptionsWS {
     }
 
     public void create(Object requestEntity) throws ClientErrorException {
-        webTarget.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).post(javax.ws.rs.client.Entity.entity(requestEntity, javax.ws.rs.core.MediaType.APPLICATION_JSON));
+        webTarget.request(javax.ws.rs.core.MediaType.APPLICATION_JSON+ ";charset=utf-8").post(javax.ws.rs.client.Entity.entity(requestEntity, javax.ws.rs.core.MediaType.APPLICATION_JSON+ ";charset=utf-8"));
     }
 
     public <T> T findByName(Class<T> responseType, String name) throws ClientErrorException {

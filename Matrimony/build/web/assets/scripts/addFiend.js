@@ -1,4 +1,4 @@
-var addSocket, ns;
+var addSocket;
 
 $(document).ready(function () {
 
@@ -13,7 +13,7 @@ $(document).ready(function () {
     $('.addFriend').click(function (evt) {
         var fromId = $('.username').attr('id');
         var fromName = $('.username').attr("name");
-        var toId = this.id;        
+        var toId = this.id;
 
         var jsonObject = {
             '@class': 'chat.RequestAddFriend',
@@ -32,18 +32,24 @@ function connectFriendHandler() {
 }
 
 function messageFriendHandler() {
-    return function (data) {        
+    return function (data) {
         if ($('.username').attr("id") === data.toId) {
             var answer = '';
-            ns = data.toId+'_'+data.fromId;            
+            var ns = data.toId + '_' + data.fromId;
             console.log(ns);
             if (confirm(data.fromName + " request add friend")) {
                 answer = 'accept';
-//                var div = '<div id="'+ns+'" class="user" ><span class="mnrChat"></span> '+data.fromName+'</div>';
-//                $('.chat_body').prepend(div);                
             }
 
             $.get('/Matrimony/AddFriend', {fromId: data.fromId, answer: answer}, function (msg) {
+                if ((msg).indexOf('Accept') < 0) {
+                    console.log(msg);
+                    var div = '<div id="' + ns + '" class="user" ><span class="mnrChat"></span> ' + data.fromName + '</div>';
+                    $('.chat_body').prepend(div);
+                    var user = document.getElementById(ns);
+                    createMessageBox(user);
+                }
+
                 var jsonObject = {
                     '@class': 'chat.RequestAddFriend',
                     fromId: data.fromId,
@@ -53,16 +59,20 @@ function messageFriendHandler() {
                 addSocket.json.send(jsonObject);
             });
         }
-        
-        if ($('.username').attr("id") === data.fromId && data.toId ==='') {
-//            var name='';
-//            if ((data.fromName).indexOf('Accepted') > -1) {
-//                name= data.fromName.replace('Accepted','');
-//            }
-//            var div = '<div id="'+ns+'" class="user" ><span class="mnrChat"></span> '+name+'</div>';
-//                $('.chat_body').prepend(div); 
-            alert(data.fromName);
-            
+
+        if ($('.username').attr("id") === data.fromId && data.toId === '') {
+            var name, namespace;
+            if ((data.fromName).indexOf('Accept') < 0) {
+                name = data.fromName.split('/')[0];
+                namespace = data.fromName.split('/')[1];
+                var div = '<div id="' + namespace + '" class="user" ><span class="mnrChat"></span> ' + name + '</div>';
+                $('.chat_body').prepend(div);
+                var user = document.getElementById(namespace);
+                createMessageBox(user);
+                alert(name + " Accepted");
+            }else{
+                alert(data.fromName);
+            }
         }
     };
 }

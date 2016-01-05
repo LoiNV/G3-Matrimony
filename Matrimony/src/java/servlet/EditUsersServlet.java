@@ -38,57 +38,62 @@ public class EditUsersServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
+        String id =request.getParameter("id");
         try {
-            request.setCharacterEncoding("UTF-8");
+
             response.setCharacterEncoding("UTF-8");
             response.setContentType("application/json;charsset=UTF-8");
             UsersWS uws = new UsersWS();
             Gson g = new Gson();
 
-            String id = request.getParameter("id");
             String name = request.getParameter("name");
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
             boolean gender = Boolean.parseBoolean(request.getParameter("gender"));
 
             String birthday = request.getParameter("birthday");
+            if (birthday.contains("-")) {
+                birthday = birthday.replaceAll("-", "/");
+            }
             SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yy");
             Date birthTemp = sdf.parse(birthday);
             long now = System.currentTimeMillis();
             long age1 = now - birthTemp.getTime();
             int age = (int) (age1 / ((24 * 60 * 60 * 1000) + 1)) / 365;
 
-            String maritalstatus = request.getParameter("maritalStatus");
-            String country = request.getParameter("country");
-            String city = request.getParameter("city");
-            String phone = request.getParameter("phone");
-            String religion = request.getParameter("religion");
-            String caste = request.getParameter("caste");
-            String desc = new String(request.getParameter("desc").getBytes("ISO-8859-1"));
-            
-            String u = uws.find(String.class, id);
-            Users user = g.fromJson(u, Users.class);
-            user.setName(name);
-            user.setFirstName(firstName);
-            user.setLastName(lastName);
-            user.setGender(gender);
-            user.setBirthday(birthday);
-            user.setAge(age);
-            user.setMaritalStatus(maritalstatus);
-            user.setCountry(country);
-            user.setCity(city);
-            user.setPhone(phone);
-            user.setReligion(religion);
-            user.setCaste(caste);
-            user.setDescription(desc);
-            uws.edit(user, id);
+            if (age > 17) {
+                String maritalstatus = request.getParameter("maritalStatus");
+                String country = request.getParameter("country");
+                String city = request.getParameter("city");
+                String phone = request.getParameter("phone");
+                String religion = request.getParameter("religion");
+                String caste = request.getParameter("caste");
+                String desc = request.getParameter("desc");
 
-            request.getSession().setAttribute("infouser", user);
-            response.sendRedirect("/Matrimony/FindIdUser?id=" + id);
+                String u = uws.find(String.class, id);
+                Users user = g.fromJson(u, Users.class);
+                user.setName(name);
+                user.setFirstName(firstName);
+                user.setLastName(lastName);
+                user.setGender(gender);
+                user.setBirthday(birthday);
+                user.setAge(age);
+                user.setMaritalStatus(maritalstatus);
+                user.setCountry(country);
+                user.setCity(city);
+                user.setPhone(phone);
+                user.setReligion(religion);
+                user.setCaste(caste);
+                user.setDescription(desc);
+                uws.edit(user, id);
+                request.getSession().setAttribute("infouser", user);
+                response.sendRedirect("/Matrimony/FindIdUser?id=" + id+"&alert=Changed successfull!");
+            }else{                
+                response.sendRedirect("/Matrimony/FindIdUser?id=" + id+"&alert=You you are under age!");
+            }
+
         } catch (ParseException ex) {
-            Logger.getLogger(EditUsersServlet.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendRedirect("/Matrimony/FindIdUser?id=" + id+"&alert=Change Failed!");
         }
 
     }

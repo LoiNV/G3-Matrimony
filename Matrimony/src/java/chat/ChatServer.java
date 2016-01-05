@@ -46,7 +46,7 @@ public class ChatServer {
     public static String createNameSpace(String ns) {        
        
         String nameSpace ="/"+ns;
-        if (server.getNamespace(nameSpace) == null) {
+        if (server.getNamespace(nameSpace) == null && server!=null) {
 
             server.addNamespace(nameSpace).addEventListener("message", ChatObject.class, new DataListener<ChatObject>() {
 
