@@ -4,7 +4,8 @@ var
         chatSocket = [],
         notReadMsgChat = [],
         notReadMsgBox = [],
-        messages = [];
+        messages = [],
+        sound = new Audio('assets/scripts/sound/msg.wav');
 
 $(document).ready(function () {
 
@@ -12,6 +13,7 @@ $(document).ready(function () {
     
     $('.chat_head').click(function () {
         $('.chat_body').slideToggle('slow');
+        $('.mnrHead').text('');
     });
 
     var user = document.getElementsByClassName('user'); 
@@ -143,11 +145,15 @@ function messageHandler(id) {
                 outputB('<span">' + data.userName + ':</span> <span class="send-msg">' + data.message + '</span>', id);
 
         } else {
+            if (!($('.chat_body').is(':visible'))) { 
+                
+                $('.mnrHead').text('(new)');
+            }
             messages[id][notReadMsgChat[id]] = data.userName + ":" + data.message;
             notReadMsgChat[id]++;
             $('#' + id + ' .mnrChat').text('(' + notReadMsgChat[id] + ')');
         }
-
+        sound.play();
     };
 }
 

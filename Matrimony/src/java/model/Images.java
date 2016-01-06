@@ -5,11 +5,13 @@
  */
 package model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Admin
  */
-public class Images {
+public class Images implements Serializable{
     private int id;
     private String imgLink;
     private int status;

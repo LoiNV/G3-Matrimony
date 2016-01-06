@@ -5,6 +5,7 @@
  */
 package servlet;
 
+import com.google.gson.Gson;
 import fpt.ws.AdvertisementsWS;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Advertisement;
 
 /**
  *
@@ -34,8 +36,11 @@ public class DeleteAdvertisement extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("application/json;charset=UTF-8");
         String id = request.getParameter("id");
+        Gson g = new Gson();
         AdvertisementsWS aws = new AdvertisementsWS();
-        aws.remove(id);
+        Advertisement ad = g.fromJson(aws.find(String.class, id), Advertisement.class);
+        ad.setStatus(-1);
+        aws.edit(g.toJson(ad), id);
         response.sendRedirect("/Matrimony/ShowAdvertisement");
     }
 

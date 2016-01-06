@@ -5,6 +5,7 @@
  */
 package servlet;
 
+import com.google.gson.Gson;
 import fpt.ws.UsersWS;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Users;
 
 /**
  *
@@ -33,9 +35,12 @@ public class DeleteUser extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("application/json;charset=UTF-8");
         String id = request.getParameter("id");
+        Gson g = new Gson();
         UsersWS uws = new UsersWS();
-        uws.remove(id);
-        response.sendRedirect("/Matrimony/ShowUserServlet");
+        Users u = g.fromJson(uws.find(String.class, id), Users.class);
+        u.setStatus(-1);
+        uws.edit(u, id);
+        response.sendRedirect("ShowUserServlet");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

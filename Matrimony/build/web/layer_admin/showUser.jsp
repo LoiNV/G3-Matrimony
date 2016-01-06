@@ -18,7 +18,7 @@
                 <%@include file="contentLeft.jsp" %>
 
                 <!-- top navigation -->
-                 <%@include file="topNavigation.jsp" %>
+                <%@include file="topNavigation.jsp" %>
 
 
                 <!-- page content -->
@@ -39,7 +39,7 @@
                                                     <th>User ID</th>
                                                     <th>User Name </th>
                                                     <th>Email</th>
-                                                    <th>Birth Day</th>
+                                                    <th style="text-align: center">Birth Day</th>
                                                     <th>Gender</th>
                                                     <th class=" no-link last"><span class="nobr">Action</span>
                                                     </th>
@@ -47,28 +47,29 @@
                                             </thead>
 
                                             <tbody>
-                                            <c:forEach items="${ListUsers}" var="u">
-                                                <tr>
-                                                    <td>${u.id}</td>
-                                                    <td>${u.name}</td>
-                                                    <td>${u.email}</td>
-                                                    <td style="text-align: right; margin-right: 20px">${u.birthday}</td>
-                                                    <c:choose>
-                                                        <c:when test="${u.gender}">
-                                                            <td>Male</td>
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <td>FeMale</td>
-                                                        </c:otherwise>
-                                                    </c:choose>
-                                                    
-                                                    <td>
-                                                        <a href="DeleteUser?id=${u.id}">Delete</a>
-                                                      
-                                                    </td>
-                                                </tr>
+                                                <c:forEach items="${ListUsers}" var="u">
+                                                    <c:if test="${u.status >=0}">
+                                                        <tr>
+                                                            <td>${u.id}</td>
+                                                            <td>${u.name}</td>
+                                                            <td>${u.email}</td>
+                                                            <td style="text-align: center;">${u.birthday}</td>
+                                                            <c:choose>
+                                                                <c:when test="${u.gender}">
+                                                                    <td>Male</td>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <td>FeMale</td>
+                                                                </c:otherwise>
+                                                            </c:choose>
 
-                                            </c:forEach>
+                                                            <td>
+                                                                <a href="DeleteUser?id=${u.id}" onclick="return confirm('Are you sure want to delete?');">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                    </c:if>                                                
+
+                                                </c:forEach>
                                             </tbody>
 
                                         </table>
@@ -79,7 +80,7 @@
 
                     </div>
 
-                   <%@include file="footer_admin.jsp" %>
+                    <%@include file="footer_admin.jsp" %>
 
                 </div>
                 <!-- /page content -->

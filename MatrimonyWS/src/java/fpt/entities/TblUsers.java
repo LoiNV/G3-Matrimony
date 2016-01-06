@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "tbl_Users")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "TblUsers.searchForAll", query = "SELECT t FROM TblUsers t WHERE (:name = '' or t.name = :name) AND t.gender = :gender AND (t.age between :age1 and :age2) AND (:city = '' OR t.city = :city) AND ( :country = '' OR t.country = :country)"),
+    @NamedQuery(name = "TblUsers.searchForAll", query = "SELECT t FROM TblUsers t WHERE (:name = '' or t.name like :name) AND t.gender = :gender AND (t.age between :age1 and :age2) AND (:city = '' OR t.city = :city) AND ( :country = '' OR t.country = :country)"),
     @NamedQuery(name = "TblUsers.findByEmailAndPass", query = "SELECT t FROM TblUsers t WHERE t.email = :email AND t.password = :password"),
     @NamedQuery(name = "TblUsers.findByGenderAndAgeToAge", query = "SELECT t FROM TblUsers t WHERE t.gender = :gender AND t.age >= :age1 AND t.age <= :age2"),
     @NamedQuery(name = "TblUsers.findAll", query = "SELECT t FROM TblUsers t"),

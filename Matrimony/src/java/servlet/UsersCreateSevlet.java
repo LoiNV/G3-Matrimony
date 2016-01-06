@@ -63,11 +63,8 @@ public class UsersCreateSevlet extends HttpServlet {
                     
                     u.setAvatar(request.getScheme() +"://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() +"/img/default.png");
                     uws.create(u);
-                    System.out.println(email);
                     String u3 = uws.findByEmailUsers(String.class, email);
-                    System.out.println(u3);
                     Users user2 = JsonUtils.getUser(u3);
-                    System.out.println(user2.getName() + "");
 
                     request.setAttribute("alert", "Register successful!");
                     request.getSession().setAttribute("infouser", user2);

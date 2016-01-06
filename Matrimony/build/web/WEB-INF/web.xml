@@ -29,6 +29,18 @@
         <url-pattern>/ShowUserServlet</url-pattern>
     </filter-mapping>
     <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/DeleteUser</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/DeleteAdvertisement</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/ActiveAdv</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
         <filter-name>homeFilter</filter-name>
         <url-pattern>/index.jsp</url-pattern>
     </filter-mapping>
@@ -43,6 +55,14 @@
     <filter-mapping>
         <filter-name>loginFiler</filter-name>
         <url-pattern>/profile.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>loginFiler</filter-name>
+        <url-pattern>/FindIdUser</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>loginFiler</filter-name>
+        <url-pattern>/EditUsersServlet</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>

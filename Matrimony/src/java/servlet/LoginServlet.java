@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         String time = "0";
-        if (u != null) {
+        if (u != null && u.getStatus() >= 0) {
             session.setAttribute("login", "true");            
             session.setAttribute("infouser", u);
             

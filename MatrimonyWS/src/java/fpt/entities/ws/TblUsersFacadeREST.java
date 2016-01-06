@@ -11,6 +11,7 @@ import fpt.entities.TblUsers;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -111,6 +112,17 @@ public class TblUsersFacadeREST extends AbstractFacade<TblUsers> {
         }
         return null;
     }
+	
+	@GET
+    @Path("findName/{name}")
+    @Produces({"application/xml", "application/json"})
+    public List<TblUsers> findByNameUsers(@PathParam("name") String name) {
+        List<TblUsers> ls = new LinkedList<>();
+        Query query = em.createNamedQuery("TblUsers.findByName");
+        query.setParameter("name", name);
+        ls = (List<TblUsers>) query.getResultList();
+        return ls;
+    }
 
     @GET
     @Path("searchForAll/{name}/{gender}/{age1}/{age2}/{city}/{country}")
@@ -119,7 +131,7 @@ public class TblUsersFacadeREST extends AbstractFacade<TblUsers> {
             @PathParam("age1") Integer age1, @PathParam("age2") Integer age2, @PathParam("city") String city, @PathParam("country") String country) {
 
         Query query = em.createNamedQuery("TblUsers.searchForAll");
-        query.setParameter("name", name);
+        query.setParameter("name", "%"+name+"%");
         query.setParameter("gender", gender);
         query.setParameter("age1", age1);
         query.setParameter("age2", age2);
@@ -143,6 +155,18 @@ public class TblUsersFacadeREST extends AbstractFacade<TblUsers> {
         }
         return null;
     }
+	
+	@POST
+    @Path("findEmailAndPassAndroid/{email}/{password}")
+    @Produces({"application/json"})
+    public List<TblUsers> findEmailAndPassAndroid(@PathParam("email") String email, @PathParam("password") String password) {
+        List<TblUsers> ls = new LinkedList<>();
+        Query query = em.createNamedQuery("TblUsers.findByEmailAndPass");
+        query.setParameter("email", email);
+        query.setParameter("password", password);
+        ls = (List<TblUsers>) query.getResultList();
+        return ls;
+    }
 
     @POST
     @Path("createUser")
@@ -152,6 +176,56 @@ public class TblUsersFacadeREST extends AbstractFacade<TblUsers> {
         TblUsers user = g.fromJson(json, TblUsers.class);
         super.create(user);
     }
+	
+	@POST
+    @Path("searchAndroid/{gender}/{age1}/{age2}")
+    @Produces({"application/json"})
+    public List<TblUsers> searchAndroid(@PathParam("gender") Boolean gender,
+            @PathParam("age1") Integer age1, @PathParam("age2") Integer age2) {
+        List<TblUsers> ls = new LinkedList<>();
+        Query query = em.createNamedQuery("TblUsers.searchAndroid");
+        query.setParameter("gender", gender);
+        query.setParameter("age1", age1);
+        query.setParameter("age2", age2);
+        ls = (List<TblUsers>) query.getResultList();
+        return ls;
+    }
+	
+	@POST
+    @Path("editUserAndroid")
+    @Produces({"application/json"})
+    public void editUserAndroid(String json) {
+        Gson g = new Gson();
+        TblUsers u = g.fromJson(json, TblUsers.class);
+        TblUsers u2 = find(u.getId());
+        u2.setName(u.getName());
+        u2.setBirthday(u.getBirthday());
+        u2.setMaritalStatus(u.getMaritalStatus());
+        u2.setAge(u.getAge());
+        u2.setCity(u.getCity());
+        u2.setPhone(u.getPhone());
+        u2.setAvatar(u.getAvatar());
+        u2.setDescription(u.getDescription());
+        super.edit(u2);
+    }
+	
+	@POST
+    @Path("editPassWordAndroid")
+    @Produces({"application/json"})
+    public void editPassWordAndroid(String json) {
+        Gson g = new Gson();
+        TblUsers u = g.fromJson(json, TblUsers.class);
+        TblUsers u2 = find(u.getId());
+        u2.setPassword(u.getPassword());
+        super.edit(u2);
+    }
+    
+    @POST
+    @Path("findIdAndroid/{id}")
+    @Produces({"application/json"})
+    public TblUsers findIdAndroid(@PathParam("id") Integer id) {
+        return super.find(id);
+    }
 
     @GET
     @Path("getTimesActive/{id}")
@@ -159,7 +233,6 @@ public class TblUsersFacadeREST extends AbstractFacade<TblUsers> {
     public String getTimesActive(@PathParam("id") Integer id) {
 
         int time = 0;
-        String s="";
         List<TblUserSubscription> listUS = tblUserSubscriptionFacadeREST.findByUser(id);
         for (TblUserSubscription us : listUS) {
             try {

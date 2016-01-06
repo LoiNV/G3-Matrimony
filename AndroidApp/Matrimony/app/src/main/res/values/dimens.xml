@@ -1,0 +1,9 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="icon">36dp</dimen>
+    <dimen name="icon_mask">55dp</dimen>
+    <dimen name="size_tab_profile">16dp</dimen>
+
+</resources>

@@ -5,11 +5,13 @@
  */
 package model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Admin
  */
-public class Friends {
+public class Friends implements Serializable{
     private int id;
     private Users userId1;
     private Users userId2;

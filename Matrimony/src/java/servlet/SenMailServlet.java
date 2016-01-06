@@ -50,6 +50,8 @@ public class SenMailServlet extends HttpServlet {
         CustomersWS cws = new CustomersWS();
         String result = cws.find(res, id);
         Customers cus = g.fromJson(result, Customers.class);
+        cus.setStatus(1);
+        cws.edit(g.toJson(cus), id);
         request.setAttribute("cus", cus);
      
       

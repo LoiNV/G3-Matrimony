@@ -106,4 +106,17 @@ public class TblImagesFacadeREST extends AbstractFacade<TblImages> {
         return ls;
     }
     
+	@POST
+    @Path("findByUserAndroid/{userId}")
+    @Produces({"application/json"})
+    public List<TblImages> findByUserAndroid(@PathParam("userId") Integer userId) {
+        
+        TblUsers u = tblUsersFacadeREST.find(userId);
+        
+        List<TblImages> ls = new LinkedList<>();
+        Query query = em.createNamedQuery("TblImages.findByUserAndroid");
+        query.setParameter("userId", u);
+        ls = (List<TblImages>) query.getResultList();
+        return ls;
+    }
 }

@@ -41,8 +41,7 @@
                                                     <th>Customers </th>
                                                     <th>Duration</th>
                                                     <th>Amount</th>
-                                                    <th>Create Date</th>
-                                                    <th>Status</th>                                                    
+                                                    <th>Create Date</th>                                                 
                                                     <th class=" no-link last"><span class="nobr">Action</span>
                                                     </th>
                                                 </tr>
@@ -50,18 +49,27 @@
 
                                             <tbody>
                                                 <c:forEach items="${listAdvertisement}" var="a">
-                                                    <tr>
-                                                        <td>${a.id}</td>
-                                                        <td>${a.customerId.getName()}</td>
-                                                        <td>${a.duration} Week</td>
-                                                        <td>${a.amount}</td>
-                                                        <td>${a.createdDate}</td>
-                                                        <td>${a.status}</td>
-                                                        <td>
-                                                            <a href="DeleteAdvertisement?id=${a.id}">Delete</a> |
-                                                            <a href="ActiveAdv?id=${a.id}">Active</a>
-                                                        </td>
-                                                    </tr>
+                                                    <c:if test="${a.status >= 0 }">
+                                                        <tr>
+                                                            <td>${a.id}</td>
+                                                            <td>${a.customerId.getName()}</td>
+                                                            <td>${a.duration} Week</td>
+                                                            <td>${a.amount}</td>
+                                                            <td>${a.createdDate}</td>
+                                                            <c:choose>
+                                                                <c:when test="${a.status >0}">
+                                                                    <td>Active</td>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <td>
+                                                                        <a href="DeleteAdvertisement?id=${a.id}">Delete</a> |
+                                                                        <a href="ActiveAdv?id=${a.id}">Set</a>
+                                                                    </td>
+                                                                </c:otherwise>
+                                                            </c:choose>
+
+                                                        </tr>
+                                                    </c:if>
 
                                                 </c:forEach>
                                             </tbody>
@@ -90,7 +98,7 @@
 
 
         </div>
-      
+
         <%@include file="importScript_admin.jsp" %>
     </body>
 

@@ -159,9 +159,11 @@ public class ReturnServlet extends HttpServlet {
                         CustomersWS cws = new CustomersWS();
                         String cusId = checkoutDetails.get("cusId");
 
-                        String json = cws.find(String.class, cusId);
+                        String cus = cws.find(String.class, cusId);
 
-                        Customers customer = g.fromJson(json, Customers.class);
+                        Customers customer = g.fromJson(cus, Customers.class);
+                        customer.setStatus(2);
+                        cws.edit(g.toJson(customer), cusId);
                         adv.setCustomerId(customer);
 
                         AdvertisementsWS aws = new AdvertisementsWS();

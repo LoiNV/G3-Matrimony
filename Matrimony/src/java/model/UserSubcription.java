@@ -5,11 +5,13 @@
  */
 package model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Admin
  */
-public class UserSubcription {
+public class UserSubcription implements Serializable{
     private int id;
     private String chargedDate;
     private Subcription subId;

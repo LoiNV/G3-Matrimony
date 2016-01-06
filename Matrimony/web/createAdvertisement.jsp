@@ -90,20 +90,21 @@
                                         <input type="hidden" name="cusId" value="${cusId}"/>
                                         <input type="hidden" name="imgAdv" value="${sessionScope.imgAdv}"/>
                                         <div class="twelve columns">
-                                            <b>Link Redirect:</b><input type="text" name="link" id="link" placeholder="Link" required>
+                                            <b>Link Redirect:</b><input type="text" name="link" id="link" placeholder="Link" required/>
 
                                         </div>
                                         <div class="twelve columns">
-                                            <b>Messages:</b><input type="text" name="message" id="message" placeholder="Message" required>
+                                            <b>Messages:</b><textarea type="text" name="message" rows="3" id="message" placeholder="Message" required ></textarea>
 
                                         </div>
+                                        <hr/>
 
                                         <div class="twelve columns">
                                             <b>Price: </b>${price} USD  / Week
                                         </div>
                                         <hr/>
                                         <div class="three columns">
-                                            <b>Duration(Weeks):</b><input type="number" name="duration" id="duration" required>
+                                            <b>Duration(Weeks):</b><input type="number" name="duration" id="duration" required/>
 
                                         </div>
 

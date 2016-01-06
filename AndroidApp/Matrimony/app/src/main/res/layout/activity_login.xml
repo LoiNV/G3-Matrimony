@@ -1,0 +1,109 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2586A0"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    android:paddingTop="50dp"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/logo" />
+
+
+    <LinearLayout
+        android:id="@+id/lluser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivLogo"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="50dp"
+        android:background="#FFF"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_user" />
+
+        <EditText
+            android:id="@+id/etMail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:lines="1"
+            android:text="mail"
+            android:inputType="textEmailAddress"
+            android:background="@android:color/transparent"
+            android:hint="Mail" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llpass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lluser"
+        android:layout_marginBottom="10dp"
+        android:background="#FFF"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_security" />
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:lines="1"
+            android:text="pass"
+            android:inputType="textPassword"
+            android:background="@android:color/transparent"
+            android:hint="Password" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/llpass"
+        android:background="#FE5E3A"
+        android:onClick="clickLogin"
+        android:layout_marginBottom="10dp"
+        android:text="Log in"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvsu"
+        android:gravity="center"
+        android:layout_marginBottom="10dp"
+        android:textColor="#FFF"
+        android:layout_below="@id/btnLogin"
+        android:text="Want new account ?"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:id="@+id/btnSignup"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvsu"
+        android:onClick="clickSignup"
+        android:background="#7EDE0B"
+        android:text="Sign up"
+        android:textColor="#FFF" />
+</RelativeLayout>

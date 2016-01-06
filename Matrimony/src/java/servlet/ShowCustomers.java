@@ -10,6 +10,8 @@ import com.google.gson.reflect.TypeToken;
 import fpt.ws.CustomersWS;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -46,6 +48,21 @@ public class ShowCustomers extends HttpServlet {
         Class<String> res = String.class;
         String result = cws.findAll(res);
         ls = g.fromJson(result, collection);
+        Collections.sort(ls, new Comparator<Customers>() {
+
+            @Override
+            public int compare(Customers t, Customers t1) {
+                if (t.getStatus() > t1.getStatus()) {
+                    return 1;
+                }
+                
+                if (t.getStatus() < t1.getStatus()) {
+                    return -1;
+                }
+                return 0;
+            }
+        });
+        System.out.println(result+"");
         request.setAttribute("listCustomers", ls);
         RequestDispatcher rd = request.getRequestDispatcher("layer_admin/showCustomers.jsp");
         rd.forward(request, response);

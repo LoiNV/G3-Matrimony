@@ -54,7 +54,7 @@
 
                                             <b>Email:</b><input type="email" name="email" id="email" placeholder="Email" required>
 
-                                            <b>Phone</b><input type="text" name="phone" id="phone" placeholder="Phone" required>
+                                            <b>Phone</b><input type="text" name="phone" id="phone" placeholder="Phone" required pattern="[0]{1}\d{9,10}">
                                         </div>
                                         
                                         <div class="twelve">

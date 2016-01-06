@@ -40,8 +40,7 @@
                                                     <th>Name </th>
                                                     <th>Email</th>
                                                     <th>Phone Number</th>
-                                                    <th class=" no-link last"><span class="nobr">Action</span>
-                                                    </th>
+                                                    <th>Status</th>
                                                 </tr>
                                             </thead>
 
@@ -52,10 +51,17 @@
                                                     <td>${c.name}</td>
                                                     <td>${c.email}</td>
                                                     <td>${c.phone}</td>
-                                                    <td>
-                                                        <a href="SenMail?id=${c.id}">Accept</a>
-                                                        
-                                                    </td>
+                                                    <c:choose>
+                                                        <c:when test="${c.status == 1}">
+                                                            <td>Pending Payment</td>
+                                                        </c:when>
+                                                        <c:when test="${c.status == 2}">
+                                                            <td>Paid</td>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <td>Waiting for <a style="color: blue" href="SenMail?id=${c.id}">Reply</a></td>
+                                                        </c:otherwise>
+                                                    </c:choose>                                                    
                                                 </tr>
 
                                             </c:forEach>

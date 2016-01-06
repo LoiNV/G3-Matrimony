@@ -47,7 +47,7 @@
                             <h2>Search <span class="pink-text">results</span></h2>
                             <div class="six columns" style="margin-left: 25%">
                                 <div class="search-item">
-                                    <div class="avatar">
+                                    <div class="avatar" style="width: 300px; height: 300px;">
                                         <img style="width: 100%; height: 100%;" src="${p.avatar}" alt="Avatar">
                                     </div>
                                     <div class="search-meta">

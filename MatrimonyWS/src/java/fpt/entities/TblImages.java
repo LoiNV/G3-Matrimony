@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "TblImages.findAll", query = "SELECT t FROM TblImages t"),
     @NamedQuery(name = "TblImages.findByUser", query = "SELECT t FROM TblImages t WHERE t.userId = :userId AND t.status = 0"),
     @NamedQuery(name = "TblImages.findById", query = "SELECT t FROM TblImages t WHERE t.id = :id"),
+	@NamedQuery(name = "TblImages.findByUserAndroid", query = "SELECT t FROM TblImages t WHERE t.userId = :userId"),
     @NamedQuery(name = "TblImages.findByImgLink", query = "SELECT t FROM TblImages t WHERE t.imgLink = :imgLink"),
     @NamedQuery(name = "TblImages.findByStatus", query = "SELECT t FROM TblImages t WHERE t.status = :status")})
 public class TblImages implements Serializable {

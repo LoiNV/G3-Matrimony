@@ -31,8 +31,7 @@ public class ReplyCustomnerServlet extends HttpServlet {
         Class<String> res = String.class;
         String result = cws.find(res, id);
         Gson gson = new Gson();
-        Customers customer = gson.fromJson(result, Customers.class);
-        
+        Customers customer = gson.fromJson(result, Customers.class);        
         
         int pos = customer.getPosition();
         switch(pos){

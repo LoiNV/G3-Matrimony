@@ -10,6 +10,8 @@ import fpt.utils.JsonUtils;
 import fpt.ws.AdvertisementsWS;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -37,9 +39,14 @@ public class ActiveAdvServlet extends HttpServlet {
         String result = aws.findAll(String.class);
         ls = JsonUtils.getListAdv(result);
         Gson g = new Gson();
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String createdDate = sdf.format(date);
+        
         for (Advertisement a : ls) {
             if (a.getId() == id) {
                 a.setStatus(1);
+                a.setCreatedDate(createdDate);
                 aws.edit(g.toJson(a), a.getId()+"");
                 request.getSession().setAttribute("adv", a);
             }else{
@@ -53,7 +60,7 @@ public class ActiveAdvServlet extends HttpServlet {
         }
         request.setAttribute("listAdvertisement", ls);
         
-       request.getRequestDispatcher("layer_admin/showAdvertisement.jsp").forward(request, response);
+       request.getRequestDispatcher("ShowAdvertisement").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

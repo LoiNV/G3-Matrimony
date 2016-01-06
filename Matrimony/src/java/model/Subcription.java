@@ -1,11 +1,13 @@
 
 package model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Admin
  */
-public class Subcription {
+public class Subcription implements Serializable{
     private int id;
     private String name;
     private double price;
