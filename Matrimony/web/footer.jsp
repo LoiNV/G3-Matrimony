@@ -107,16 +107,18 @@
     <c:choose>
         <c:when test="${sessionScope.adv != null}">
             <a href="${sessionScope.adv.link}" target="_blank"><img src="${sessionScope.adv.image}"/></a>
-        </c:when>
-        <c:otherwise>
-            <a href="#"><img src="img/default-adv.jpg" alt=""/></a>
-            
-        </c:otherwise>
-    </c:choose>
-    
+            </c:when>
+            <c:otherwise>
+            <a href="#"><img src="img/default-adv.jpg" alt=""/></a>            
+            </c:otherwise>
+        </c:choose>
+
 </div>
 <script>
-    $('.close-adv').click(function (){
+//    setTimeout(function () {
+//        $('.advertisment').hide();
+//    }, 10000);
+    $('.close-adv').click(function () {
         $('.advertisment').hide();
     });
 </script>

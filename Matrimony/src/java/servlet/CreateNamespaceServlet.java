@@ -27,7 +27,7 @@ public class CreateNamespaceServlet extends HttpServlet {
         String ns = request.getParameter("ns");
         
         String namespace = ChatServer.createNameSpace(ns);
-        
+        System.out.println(namespace);
         String json = (new Gson()).toJson(namespace);
 
         response.setContentType("application/json;charset=UTF-8");

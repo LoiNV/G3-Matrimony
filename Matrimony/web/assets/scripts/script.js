@@ -91,7 +91,7 @@ function createMessageBox(user) {
         msgBox.insertAfter('.chat_box');
 
     }
-
+    $('#txt_' + id).focus();
     $('#txt_' + id).keypress(
             function (e) {
                 if (e.keyCode === 13) {

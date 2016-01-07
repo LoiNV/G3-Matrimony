@@ -158,6 +158,10 @@
         <servlet-name>MatchSingleServlet</servlet-name>
         <servlet-class>servlet.MatchSingleServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShowUserSubscriptionServlet</servlet-name>
+        <servlet-class>servlet.ShowUserSubscriptionServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checkout</servlet-name>
         <url-pattern>/Checkout</url-pattern>
@@ -252,6 +256,10 @@
     <servlet-mapping>
         <servlet-name>MatchSingleServlet</servlet-name>
         <url-pattern>/MatchSingle</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowUserSubscriptionServlet</servlet-name>
+        <url-pattern>/ShowUserSubscription</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>60</session-timeout>

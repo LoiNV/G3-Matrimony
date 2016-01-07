@@ -12,13 +12,6 @@
         request.setAttribute("listFriends", listF);
         request.setAttribute("username", user.getName());
 %>
-
-<%
-    }
-
-%>
-<script src="assets/scripts/script.js" type="text/javascript"></script>
-<script src="assets/scripts/addFiend.js" type="text/javascript"></script>
 <div class="chat_box">
     <div class="chat_head"><sup class="mnrHead"></sup> Friends </div>
     <div class="chat_body">
@@ -35,5 +28,12 @@
         </c:forEach>
     </div>
 </div>
+<script src="assets/scripts/script.js" type="text/javascript"></script>
+<script src="assets/scripts/addFiend.js" type="text/javascript"></script>
+<%
+    }
+
+%>
+
 
 

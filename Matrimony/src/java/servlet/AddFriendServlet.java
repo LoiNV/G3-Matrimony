@@ -40,9 +40,8 @@ public class AddFriendServlet extends HttpServlet {
         String id = request.getParameter("fromId");
         Users fromUser = JsonUtils.getUser(new UsersWS().find(String.class, id));
         Users user = (Users) request.getSession().getAttribute("infouser");
-
+        
         String answer = request.getParameter("answer");
-
         if (answer.equals("accept")) {
 
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -50,9 +49,8 @@ public class AddFriendServlet extends HttpServlet {
 
             String namespace = user.getId() + "_" + fromUser.getId();
             Friends fr = new Friends(user, fromUser, createDate, namespace);
-            fws.create(g.toJson(fr));
-//            ChatServer.createNameSpace(namespace);
-
+            fws.create(fr);
+            
             request.setAttribute("listFriends", null);
 
             out.println(g.toJson(user.getName() + "/"+namespace));

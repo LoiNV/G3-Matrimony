@@ -36,8 +36,8 @@
                     <li><a><i class="fa fa-edit"></i> Users <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu" style="display: none">
 
-                            <li><a href="/Matrimony/ShowUserServlet">Show Users</a>
-                            </li>
+                            <li><a href="/Matrimony/ShowUserServlet">Show Users</a></li>
+                            <li><a href="/Matrimony/ShowUserSubscription">Users Subscription</a></li>                            
                         </ul>
                     </li>
                     <li><a><i class="fa fa-edit"></i> Customers <span class="fa fa-chevron-down"></span></a>

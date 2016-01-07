@@ -13,7 +13,8 @@ $(document).ready(function () {
     $('.addFriend').click(function (evt) {
         var fromId = $('.username').attr('id');
         var fromName = $('.username').attr("name");
-        var toId = this.id;
+        var toId = $(evt.target).attr("id");
+        console.log(toId);
 
         var jsonObject = {
             '@class': 'chat.RequestAddFriend',
@@ -36,14 +37,13 @@ function messageFriendHandler() {
         if ($('.username').attr("id") === data.toId) {
             var answer = '';
             var ns = data.toId + '_' + data.fromId;
-            console.log(ns);
             if (confirm(data.fromName + " request add friend")) {
                 answer = 'accept';
             }
 
-            $.get('/Matrimony/AddFriend', {fromId: data.fromId, answer: answer}, function (msg) {
+            $.post('/Matrimony/AddFriend', {fromId: data.fromId, answer: answer}, function (msg) {
+
                 if ((msg).indexOf('Accept') < 0) {
-                    console.log(msg);
                     var div = '<div id="' + ns + '" class="user" ><span class="mnrChat"></span> ' + data.fromName + '</div>';
                     $('.chat_body').prepend(div);
                     var user = document.getElementById(ns);
@@ -57,6 +57,7 @@ function messageFriendHandler() {
                     toId: ''
                 };
                 addSocket.json.send(jsonObject);
+
             });
         }
 
@@ -70,7 +71,7 @@ function messageFriendHandler() {
                 var user = document.getElementById(namespace);
                 createMessageBox(user);
                 alert(name + " Accepted");
-            }else{
+            } else {
                 alert(data.fromName);
             }
         }

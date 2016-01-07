@@ -17,7 +17,7 @@ import com.corundumstudio.socketio.listener.DataListener;
  */
 public class ChatServer {
 
-    public static final String HOST = "localhost";
+    public static String HOST = "localhost";
     public static final int PORT = 9999;
     private static SocketIOServer server;
     private boolean start;

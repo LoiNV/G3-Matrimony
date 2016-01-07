@@ -33,10 +33,17 @@ import model.Users;
  */
 public class HomeServlet extends HttpServlet {
 
-    ChatServer chat = new ChatServer();
+    ChatServer chat;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException {        
+        try {
+            if (chat.getServer() == null) {
+                chat = new ChatServer();
+            }
+        } catch (Exception e) {
+            chat = new ChatServer();
+        }
 
         if (!chat.isStart()) {
             chat.startServer();
@@ -66,9 +73,13 @@ public class HomeServlet extends HttpServlet {
             long currentTime = System.currentTimeMillis();
 
             for (Advertisement a : ls) {
+                String createDate = a.getCreatedDate();
+                if (createDate.contains("-")) {
+                    createDate = createDate.replaceAll("-", "/");
+                }
                 Date exp = sdf.parse(a.getCreatedDate());
                 long time = currentTime - exp.getTime();
-                
+
                 if (a.getStatus() == 1 && time > 0) {
                     request.getSession().setAttribute("adv", a);
                     break;
