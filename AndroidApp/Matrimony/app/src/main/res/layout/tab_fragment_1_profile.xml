@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rlpHeader"
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="#000"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/ivpAvatar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/trongsuot"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/txtpName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shakira, 23"
+                android:textColor="#FFF"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:typeface="serif" />
+
+            <TextView
+                android:id="@+id/cityAndCountry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New York, USA"
+                android:textColor="#FFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_below="@+id/rlpHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rlpHeader"
+            android:background="#FFF"
+            android:padding="15dp">
+
+
+            <TextView
+                android:id="@+id/txtpDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="There is only 1 thing 2 do, 3 words for you - I Love You"
+                android:textColor="#303030"
+                android:textSize="@dimen/size_tab_profile"
+                android:typeface="sans" />
+
+            <View
+                android:id="@+id/vD"
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                android:layout_below="@+id/txtpDescription"
+                android:layout_marginBottom="15dp"
+                android:background="#ccc" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/vD"
+                android:layout_marginBottom="15dp"
+                android:text="Email"
+                android:textColor="#303030"
+                android:textSize="@dimen/size_tab_profile"
+                android:typeface="sans" />
+
+            <TextView
+                android:id="@+id/txtpMail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/vD"
+                android:layout_marginBottom="15dp"
+                android:lines="1"
+                android:text="shakira@gmail.com"
+                android:textColor="#303030"
+                android:textSize="@dimen/size_tab_profile" />
+
+            <View
+                android:id="@+id/vMail"
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                android:layout_below="@+id/txtpMail"
+                android:layout_marginBottom="15dp"
+                android:background="#ccc" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/vMail"
+                android:layout_marginBottom="15dp"
+                android:text="Full Name"
+                android:textColor="#303030"
+                android:textSize="@dimen/size_tab_profile"
+                android:typeface="sans" />
+
+            <TextView
+                android:id="@+id/txtpFullName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/vMail"
+                android:layout_marginBottom="15dp"
+                android:text="Maria Ozawoa"
+                android:textColor="#303030"
+                android:textSize="@dimen/size_tab_profile" />
+
+            <View
+                android:id="@+id/vFN"
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                android:layout_below="@+id/txtpFullName"
+                android:layout_marginBottom="15dp"
+                android:background="#ccc" />
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/vFN"-->
+                <!--android:text="Gender"-->
+                <!--android:textColor="#303030"-->
+                <!--android:textSize="20sp"-->
+                <!--android:typeface="sans" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/txtpGender"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_below="@+id/vFN"-->
+                <!--android:layout_marginBottom="15dp"-->
+                <!--android:text="Woman"-->
+                <!--android:textColor="#303030"-->
+                <!--android:textSize="20sp" />-->
+
+            <!--<View-->
+                <!--android:id="@+id/vGe"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1sp"-->
+                <!--android:layout_below="@+id/txtpGender"-->
+                <!--android:layout_marginBottom="15dp"-->
+                <!--android:background="#ccc" />-->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/vFN"
+                android:text="Birth Day"
+                android:textColor="#303030"
+                android:textSize="@dimen/size_tab_profile"
+                android:typeface="sans" />
+
+            <TextView
+                android:id="@+id/txtpBirthDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/vFN"
+                android:layout_marginBottom="15dp"
+                android:text="1-1-1992"
+                android:textColor="#303030"
+                android:textSize="@dimen/size_tab_profile" />
+
+            <View
+                android:id="@+id/vBi"
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                android:layout_below="@+id/txtpBirthDay"
+                android:layout_marginBottom="15dp"
+                android:background="#ccc" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/vBi"
+                android:text="Marital Status"
+                android:textColor="#303030"
+                android:textSize="@dimen/size_tab_profile"
+                android:typeface="sans" />
+
+            <TextView
+                android:id="@+id/txtpMarital"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/vBi"
+                android:layout_marginBottom="15dp"
+                android:text="Single"
+                android:textColor="#303030"
+                android:textSize="@dimen/size_tab_profile" />
+
+            <View
+                android:id="@+id/vM"
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                android:layout_below="@+id/txtpMarital"
+                android:layout_marginBottom="15dp"
+                android:background="#ccc" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/vM"
+                android:text="Phone Number"
+                android:textColor="#303030"
+                android:textSize="@dimen/size_tab_profile"
+                android:typeface="sans" />
+
+            <TextView
+                android:id="@+id/txtpPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/vM"
+                android:layout_marginBottom="15dp"
+                android:lines="1"
+                android:text="0971711811"
+                android:textColor="#303030"
+                android:textSize="@dimen/size_tab_profile" />
+
+            <!--<View-->
+                <!--android:id="@+id/vP"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1sp"-->
+                <!--android:layout_below="@+id/txtpPhone"-->
+                <!--android:layout_marginBottom="15dp"-->
+                <!--android:background="#ccc" />-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/vP"-->
+                <!--android:text="City"-->
+                <!--android:textColor="#303030"-->
+                <!--android:textSize="20sp"-->
+                <!--android:typeface="sans" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/txtpCity"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_below="@+id/vP"-->
+                <!--android:layout_marginBottom="15dp"-->
+                <!--android:text="New York"-->
+                <!--android:textColor="#303030"-->
+                <!--android:textSize="20sp" />-->
+
+            <!--<View-->
+                <!--android:id="@+id/vC"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1sp"-->
+                <!--android:layout_below="@+id/txtpCity"-->
+                <!--android:layout_marginBottom="15dp"-->
+                <!--android:background="#ccc" />-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/vC"-->
+                <!--android:text="Country"-->
+                <!--android:textColor="#303030"-->
+                <!--android:textSize="20sp"-->
+                <!--android:typeface="sans" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/txtpCountry"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_below="@+id/vC"-->
+                <!--android:layout_marginBottom="15dp"-->
+                <!--android:text="USA"-->
+                <!--android:textColor="#303030"-->
+                <!--android:textSize="20sp" />-->
+
+            <!--<View-->
+                <!--android:id="@+id/vCo"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1sp"-->
+                <!--android:layout_below="@+id/txtpCountry"-->
+                <!--android:layout_marginBottom="15dp"-->
+                <!--android:background="#ccc" />-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/vCo"-->
+                <!--android:text="Relegion"-->
+                <!--android:textColor="#303030"-->
+                <!--android:textSize="20sp"-->
+                <!--android:typeface="sans" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/txtpReligion"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_below="@+id/vCo"-->
+                <!--android:layout_marginBottom="15dp"-->
+                <!--android:text="No"-->
+                <!--android:textColor="#303030"-->
+                <!--android:textSize="20sp" />-->
+
+            <!--<View-->
+                <!--android:id="@+id/vR"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1sp"-->
+                <!--android:layout_below="@+id/txtpReligion"-->
+                <!--android:layout_marginBottom="15dp"-->
+                <!--android:background="#ccc" />-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/vR"-->
+                <!--android:text="Caste"-->
+                <!--android:textColor="#303030"-->
+                <!--android:textSize="20sp"-->
+                <!--android:typeface="sans" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/txtpCaste"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_below="@+id/vR"-->
+                <!--android:layout_marginBottom="15dp"-->
+                <!--android:text="University"-->
+                <!--android:textColor="#303030"-->
+                <!--android:textSize="20sp" />-->
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

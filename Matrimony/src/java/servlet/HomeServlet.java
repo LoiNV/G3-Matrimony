@@ -77,10 +77,10 @@ public class HomeServlet extends HttpServlet {
                 if (createDate.contains("-")) {
                     createDate = createDate.replaceAll("-", "/");
                 }
-                Date exp = sdf.parse(a.getCreatedDate());
+                Date exp = sdf.parse(createDate);
                 long time = currentTime - exp.getTime();
-
-                if (a.getStatus() == 1 && time > 0) {
+                int duration = (int) ((a.getDuration()*7) - time/(1000*60*60*24));
+                if (a.getStatus() == 1 && duration > 0) {
                     request.getSession().setAttribute("adv", a);
                     break;
                 }

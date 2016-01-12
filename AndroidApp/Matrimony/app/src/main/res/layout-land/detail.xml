@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rlpHeader"
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/trongsuot">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:alpha="0.7"
+                android:scaleType="centerCrop"
+                android:src="@drawable/anhngang" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageButton
+                android:id="@+id/ibpBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_back_white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Profile"
+                android:textColor="#FFF"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shakira"
+                android:textColor="#FFF"
+                android:textSize="30sp"
+                android:typeface="serif" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="shakira@gmail.com"
+                android:textColor="#FFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlpHeader">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rlpHeader"
+            android:padding="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Full Name"
+
+                android:typeface="sans"
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:id="@+id/txtpFullName"
+                android:layout_marginBottom="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Maria Ozawoa"
+                android:layout_alignParentRight="true"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtpFullName"
+                android:text="Gender"
+                android:typeface="sans"
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:id="@+id/txtpGender"
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_below="@+id/txtpFullName"
+                android:layout_height="wrap_content"
+                android:text="Woman"
+                android:layout_alignParentRight="true"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtpGender"
+                android:text="Birth Day"
+                android:typeface="sans"
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:id="@+id/txtpBirthDay"
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_below="@+id/txtpGender"
+                android:layout_height="wrap_content"
+                android:text="1-1-1992"
+                android:layout_alignParentRight="true"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
